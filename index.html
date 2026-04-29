@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CluxMedia — AI-Powered Sales Systems for African Founders</title>
+  <meta name="description" content="We install done-for-you marketing and sales automation for African founders who are tired of losing leads. Book your free strategy call." />
+  <meta property="og:title" content="CluxMedia — AI-Powered Sales Systems for African Founders" />
+  <meta property="og:description" content="We install done-for-you marketing and sales automation for African founders who are tired of losing leads. Book your free strategy call." />
+  <meta property="og:image" content="https://cluxmedia.com/wp-content/uploads/2025/06/new-logo4.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+
+    /* =========================================
+       CSS VARIABLES
+    ========================================= */
+    :root {
+      --navy:       #0A1628;
+      --navy-mid:   #112240;
+      --blue:       #1E90FF;
+      --blue-light: #4DABFF;
+      --white:      #FFFFFF;
+      --grey:       #8892A4;
+      --success:    #00C896;
+    }
+
+    /* =========================================
+       RESET & BASE
+    ========================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--navy);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Syne', sans-serif;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* =========================================
+       LAYOUT UTILITIES
+    ========================================= */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 16px;
+    }
+
+    .section-heading {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .section-subheading {
+      font-size: 18px;
+      color: var(--grey);
+      max-width: 600px;
+    }
+
+    /* =========================================
+       SCROLL REVEAL ANIMATION
+    ========================================= */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-up.d1 { transition-delay: 0.10s; }
+    .fade-up.d2 { transition-delay: 0.20s; }
+    .fade-up.d3 { transition-delay: 0.30s; }
+    .fade-up.d4 { transition-delay: 0.40s; }
+    .fade-up.d5 { transition-delay: 0.50s; }
+    .fade-up.d6 { transition-delay: 0.60s; }
+
+    /* =========================================
+       BUTTON STYLES
+    ========================================= */
+    .btn-primary {
+      display: inline-block;
+      background: var(--blue);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      padding: 14px 32px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--blue-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(30, 144, 255, 0.35);
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      padding: 14px 32px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      cursor: pointer;
+      transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--blue);
+      color: var(--blue-light);
+      transform: translateY(-2px);
+    }
+
+    /* =========================================
+       NAVIGATION
+    ========================================= */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 18px 0;
+      transition: background 0.35s ease, backdrop-filter 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    #navbar.scrolled {
+      background: rgba(10, 22, 40, 0.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-logo img {
+      height: 38px;
+      width: auto;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-cta {
+      display: inline-block;
+      background: var(--blue);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      padding: 10px 22px;
+      border-radius: 6px;
+      transition: background 0.2s ease, transform 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .nav-cta:hover {
+      background: var(--blue-light);
+      transform: translateY(-1px);
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      width: 32px;
+      height: 32px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      transform-origin: center;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Mobile dropdown */
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      margin-top: 18px;
+      padding-top: 12px;
+      padding-bottom: 8px;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 12px 0;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--grey);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: color 0.2s ease;
+    }
+
+    .mobile-menu a:last-child {
+      border-bottom: none;
+    }
+
+    .mobile-menu a:hover {
+      color: var(--white);
+    }
+
+    /* =========================================
+       RESPONSIVE — NAV
+    ========================================= */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- =========================================
+       NAVIGATION
+  ========================================= -->
+  <nav id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+
+        <a href="#" class="nav-logo">
+          <img
+            src="https://cluxmedia.com/wp-content/uploads/2025/06/new-logo4.png"
+            alt="CluxMedia"
+          />
+        </a>
+
+        <div class="nav-right">
+          <a href="#apply" class="nav-cta">Apply Now</a>
+          <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Mobile menu -->
+      <div class="mobile-menu" id="mobile-menu" role="navigation">
+        <a href="#system" id="mm-how">How It Works</a>
+        <a href="#apply" id="mm-apply">Apply Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =========================================
+       REMAINING SECTIONS — TO BE ADDED
+  ========================================= -->
+
+  <script>
+    // ---- Nav scroll state ----
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    // ---- Hamburger toggle ----
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // ---- Scroll reveal (IntersectionObserver) ----
+    // Observer set up early — sections added later will be observed
+    // by calling observeFadeEls() after each section is appended.
+    function observeFadeEls() {
+      document.querySelectorAll('.fade-up:not([data-observed])').forEach(el => {
+        el.setAttribute('data-observed', '1');
+        revealObserver.observe(el);
+      });
+    }
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    observeFadeEls();
+  </script>
+
+</body>
+</html>
