@@ -12,1038 +12,453 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
-    /* =============================================
-       VARIABLES
-    ============================================= */
-    :root {
-      --navy:        #0A1628;
-      --navy-mid:    #112240;
-      --navy-card:   #0D1E35;
-      --blue:        #1E90FF;
-      --blue-light:  #4DABFF;
-      --blue-glow:   rgba(30,144,255,0.15);
-      --white:       #FFFFFF;
-      --off-white:   #F0F4F8;
-      --grey:        #8892A4;
-      --success:     #00C896;
-      --red-signal:  #FF4D4D;
-    }
+/* =============================================
+   VARIABLES
+============================================= */
+:root {
+  --navy:       #0A1628;
+  --navy-mid:   #112240;
+  --navy-card:  #0D1E35;
+  --blue:       #1E90FF;
+  --blue-light: #4DABFF;
+  --blue-glow:  rgba(30,144,255,0.15);
+  --blue-deep:  rgba(30,144,255,0.08);
+  --gold:       #F5A623;
+  --gold-glow:  rgba(245,166,35,0.14);
+  --white:      #FFFFFF;
+  --off-white:  #F0F4F8;
+  --grey:       #8892A4;
+  --grey-light: #b0bac8;
+  --success:    #00C896;
+  --red-signal: #FF4D4D;
+}
 
-    /* =============================================
-       RESET & BASE
-    ============================================= */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 1rem;
-      line-height: 1.7;
-      color: var(--off-white);
-      background: var(--navy);
-      overflow-x: hidden;
-    }
-    img   { display: block; max-width: 100%; }
-    a     { text-decoration: none; color: inherit; }
-    button { cursor: pointer; font-family: 'DM Sans', sans-serif; }
+/* =============================================
+   RESET & BASE
+============================================= */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;font-size:1rem;line-height:1.7;color:var(--off-white);background:var(--navy);overflow-x:hidden}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:'DM Sans',sans-serif}
 
-    /* =============================================
-       TYPOGRAPHY SCALE
-    ============================================= */
-    .hero-headline {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(2rem, 4.5vw, 3.8rem);
-      max-width: 820px;
-      line-height: 1.15;
-      font-weight: 800;
-      color: var(--white);
-    }
-    .section-headline {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(1.6rem, 3vw, 2.8rem);
-      max-width: 700px;
-      line-height: 1.2;
-      font-weight: 800;
-      color: var(--white);
-    }
-    .section-label {
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--blue);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 600;
-      display: block;
-      margin-bottom: 0.75rem;
-    }
+/* =============================================
+   TYPOGRAPHY
+============================================= */
+.hero-headline{font-family:'Syne',sans-serif;font-size:clamp(2.2rem,5vw,4.2rem);max-width:860px;line-height:1.1;font-weight:800;color:var(--white);letter-spacing:-0.02em}
+.section-headline{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,3vw,2.9rem);max-width:700px;line-height:1.18;font-weight:800;color:var(--white)}
+.section-label{font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--blue);font-family:'DM Sans',sans-serif;font-weight:600;display:block;margin-bottom:0.75rem}
+.pull-quote{font-family:'Syne',sans-serif;font-size:clamp(1.3rem,2.5vw,2rem);font-weight:700;color:var(--white);line-height:1.35;font-style:italic;max-width:780px;margin:0 auto;text-align:center;padding:0 1rem}
+.pull-quote span{color:var(--blue)}
 
-    /* =============================================
-       LAYOUT UTILITIES
-    ============================================= */
-    .container        { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
-    .container-narrow { max-width: 900px;  margin: 0 auto; padding: 0 1.5rem; }
-    .section-pad      { padding: 5.5rem 0; }
+/* =============================================
+   LAYOUT
+============================================= */
+.container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+.container-narrow{max-width:900px;margin:0 auto;padding:0 1.5rem}
+.section-pad{padding:5.5rem 0}
+.text-center{text-align:center}
+.center-block{margin-left:auto;margin-right:auto}
 
-    /* =============================================
-       ANIMATION KEYFRAMES
-    ============================================= */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes drawCheck {
-      from { stroke-dashoffset: 100; }
-      to   { stroke-dashoffset: 0; }
-    }
-    @keyframes spinLoader {
-      to { transform: rotate(360deg); }
-    }
-    @keyframes modalIn {
-      from { opacity: 0; transform: translateY(32px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes overlayIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
+/* =============================================
+   ANIMATIONS
+============================================= */
+@keyframes heroUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes drawCheck{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+@keyframes spinLoader{to{transform:rotate(360deg)}}
+@keyframes modalIn{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+@keyframes overlayIn{from{opacity:0}to{opacity:1}}
+@keyframes stepSlideIn{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+@keyframes stepSlideBack{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:translateX(0)}}
+@keyframes urgencyPulse{0%,100%{opacity:1}50%{opacity:0.6}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 
-    /* Hero page-load stagger */
-    @keyframes heroUp {
-      from { opacity: 0; transform: translateY(28px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .hero-anim           { opacity: 0; animation: heroUp 0.75s ease forwards; }
-    .hero-anim.a1        { animation-delay: 0.10s; }
-    .hero-anim.a2        { animation-delay: 0.22s; }
-    .hero-anim.a3        { animation-delay: 0.34s; }
-    .hero-anim.a4        { animation-delay: 0.46s; }
-    .hero-anim.a5        { animation-delay: 0.60s; }
+.hero-anim{opacity:0;animation:heroUp 0.75s ease forwards}
+.hero-anim.a1{animation-delay:0.10s}.hero-anim.a2{animation-delay:0.22s}
+.hero-anim.a3{animation-delay:0.34s}.hero-anim.a4{animation-delay:0.46s}
+.hero-anim.a5{animation-delay:0.60s}.hero-anim.a6{animation-delay:0.74s}
 
-    /* Scroll reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
-    .reveal.visible        { opacity: 1; transform: translateY(0); }
-    .reveal.d1             { transition-delay: 0.10s; }
-    .reveal.d2             { transition-delay: 0.20s; }
-    .reveal.d3             { transition-delay: 0.30s; }
-    .reveal.d4             { transition-delay: 0.40s; }
-    .reveal.d5             { transition-delay: 0.50s; }
-    .reveal.d6             { transition-delay: 0.60s; }
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal.d1{transition-delay:0.10s}.reveal.d2{transition-delay:0.20s}
+.reveal.d3{transition-delay:0.30s}.reveal.d4{transition-delay:0.40s}
+.reveal.d5{transition-delay:0.50s}.reveal.d6{transition-delay:0.60s}
 
-    /* =============================================
-       BUTTONS
-    ============================================= */
-    .btn-primary {
-      display: inline-block;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 600;
-      font-size: 0.95rem;
-      background: var(--blue);
-      color: var(--white);
-      border: none;
-      padding: 0.75rem 1.75rem;
-      border-radius: 100px;
-      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-      white-space: nowrap;
-    }
-    .btn-primary:hover {
-      background: var(--blue-light);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(30,144,255,0.4);
-    }
-    .btn-outline {
-      display: inline-block;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 600;
-      font-size: 0.95rem;
-      background: transparent;
-      color: var(--blue-light);
-      border: 1.5px solid var(--blue);
-      padding: 0.75rem 1.75rem;
-      border-radius: 100px;
-      transition: background 0.2s, transform 0.2s;
-      white-space: nowrap;
-    }
-    .btn-outline:hover {
-      background: var(--blue-glow);
-      transform: translateY(-2px);
-    }
-    .btn-lg {
-      padding: 0.9rem 2.2rem;
-      font-size: 1rem;
-    }
+/* =============================================
+   BUTTONS
+============================================= */
+.btn-primary{display:inline-block;font-family:'DM Sans',sans-serif;font-weight:600;font-size:1rem;background:var(--blue);color:var(--white);border:none;padding:0.85rem 2rem;border-radius:100px;transition:background 0.2s,transform 0.2s,box-shadow 0.2s;white-space:nowrap;cursor:pointer}
+.btn-primary:hover{background:var(--blue-light);transform:translateY(-3px) scale(1.02);box-shadow:0 10px 32px rgba(30,144,255,0.45)}
+.btn-primary:active{transform:translateY(-1px) scale(0.99)}
 
-    /* =============================================
-       NAVBAR
-    ============================================= */
-    #navbar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 900;
-      padding: 1rem 0;
-      border-bottom: 1px solid transparent;
-      transition: background 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
-    }
-    #navbar.scrolled {
-      background: rgba(10,22,40,0.95);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-      border-bottom-color: rgba(30,144,255,0.2);
-    }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-    .nav-logo { display: flex; align-items: center; flex-shrink: 0; }
-    .nav-logo img { height: 40px; width: auto; object-fit: contain; }
-    .nav-logo-fallback {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: var(--white);
-      display: none;
-    }
-    .nav-logo img.img-error { display: none; }
-    .nav-logo img.img-error ~ .nav-logo-fallback { display: block; }
+.btn-gold{display:inline-block;font-family:'DM Sans',sans-serif;font-weight:600;font-size:1rem;background:var(--gold);color:#0A1628;border:none;padding:0.85rem 2rem;border-radius:100px;transition:background 0.2s,transform 0.2s,box-shadow 0.2s;white-space:nowrap;cursor:pointer}
+.btn-gold:hover{background:#ffb83d;transform:translateY(-3px) scale(1.02);box-shadow:0 10px 32px rgba(245,166,35,0.5)}
 
-    .nav-right { display: flex; align-items: center; gap: 1rem; }
+.btn-outline{display:inline-block;font-family:'DM Sans',sans-serif;font-weight:600;font-size:1rem;background:transparent;color:var(--blue-light);border:1.5px solid var(--blue);padding:0.85rem 2rem;border-radius:100px;transition:background 0.2s,transform 0.2s,box-shadow 0.2s;white-space:nowrap;cursor:pointer}
+.btn-outline:hover{background:var(--blue-glow);transform:translateY(-3px);box-shadow:0 6px 20px rgba(30,144,255,0.2)}
 
-    /* Hamburger */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
-    .hamburger span {
-      display: block; width: 22px; height: 2px;
-      background: var(--white); border-radius: 2px;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      transform-origin: center;
-    }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.btn-lg{padding:1rem 2.5rem;font-size:1.05rem}
 
-    .mobile-nav {
-      display: none;
-      flex-direction: column;
-      border-top: 1px solid rgba(255,255,255,0.07);
-      margin-top: 1rem;
-      padding: 0.75rem 0 0.5rem;
-    }
-    .mobile-nav.open { display: flex; }
-    .mobile-nav a,
-    .mobile-nav button {
-      display: block; width: 100%;
-      padding: 0.75rem 0;
-      text-align: center;
-      font-size: 0.95rem; font-weight: 500;
-      color: var(--grey);
-      background: none; border: none;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      transition: color 0.2s;
-    }
-    .mobile-nav a:last-child,
-    .mobile-nav button:last-child { border-bottom: none; }
-    .mobile-nav a:hover,
-    .mobile-nav button:hover { color: var(--white); }
+/* Button wrapper with micro-copy */
+.btn-wrap{display:inline-flex;flex-direction:column;align-items:center;gap:0.45rem}
+.btn-micro{font-size:0.75rem;color:var(--grey);letter-spacing:0.02em}
+.btn-micro strong{color:var(--grey-light)}
 
-    @media (max-width: 768px) {
-      .hamburger { display: flex; }
-    }
+/* =============================================
+   URGENCY STRIP (top of page)
+============================================= */
+.urgency-strip{background:linear-gradient(90deg,#0D1E35 0%,rgba(30,144,255,0.18) 50%,#0D1E35 100%);border-bottom:1px solid rgba(30,144,255,0.25);padding:0.55rem 0;text-align:center;font-size:0.78rem;font-weight:600;color:var(--blue-light);letter-spacing:0.04em}
+.urgency-strip .dot{display:inline-block;width:7px;height:7px;background:var(--gold);border-radius:50%;margin-right:0.5rem;animation:urgencyPulse 1.8s ease-in-out infinite}
 
-    /* =============================================
-       HERO
-    ============================================= */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 8rem 0 5rem;
-      background: linear-gradient(to bottom, rgba(10,22,40,0.88) 0%, rgba(10,22,40,0.75) 100%),
-                  url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600') center/cover no-repeat;
-      text-align: center;
-    }
-    .hero-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-    }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--blue-glow);
-      border: 1px solid var(--blue);
-      color: var(--blue-light);
-      font-size: 0.8rem;
-      font-weight: 600;
-      padding: 0.45rem 1.1rem;
-      border-radius: 100px;
-      font-family: 'DM Sans', sans-serif;
-    }
-    .hero .hero-headline { text-align: center; margin: 0 auto; }
-    .hero-sub {
-      max-width: 680px;
-      color: var(--grey);
-      font-size: 1.05rem;
-      line-height: 1.75;
-      text-align: center;
-    }
-    .hero-ctas {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .hero-stats {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 3rem;
-      flex-wrap: wrap;
-      margin-top: 0.5rem;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      width: 100%;
-      max-width: 640px;
-    }
-    .hstat {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.25rem;
-    }
-    .hstat-num {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1;
-    }
-    .hstat-label {
-      font-size: 0.8rem;
-      color: var(--grey);
-      white-space: nowrap;
-    }
-    .hstat-divider {
-      width: 1px;
-      height: 40px;
-      background: rgba(255,255,255,0.12);
-    }
-    @media (max-width: 600px) {
-      .hero-ctas { flex-direction: column; align-items: center; }
-      .hstat-divider { display: none; }
-      .hero-stats { gap: 1.5rem; }
-    }
+/* =============================================
+   NAVBAR
+============================================= */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:900;padding:1rem 0;border-bottom:1px solid transparent;transition:background 0.35s ease,box-shadow 0.35s ease,border-color 0.35s ease}
+#navbar.scrolled{background:rgba(10,22,40,0.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 4px 20px rgba(0,0,0,0.35);border-bottom-color:rgba(30,144,255,0.2)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav-logo{display:flex;align-items:center;flex-shrink:0}
+.nav-logo img{height:40px;width:auto;object-fit:contain}
+.nav-logo-fallback{font-family:'Syne',sans-serif;font-weight:700;font-size:1.2rem;color:var(--white);display:none}
+.nav-logo img.img-error{display:none}
+.nav-logo img.img-error~.nav-logo-fallback{display:block}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px;transition:transform 0.3s ease,opacity 0.3s ease;transform-origin:center}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-nav{display:none;flex-direction:column;border-top:1px solid rgba(255,255,255,0.07);margin-top:1rem;padding:0.75rem 0 0.5rem}
+.mobile-nav.open{display:flex}
+.mobile-nav a,.mobile-nav button{display:block;width:100%;padding:0.75rem 0;text-align:center;font-size:0.95rem;font-weight:500;color:var(--grey);background:none;border:none;border-bottom:1px solid rgba(255,255,255,0.05);transition:color 0.2s}
+.mobile-nav a:last-child,.mobile-nav button:last-child{border-bottom:none}
+.mobile-nav a:hover,.mobile-nav button:hover{color:var(--white)}
+@media(max-width:768px){.hamburger{display:flex}}
 
-    /* =============================================
-       FOUNDER LETTER
-    ============================================= */
-    .letter-section {
-      background: var(--navy-mid);
-      padding: 5.5rem 0;
-    }
-    .letter-grid {
-      display: grid;
-      grid-template-columns: 340px 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-    .letter-photo-wrap { position: relative; }
-    .letter-photo {
-      width: 100%;
-      max-width: 340px;
-      aspect-ratio: 3/4;
-      border-radius: 16px;
-      object-fit: cover;
-      box-shadow: 0 0 0 3px rgba(30,144,255,0.3), 0 20px 60px rgba(0,0,0,0.4);
-      background: var(--navy-card);
-    }
-    /* Placeholder if image missing */
-    .letter-photo-placeholder {
-      width: 100%;
-      max-width: 340px;
-      aspect-ratio: 3/4;
-      border-radius: 16px;
-      background: linear-gradient(135deg, var(--navy-card) 0%, var(--navy-mid) 100%);
-      box-shadow: 0 0 0 3px rgba(30,144,255,0.3), 0 20px 60px rgba(0,0,0,0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .letter-name-badge {
-      background: var(--navy-card);
-      border-radius: 10px;
-      padding: 0.9rem 1.2rem;
-      margin-top: 1rem;
-    }
-    .letter-name-badge h4 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--white);
-      margin-bottom: 0.2rem;
-    }
-    .letter-name-badge p {
-      font-size: 0.85rem;
-      color: var(--grey);
-    }
-    .letter-content { display: flex; flex-direction: column; gap: 1.25rem; }
-    .letter-body {
-      font-size: 1rem;
-      line-height: 1.85;
-      color: var(--off-white);
-    }
-    .letter-body p + p { margin-top: 1.1rem; }
-    .letter-sig {
-      border-top: 1px solid rgba(30,144,255,0.3);
-      padding-top: 1.25rem;
-      margin-top: 0.5rem;
-    }
-    .letter-sig-name {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1.05rem;
-      font-style: italic;
-      color: var(--white);
-    }
-    .letter-sig-title { font-size: 0.85rem; color: var(--grey); margin-top: 0.2rem; }
-    @media (max-width: 900px) {
-      .letter-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .letter-photo, .letter-photo-placeholder { max-width: 280px; margin: 0 auto; }
-      .letter-name-badge { max-width: 280px; margin: 1rem auto 0; }
-    }
+/* =============================================
+   HERO
+============================================= */
+.hero{min-height:100vh;display:flex;align-items:center;padding:9rem 0 5.5rem;background:linear-gradient(160deg,rgba(10,22,40,0.82) 0%,rgba(10,22,40,0.65) 60%,rgba(14,28,52,0.85) 100%),url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600') center/cover no-repeat;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--navy));pointer-events:none}
+.hero-inner{max-width:900px;margin:0 auto;padding:0 1.5rem;display:flex;flex-direction:column;align-items:center;gap:1.75rem;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:var(--blue-glow);border:1px solid var(--blue);color:var(--blue-light);font-size:0.8rem;font-weight:600;padding:0.45rem 1.1rem;border-radius:100px;font-family:'DM Sans',sans-serif}
+.hero-scarcity{display:inline-flex;align-items:center;gap:0.5rem;background:var(--gold-glow);border:1px solid rgba(245,166,35,0.5);color:var(--gold);font-size:0.75rem;font-weight:600;padding:0.35rem 0.9rem;border-radius:100px;font-family:'DM Sans',sans-serif;letter-spacing:0.03em}
+.hero-scarcity .sdot{width:6px;height:6px;background:var(--gold);border-radius:50%;display:inline-block;animation:urgencyPulse 1.5s ease-in-out infinite}
+.hero .hero-headline{text-align:center;margin:0 auto}
+.hero-sub{max-width:660px;color:var(--grey-light);font-size:1.05rem;line-height:1.8;text-align:center}
+.hero-ctas{display:flex;gap:1.25rem;flex-wrap:wrap;justify-content:center;align-items:flex-start}
+.hero-stats{display:flex;justify-content:center;align-items:center;gap:3rem;flex-wrap:wrap;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1);width:100%;max-width:600px}
+.hstat{display:flex;flex-direction:column;align-items:center;gap:0.2rem}
+.hstat-num{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:800;color:var(--white);line-height:1}
+.hstat-num .gold{color:var(--gold)}
+.hstat-label{font-size:0.78rem;color:var(--grey);white-space:nowrap;letter-spacing:0.03em}
+.hstat-divider{width:1px;height:44px;background:rgba(255,255,255,0.12)}
+@media(max-width:600px){.hero-ctas{flex-direction:column;align-items:center}.hstat-divider{display:none}.hero-stats{gap:1.75rem}}
 
-    /* =============================================
-       PROBLEM SECTION
-    ============================================= */
-    .problem-section {
-      padding: 5.5rem 0;
-      background: linear-gradient(to bottom, rgba(10,22,40,0.88) 0%, rgba(10,22,40,0.80) 100%),
-                  url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600') center/cover no-repeat;
-    }
-    .problem-header { text-align: center; margin-bottom: 3.5rem; }
-    .problem-header .section-headline { margin: 0 auto 1rem; }
-    .problem-sub { color: var(--grey); max-width: 580px; margin: 0 auto; }
-    .problem-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
-      margin-bottom: 3rem;
-    }
-    .pcard {
-      background: var(--navy-card);
-      border-radius: 12px;
-      border-left: 3px solid var(--red-signal);
-      padding: 1.5rem;
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-    }
-    .pcard:hover {
-      box-shadow: -4px 0 16px var(--red-signal), 0 8px 32px rgba(0,0,0,0.3);
-      transform: translateX(3px);
-    }
-    .pcard-icon { font-size: 1.3rem; margin-bottom: 0.6rem; }
-    .pcard h3 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--white);
-      margin-bottom: 0.5rem;
-    }
-    .pcard p { font-size: 0.9rem; color: var(--grey); line-height: 1.65; }
-    .problem-close {
-      text-align: center;
-      font-size: 1.15rem;
-      font-style: italic;
-      color: var(--off-white);
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-    @media (max-width: 640px) {
-      .problem-grid { grid-template-columns: 1fr; }
-    }
+/* =============================================
+   TRUST STRIP
+============================================= */
+.trust-strip{background:var(--navy-mid);padding:1.4rem 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+.trust-inner{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap}
+.trust-label{font-size:0.72rem;font-weight:600;color:var(--grey);text-transform:uppercase;letter-spacing:0.15em;white-space:nowrap;margin-right:2rem}
+.trust-clients{display:flex;flex-wrap:wrap;gap:0.5rem 1.75rem;align-items:center;justify-content:center}
+.trust-client{font-family:'Syne',sans-serif;font-size:0.82rem;font-weight:700;color:rgba(255,255,255,0.35);white-space:nowrap;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s}
+.trust-client:hover{color:rgba(255,255,255,0.65)}
+@media(max-width:600px){.trust-label{width:100%;text-align:center;margin-right:0;margin-bottom:0.75rem}}
 
-    /* =============================================
-       FRAMEWORK
-    ============================================= */
-    .framework-section {
-      padding: 5.5rem 0;
-      background: linear-gradient(to bottom, rgba(10,22,40,0.88) 0%, rgba(10,22,40,0.80) 100%),
-                  url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600') center/cover no-repeat;
-    }
-    .framework-header { text-align: center; margin-bottom: 3.5rem; }
-    .framework-header .section-headline { margin: 0 auto 1rem; }
-    .framework-sub { color: var(--grey); max-width: 600px; margin: 0 auto; }
-    .pillars {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin-bottom: 2.5rem;
-    }
-    .pillar {
-      background: var(--navy-card);
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.07);
-      padding: 2rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .pillar:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 48px rgba(30,144,255,0.15);
-    }
-    .pillar.authority { border-top: 4px solid var(--blue); }
-    .pillar.revenue   { border-top: 4px solid var(--success); }
-    .pillar-icon { font-size: 2rem; margin-bottom: 1rem; }
-    .pillar h3 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1.3rem;
-      color: var(--white);
-      margin-bottom: 0.4rem;
-    }
-    .pillar-tagline {
-      font-weight: 600;
-      color: var(--off-white);
-      margin-bottom: 0.9rem;
-      font-size: 0.95rem;
-    }
-    .pillar-desc { font-size: 0.9rem; color: var(--grey); margin-bottom: 1.25rem; line-height: 1.7; }
-    .pillar-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-    .pillar-list li {
-      font-size: 0.88rem;
-      color: var(--off-white);
-      display: flex;
-      align-items: flex-start;
-      gap: 0.5rem;
-    }
-    .pillar-list li::before { content: '→'; color: var(--blue); flex-shrink: 0; }
-    .pillar.revenue .pillar-list li::before { color: var(--success); }
-    .framework-integration {
-      text-align: center;
-      background: var(--blue-glow);
-      border: 1px solid rgba(30,144,255,0.2);
-      border-radius: 12px;
-      padding: 1.5rem 2rem;
-      max-width: 760px;
-      margin: 0 auto;
-      font-size: 0.95rem;
-      color: var(--off-white);
-      line-height: 1.7;
-    }
-    .framework-integration span { color: var(--blue-light); font-weight: 600; }
-    @media (max-width: 768px) {
-      .pillars { grid-template-columns: 1fr; }
-    }
+/* =============================================
+   SECTION DIVIDERS
+============================================= */
+.section-divider{width:48px;height:3px;background:linear-gradient(90deg,var(--blue),var(--blue-light));border-radius:2px;margin:1.25rem auto 0}
+.section-divider.gold{background:linear-gradient(90deg,var(--gold),#ffcf6e)}
 
-    /* =============================================
-       ENGAGEMENT OPTIONS
-    ============================================= */
-    .engagement-section { background: var(--navy); padding: 5.5rem 0; }
-    .engagement-header  { text-align: center; margin-bottom: 3.5rem; }
-    .engagement-header .section-headline { margin: 0 auto 1rem; }
-    .engagement-sub { color: var(--grey); max-width: 640px; margin: 0 auto; font-size: 0.95rem; line-height: 1.7; }
-    .engagement-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-      margin-bottom: 1.5rem;
-    }
-    .ecard {
-      background: var(--navy-card);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 14px;
-      padding: 1.75rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    }
-    .ecard:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
-    .ecard.recommended {
-      border-color: rgba(30,144,255,0.45);
-      box-shadow: 0 0 0 1px rgba(30,144,255,0.2), 0 8px 32px rgba(30,144,255,0.12);
-    }
-    .ecard.recommended:hover {
-      box-shadow: 0 0 0 1px rgba(30,144,255,0.5), 0 20px 48px rgba(30,144,255,0.2);
-    }
-    .ecard-badge {
-      display: inline-block;
-      background: var(--blue-glow);
-      border: 1px solid var(--blue);
-      color: var(--blue-light);
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 0.25rem 0.7rem;
-      border-radius: 100px;
-      align-self: flex-start;
-    }
-    .ecard h3 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--white);
-    }
-    .ecard-desc { font-size: 0.88rem; color: var(--grey); line-height: 1.65; }
-    .ecard-list { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; flex: 1; }
-    .ecard-list li { font-size: 0.85rem; color: var(--off-white); display: flex; gap: 0.5rem; align-items: flex-start; }
-    .ecard-list li::before { content: '✓'; color: var(--success); flex-shrink: 0; font-weight: 600; }
-    .ecard .btn-outline { margin-top: auto; text-align: center; width: 100%; }
-    .engagement-note {
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--grey);
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 1rem;
-      background: rgba(255,255,255,0.03);
-      border-radius: 8px;
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-    @media (max-width: 900px)  { .engagement-grid { grid-template-columns: 1fr; max-width: 500px; margin-left: auto; margin-right: auto; } }
+/* =============================================
+   FOUNDER LETTER
+============================================= */
+.letter-section{background:var(--navy-mid);padding:5.5rem 0}
+.letter-grid{display:grid;grid-template-columns:340px 1fr;gap:4rem;align-items:start}
+.letter-photo-wrap{position:relative}
+.letter-photo{width:100%;max-width:340px;aspect-ratio:3/4;border-radius:16px;object-fit:cover;box-shadow:0 0 0 3px rgba(30,144,255,0.3),0 24px 64px rgba(0,0,0,0.5);background:var(--navy-card)}
+.letter-photo-placeholder{width:100%;max-width:340px;aspect-ratio:3/4;border-radius:16px;background:linear-gradient(135deg,var(--navy-card) 0%,var(--navy-mid) 100%);box-shadow:0 0 0 3px rgba(30,144,255,0.3),0 24px 64px rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center}
+.letter-name-badge{background:var(--navy-card);border-radius:10px;padding:0.9rem 1.2rem;margin-top:1rem;border:1px solid rgba(255,255,255,0.06)}
+.letter-name-badge h4{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:var(--white);margin-bottom:0.2rem}
+.letter-name-badge p{font-size:0.82rem;color:var(--grey)}
+.letter-content{display:flex;flex-direction:column;gap:1.25rem}
+.letter-body{font-size:1rem;line-height:1.9;color:var(--off-white)}
+.letter-body p+p{margin-top:1.1rem}
+.letter-sig{border-top:1px solid rgba(30,144,255,0.3);padding-top:1.25rem;margin-top:0.5rem}
+.letter-sig-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;font-style:italic;color:var(--white)}
+.letter-sig-title{font-size:0.82rem;color:var(--grey);margin-top:0.25rem}
+@media(max-width:900px){.letter-grid{grid-template-columns:1fr;gap:2.5rem}.letter-photo,.letter-photo-placeholder{max-width:260px;margin:0 auto}.letter-name-badge{max-width:260px;margin:1rem auto 0}}
 
-    /* =============================================
-       WHAT'S INCLUDED
-    ============================================= */
-    .included-section {
-      padding: 5.5rem 0;
-      background: linear-gradient(to bottom, rgba(10,22,40,0.88) 0%, rgba(10,22,40,0.80) 100%),
-                  url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600') center/cover no-repeat;
-    }
-    .included-header { text-align: center; margin-bottom: 3.5rem; }
-    .included-header .section-headline { margin: 0 auto; }
-    .included-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-    }
-    .icard {
-      background: rgba(13,30,53,0.85);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px;
-      padding: 1.5rem;
-      transition: border-color 0.3s, transform 0.3s;
-    }
-    .icard:hover { border-color: rgba(30,144,255,0.4); transform: translateY(-3px); }
-    .icard-icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
-    .icard h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--white); margin-bottom: 0.5rem; }
-    .icard p { font-size: 0.85rem; color: var(--grey); line-height: 1.65; }
-    @media (max-width: 900px) { .included-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 560px) { .included-grid { grid-template-columns: 1fr; } }
+/* =============================================
+   PROBLEM SECTION
+============================================= */
+.problem-section{padding:5.5rem 0;background:linear-gradient(to bottom,rgba(10,22,40,0.83) 0%,rgba(10,22,40,0.75) 100%),url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600') center/cover no-repeat}
+.problem-header{text-align:center;margin-bottom:3.5rem}
+.problem-header .section-headline{margin:0 auto 1rem}
+.problem-sub{color:var(--grey-light);max-width:560px;margin:0 auto}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:3rem}
+.pcard{background:rgba(13,30,53,0.9);backdrop-filter:blur(4px);border-radius:12px;border-left:3px solid var(--red-signal);border-top:1px solid rgba(255,255,255,0.06);border-right:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);padding:1.6rem;transition:box-shadow 0.3s ease,transform 0.3s ease}
+.pcard:hover{box-shadow:-4px 0 20px rgba(255,77,77,0.35),0 8px 32px rgba(0,0,0,0.4);transform:translateX(4px)}
+.pcard-icon{font-size:1.2rem;margin-bottom:0.7rem}
+.pcard h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1.02rem;color:var(--white);margin-bottom:0.5rem}
+.pcard p{font-size:0.9rem;color:var(--grey-light);line-height:1.68}
+.problem-grid .pcard:last-child:nth-child(odd){grid-column:1/-1;max-width:100%}
+.problem-close-wrap{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:2rem 2.5rem;max-width:700px;margin:0 auto;text-align:center}
+.problem-close{font-size:1.2rem;font-style:italic;color:var(--off-white);line-height:1.6}
+@media(max-width:640px){.problem-grid{grid-template-columns:1fr}}
 
-    /* =============================================
-       WHO THIS IS FOR
-    ============================================= */
-    .fit-section { background: var(--navy); padding: 5.5rem 0; }
-    .fit-header { text-align: center; margin-bottom: 3.5rem; }
-    .fit-header .section-headline { margin: 0 auto; }
-    .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    .fit-card {
-      background: var(--navy-card);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 14px;
-      padding: 2rem;
-    }
-    .fit-card-title {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--white);
-      margin-bottom: 1.25rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .fit-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
-    .fit-list li { font-size: 0.9rem; color: var(--grey); display: flex; gap: 0.6rem; align-items: flex-start; line-height: 1.55; }
-    .fit-list li .fi { flex-shrink: 0; font-size: 1rem; margin-top: 0.05rem; }
-    @media (max-width: 640px) { .fit-grid { grid-template-columns: 1fr; } }
+/* =============================================
+   FRAMEWORK
+============================================= */
+.framework-section{padding:5.5rem 0;background:linear-gradient(to bottom,rgba(10,22,40,0.85) 0%,rgba(10,22,40,0.78) 100%),url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600') center/cover no-repeat}
+.framework-header{text-align:center;margin-bottom:3.5rem}
+.framework-header .section-headline{margin:0 auto 1rem}
+.framework-sub{color:var(--grey-light);max-width:600px;margin:0 auto}
+.pillars{display:grid;grid-template-columns:1fr 1fr;gap:1.75rem;margin-bottom:2.5rem}
+.pillar{background:rgba(13,30,53,0.9);backdrop-filter:blur(4px);border-radius:16px;border:1px solid rgba(255,255,255,0.07);padding:2.25rem;transition:transform 0.3s ease,box-shadow 0.3s ease,border-color 0.3s ease}
+.pillar:hover{transform:translateY(-6px);box-shadow:0 24px 56px rgba(0,0,0,0.4),0 0 0 1px rgba(30,144,255,0.25)}
+.pillar.authority{border-top:4px solid var(--blue)}
+.pillar.revenue{border-top:4px solid var(--success)}
+.pillar-icon{font-size:2.2rem;margin-bottom:1rem}
+.pillar h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1.35rem;color:var(--white);margin-bottom:0.4rem}
+.pillar-tagline{font-weight:600;color:var(--off-white);margin-bottom:1rem;font-size:0.95rem}
+.pillar-desc{font-size:0.9rem;color:var(--grey-light);margin-bottom:1.4rem;line-height:1.75}
+.pillar-list{list-style:none;display:flex;flex-direction:column;gap:0.55rem}
+.pillar-list li{font-size:0.88rem;color:var(--off-white);display:flex;align-items:flex-start;gap:0.55rem;line-height:1.55}
+.pillar-list li::before{content:'→';color:var(--blue);flex-shrink:0;font-weight:700}
+.pillar.revenue .pillar-list li::before{color:var(--success)}
+.framework-integration{text-align:center;background:var(--blue-glow);border:1px solid rgba(30,144,255,0.22);border-radius:14px;padding:1.75rem 2.5rem;max-width:760px;margin:0 auto;font-size:1rem;color:var(--off-white);line-height:1.75}
+.framework-integration strong{color:var(--blue-light)}
+@media(max-width:768px){.pillars{grid-template-columns:1fr}}
 
-    /* =============================================
-       SOCIAL PROOF
-    ============================================= */
-    .proof-section { background: var(--navy-mid); padding: 5.5rem 0; }
-    .proof-header  { text-align: center; margin-bottom: 3rem; }
-    .proof-header .section-headline { margin: 0 auto; }
-    .proof-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-      margin-bottom: 2rem;
-    }
-    .rcard {
-      background: var(--navy-card);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 12px;
-      padding: 1.4rem;
-      transition: border-color 0.3s, transform 0.3s;
-    }
-    .rcard:hover { border-color: rgba(30,144,255,0.3); transform: translateY(-3px); }
-    .rcard-client { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--white); margin-bottom: 0.25rem; }
-    .rcard-industry { font-size: 0.78rem; color: var(--blue-light); font-weight: 600; margin-bottom: 0.6rem; }
-    .rcard-result { font-size: 0.88rem; color: var(--success); font-weight: 600; }
-    .proof-note {
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--grey);
-      max-width: 580px;
-      margin: 0 auto;
-    }
-    @media (max-width: 900px) { .proof-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 560px) { .proof-grid { grid-template-columns: 1fr; } }
+/* =============================================
+   PROCESS SECTION (NEW)
+============================================= */
+.process-section{background:var(--navy-mid);padding:5.5rem 0}
+.process-header{text-align:center;margin-bottom:3.5rem}
+.process-header .section-headline{margin:0 auto 1rem}
+.process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;position:relative}
+.process-grid::before{content:'';position:absolute;top:40px;left:calc(16.66% + 1rem);right:calc(16.66% + 1rem);height:2px;background:linear-gradient(90deg,var(--blue),var(--success));opacity:0.35;pointer-events:none}
+.pstep{display:flex;flex-direction:column;align-items:center;text-align:center;gap:1rem;position:relative}
+.pstep-num{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;color:var(--white);position:relative;z-index:1;flex-shrink:0}
+.pstep:nth-child(1) .pstep-num{background:linear-gradient(135deg,var(--blue),var(--blue-light));box-shadow:0 0 0 8px rgba(30,144,255,0.12)}
+.pstep:nth-child(2) .pstep-num{background:linear-gradient(135deg,#8b44ff,var(--blue));box-shadow:0 0 0 8px rgba(139,68,255,0.12)}
+.pstep:nth-child(3) .pstep-num{background:linear-gradient(135deg,var(--success),#00e6ad);box-shadow:0 0 0 8px rgba(0,200,150,0.12)}
+.pstep-week{font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--grey);margin-bottom:-0.25rem}
+.pstep h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;color:var(--white)}
+.pstep-list{list-style:none;display:flex;flex-direction:column;gap:0.45rem;text-align:left;width:100%}
+.pstep-list li{font-size:0.85rem;color:var(--grey-light);display:flex;gap:0.5rem;align-items:flex-start;line-height:1.5}
+.pstep-list li::before{content:'✓';color:var(--success);flex-shrink:0;font-weight:700;font-size:0.8rem;margin-top:0.1rem}
+@media(max-width:768px){.process-grid{grid-template-columns:1fr;gap:2.5rem}.process-grid::before{display:none}}
 
-    /* =============================================
-       CTA BANNER
-    ============================================= */
-    .cta-banner {
-      padding: 6rem 0;
-      background: linear-gradient(to bottom, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.92) 100%),
-                  url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1600') center/cover no-repeat;
-      text-align: center;
-    }
-    .cta-banner .section-headline { margin: 0 auto 1.25rem; }
-    .cta-sub {
-      color: var(--grey);
-      max-width: 560px;
-      margin: 0 auto 2.25rem;
-      font-size: 1rem;
-      line-height: 1.75;
-    }
+/* =============================================
+   ENGAGEMENT OPTIONS
+============================================= */
+.engagement-section{background:var(--navy);padding:5.5rem 0}
+.engagement-header{text-align:center;margin-bottom:3.5rem}
+.engagement-header .section-headline{margin:0 auto 1rem}
+.engagement-sub{color:var(--grey-light);max-width:620px;margin:0 auto;font-size:0.95rem;line-height:1.75}
+.engagement-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:1.75rem}
+.ecard{background:var(--navy-card);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:2rem;display:flex;flex-direction:column;gap:1rem;transition:transform 0.3s ease,box-shadow 0.3s ease,border-color 0.3s ease}
+.ecard:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,0.35)}
+.ecard.recommended{border-color:rgba(30,144,255,0.5);box-shadow:0 0 0 1px rgba(30,144,255,0.2),0 8px 36px rgba(30,144,255,0.14);position:relative;overflow:hidden}
+.ecard.recommended::before{content:'MOST POPULAR';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--blue-light))}
+.ecard.recommended:hover{box-shadow:0 0 0 1px rgba(30,144,255,0.55),0 24px 56px rgba(30,144,255,0.25)}
+.ecard-badge{display:inline-block;background:var(--blue-glow);border:1px solid var(--blue);color:var(--blue-light);font-size:0.7rem;font-weight:600;padding:0.25rem 0.7rem;border-radius:100px;align-self:flex-start;letter-spacing:0.05em}
+.ecard h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1.15rem;color:var(--white)}
+.ecard-desc{font-size:0.88rem;color:var(--grey-light);line-height:1.65}
+.ecard-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;flex:1}
+.ecard-list li{font-size:0.85rem;color:var(--off-white);display:flex;gap:0.55rem;align-items:flex-start;line-height:1.55}
+.ecard-list li::before{content:'✓';color:var(--success);flex-shrink:0;font-weight:700;font-size:0.8rem;margin-top:0.1rem}
+.ecard .btn-outline,.ecard .btn-primary{margin-top:auto;text-align:center;width:100%;display:block}
+.engagement-note{text-align:center;font-size:0.83rem;color:var(--grey);max-width:580px;margin:0 auto;padding:1rem 1.25rem;background:rgba(245,166,35,0.06);border-radius:10px;border:1px solid rgba(245,166,35,0.2);color:rgba(245,166,35,0.9)}
+@media(max-width:900px){.engagement-grid{grid-template-columns:1fr;max-width:480px;margin-left:auto;margin-right:auto}}
 
-    /* =============================================
-       FOOTER
-    ============================================= */
-    footer {
-      background: var(--navy);
-      border-top: 1px solid rgba(30,144,255,0.15);
-      padding: 4rem 0 2rem;
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1.5fr 1.5fr;
-      gap: 3rem;
-      margin-bottom: 3rem;
-      padding-bottom: 2.5rem;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .footer-brand img { height: 36px; width: auto; margin-bottom: 1rem; }
-    .footer-brand-fallback {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--white);
-      margin-bottom: 1rem;
-      display: none;
-    }
-    .footer-tagline { font-size: 0.9rem; color: var(--grey); margin-bottom: 0.4rem; }
-    .footer-copy    { font-size: 0.8rem; color: var(--grey); opacity: 0.7; }
-    .footer-col h4 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--white);
-      margin-bottom: 1rem;
-    }
-    .footer-col p, .footer-col a {
-      display: block;
-      font-size: 0.88rem;
-      color: var(--grey);
-      margin-bottom: 0.5rem;
-      transition: color 0.2s;
-    }
-    .footer-col a:hover { color: var(--white); }
-    .footer-socials { display: flex; gap: 0.75rem; margin-top: 1.25rem; }
-    .social-link {
-      width: 36px; height: 36px;
-      background: rgba(255,255,255,0.06);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.85rem;
-      transition: background 0.2s;
-      color: var(--white);
-    }
-    .social-link:hover { background: var(--blue); }
-    @media (max-width: 768px) {
-      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-    }
+/* =============================================
+   WHAT'S INCLUDED
+============================================= */
+.included-section{padding:5.5rem 0;background:linear-gradient(to bottom,rgba(10,22,40,0.86) 0%,rgba(10,22,40,0.80) 100%),url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600') center/cover no-repeat}
+.included-header{text-align:center;margin-bottom:3.5rem}
+.included-header .section-headline{margin:0 auto}
+.included-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.icard{background:rgba(13,30,53,0.88);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:1.75rem;transition:border-color 0.3s,transform 0.3s,box-shadow 0.3s}
+.icard:hover{border-color:rgba(30,144,255,0.4);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.3)}
+.icard-icon{font-size:1.8rem;margin-bottom:0.9rem}
+.icard h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:var(--white);margin-bottom:0.55rem}
+.icard p{font-size:0.88rem;color:var(--grey-light);line-height:1.68}
+@media(max-width:900px){.included-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.included-grid{grid-template-columns:1fr}}
 
-    /* =============================================
-       MODAL OVERLAY
-    ============================================= */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 2000;
-      background: rgba(10,22,40,0.97);
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-      overflow-y: auto;
-    }
-    .modal-overlay.open {
-      display: flex;
-      animation: overlayIn 0.25s ease;
-    }
-    .modal-card {
-      background: var(--navy-mid);
-      border: 1px solid rgba(30,144,255,0.2);
-      border-radius: 16px;
-      padding: 2.5rem;
-      width: 100%;
-      max-width: 580px;
-      position: relative;
-      animation: modalIn 0.3s ease;
-      margin: auto;
-    }
-    .modal-close {
-      position: absolute;
-      top: 1rem; right: 1rem;
-      background: none; border: none;
-      color: var(--grey);
-      font-size: 1.4rem;
-      line-height: 1;
-      cursor: pointer;
-      transition: color 0.2s;
-      padding: 0.25rem 0.5rem;
-    }
-    .modal-close:hover { color: var(--white); }
-    .modal-title {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1.2rem;
-      color: var(--white);
-      margin-bottom: 1.5rem;
-    }
+/* =============================================
+   WHO THIS IS FOR
+============================================= */
+.fit-section{background:var(--navy);padding:5.5rem 0}
+.fit-header{text-align:center;margin-bottom:3.5rem}
+.fit-header .section-headline{margin:0 auto}
+.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.75rem}
+.fit-card{border-radius:16px;padding:2.25rem}
+.fit-card.yes{background:rgba(0,200,150,0.05);border:1px solid rgba(0,200,150,0.2)}
+.fit-card.no{background:rgba(255,77,77,0.04);border:1px solid rgba(255,77,77,0.15)}
+.fit-card-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;color:var(--white);margin-bottom:1.4rem;display:flex;align-items:center;gap:0.5rem}
+.fit-list{list-style:none;display:flex;flex-direction:column;gap:0.85rem}
+.fit-list li{font-size:0.9rem;color:var(--grey-light);display:flex;gap:0.65rem;align-items:flex-start;line-height:1.55}
+.fit-list li .fi{flex-shrink:0;font-size:1rem;margin-top:0.05rem}
+@media(max-width:640px){.fit-grid{grid-template-columns:1fr}}
 
-    /* Progress bar */
-    .form-prog-track {
-      height: 4px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 4px;
-      overflow: hidden;
-      margin-bottom: 0.5rem;
-    }
-    .form-prog-fill {
-      height: 100%;
-      background: var(--blue);
-      border-radius: 4px;
-      transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
-      width: 10%;
-    }
-    .form-step-indicator {
-      font-size: 0.78rem;
-      color: var(--grey);
-      margin-bottom: 1.75rem;
-    }
+/* =============================================
+   TESTIMONIALS (NEW)
+============================================= */
+.testimonials-section{background:var(--navy-mid);padding:5.5rem 0}
+.testimonials-header{text-align:center;margin-bottom:3.5rem}
+.testimonials-header .section-headline{margin:0 auto 1rem}
+.tquote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.tquote-card{background:var(--navy-card);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:2rem;display:flex;flex-direction:column;gap:0;position:relative;transition:transform 0.3s,box-shadow 0.3s}
+.tquote-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.3)}
+.tquote-card::before{content:'"';font-family:'Syne',sans-serif;font-size:5rem;line-height:0.75;color:rgba(30,144,255,0.15);display:block;margin-bottom:0.75rem;font-weight:800}
+.tquote-result{display:inline-flex;align-items:center;gap:0.4rem;background:rgba(0,200,150,0.1);border:1px solid rgba(0,200,150,0.25);color:var(--success);font-size:0.72rem;font-weight:700;padding:0.2rem 0.7rem;border-radius:100px;margin-bottom:1rem;align-self:flex-start;letter-spacing:0.04em}
+.tquote-text{font-size:0.95rem;color:var(--off-white);line-height:1.8;font-style:italic;flex:1;margin-bottom:1.5rem}
+.tquote-author{display:flex;flex-direction:column;gap:0.15rem;border-top:1px solid rgba(255,255,255,0.07);padding-top:1rem}
+.tquote-name{font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;color:var(--white)}
+.tquote-role{font-size:0.78rem;color:var(--grey)}
+@media(max-width:900px){.tquote-grid{grid-template-columns:1fr}}
 
-    /* Steps container */
-    .form-steps-host {
-      overflow: hidden;
-      position: relative;
-    }
-    .fstep {
-      display: none;
-    }
-    .fstep.active {
-      display: block;
-      animation: stepSlideIn 0.32s cubic-bezier(0.4,0,0.2,1);
-    }
-    .fstep.back {
-      animation: stepSlideBack 0.32s cubic-bezier(0.4,0,0.2,1);
-    }
-    @keyframes stepSlideIn {
-      from { opacity: 0; transform: translateX(30px); }
-      to   { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes stepSlideBack {
-      from { opacity: 0; transform: translateX(-30px); }
-      to   { opacity: 1; transform: translateX(0); }
-    }
-    .fstep-q {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1.15rem;
-      color: var(--white);
-      margin-bottom: 0.4rem;
-      line-height: 1.35;
-    }
-    .fstep-hint {
-      font-size: 0.82rem;
-      color: var(--grey);
-      margin-bottom: 1.25rem;
-    }
+/* =============================================
+   SOCIAL PROOF
+============================================= */
+.proof-section{background:var(--navy);padding:5.5rem 0}
+.proof-header{text-align:center;margin-bottom:3rem}
+.proof-header .section-headline{margin:0 auto}
+.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:2rem}
+.rcard{background:var(--navy-card);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:1.5rem;transition:border-color 0.3s,transform 0.3s}
+.rcard:hover{border-color:rgba(0,200,150,0.35);transform:translateY(-3px)}
+.rcard-client{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:var(--white);margin-bottom:0.2rem}
+.rcard-industry{font-size:0.75rem;color:var(--blue-light);font-weight:600;margin-bottom:0.75rem;letter-spacing:0.04em;text-transform:uppercase}
+.rcard-result{font-size:1.3rem;font-family:'Syne',sans-serif;font-weight:800;color:var(--success);line-height:1.1;margin-bottom:0.25rem}
+.rcard-desc{font-size:0.78rem;color:var(--grey)}
+.proof-note{text-align:center;font-size:0.83rem;color:var(--grey);max-width:580px;margin:0 auto;line-height:1.65}
+.proof-note strong{color:var(--grey-light)}
+@media(max-width:900px){.proof-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.proof-grid{grid-template-columns:1fr}}
 
-    /* Text inputs */
-    .finput-wrap { margin-top: 1rem; }
-    .finput {
-      width: 100%;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 10px;
-      padding: 0.85rem 1rem;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
-      color: var(--white);
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    .finput::placeholder { color: var(--grey); }
-    .finput:focus { border-color: var(--blue); background: rgba(30,144,255,0.06); }
+/* =============================================
+   FAQ (NEW)
+============================================= */
+.faq-section{background:var(--navy-mid);padding:5.5rem 0}
+.faq-header{text-align:center;margin-bottom:3.5rem}
+.faq-header .section-headline{margin:0 auto}
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:0}
+.faq-item{border-bottom:1px solid rgba(255,255,255,0.07)}
+.faq-item:first-child{border-top:1px solid rgba(255,255,255,0.07)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.4rem 0;cursor:pointer;font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:var(--white);transition:color 0.2s;user-select:none}
+.faq-q:hover{color:var(--blue-light)}
+.faq-q .faq-icon{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:rgba(30,144,255,0.12);border:1px solid rgba(30,144,255,0.3);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:400;color:var(--blue);transition:transform 0.3s ease,background 0.2s}
+.faq-item.open .faq-q .faq-icon{transform:rotate(45deg);background:var(--blue-glow)}
+.faq-a{display:none;padding:0 0 1.4rem;font-size:0.92rem;color:var(--grey-light);line-height:1.8;max-width:680px}
+.faq-item.open .faq-a{display:block}
 
-    /* Phone row */
-    .phone-row { display: flex; gap: 0.6rem; margin-top: 1rem; }
-    .country-sel {
-      flex-shrink: 0;
-      width: 120px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 10px;
-      padding: 0.85rem 0.6rem;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.88rem;
-      color: var(--white);
-      outline: none;
-      cursor: pointer;
-      -webkit-appearance: none;
-    }
-    .country-sel option { background: var(--navy-mid); }
-    .country-sel:focus  { border-color: var(--blue); }
+/* =============================================
+   CTA BANNER
+============================================= */
+.cta-banner{padding:6.5rem 0;background:linear-gradient(to bottom,rgba(10,22,40,0.93) 0%,rgba(10,22,40,0.93) 100%),url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1600') center/cover no-repeat;text-align:center}
+.cta-banner .section-headline{margin:0 auto 1.25rem}
+.cta-sub{color:var(--grey-light);max-width:540px;margin:0 auto 2.5rem;font-size:1rem;line-height:1.8}
+.cta-urgency{display:inline-flex;align-items:center;gap:0.5rem;color:var(--gold);font-size:0.8rem;font-weight:600;margin-top:1.25rem;letter-spacing:0.04em}
+.cta-urgency .sdot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:urgencyPulse 1.5s ease-in-out infinite}
 
-    /* Pills */
-    .pills { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1rem; }
-    .pill {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: 10px;
-      padding: 0.75rem 1rem;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.9rem;
-      color: var(--grey);
-      cursor: pointer;
-      text-align: left;
-      transition: border-color 0.15s, background 0.15s, color 0.15s;
-    }
-    .pill:hover { border-color: rgba(77,171,255,0.4); color: var(--white); background: rgba(30,144,255,0.06); }
-    .pill.selected { border-color: var(--blue); background: rgba(30,144,255,0.14); color: var(--white); }
+/* =============================================
+   FOOTER
+============================================= */
+footer{background:var(--navy);border-top:1px solid rgba(30,144,255,0.15);padding:4.5rem 0 2rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1.5fr 1.5fr;gap:3rem;margin-bottom:3rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,0.06)}
+.footer-brand img{height:36px;width:auto;margin-bottom:1rem}
+.footer-brand-fallback{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;color:var(--white);margin-bottom:1rem;display:none}
+.footer-tagline{font-size:0.9rem;color:var(--grey);margin-bottom:0.4rem}
+.footer-copy{font-size:0.78rem;color:var(--grey);opacity:0.6}
+.footer-col h4{font-family:'Syne',sans-serif;font-weight:700;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--white);margin-bottom:1rem}
+.footer-col p,.footer-col a{display:block;font-size:0.88rem;color:var(--grey);margin-bottom:0.5rem;transition:color 0.2s;line-height:1.55}
+.footer-col a:hover{color:var(--white)}
+.footer-socials{display:flex;gap:0.75rem;margin-top:1.25rem}
+.social-link{width:36px;height:36px;background:rgba(255,255,255,0.06);border-radius:8px;display:flex;align-items:center;justify-content:center;transition:background 0.2s,transform 0.2s;color:var(--white)}
+.social-link:hover{background:var(--blue);transform:translateY(-2px)}
+.social-link svg{width:15px;height:15px;fill:currentColor}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;font-size:0.78rem;color:var(--grey);opacity:0.7}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr;gap:2rem}.footer-bottom{flex-direction:column;gap:0.5rem;text-align:center}}
 
-    /* Consent checkboxes */
-    .consent-list { display: flex; flex-direction: column; gap: 0.85rem; margin-top: 1rem; }
-    .consent-item { display: flex; gap: 0.75rem; align-items: flex-start; cursor: pointer; }
-    .consent-item input[type="checkbox"] {
-      flex-shrink: 0;
-      width: 18px; height: 18px;
-      margin-top: 0.15rem;
-      accent-color: var(--blue);
-      cursor: pointer;
-    }
-    .consent-item span { font-size: 0.85rem; color: var(--grey); line-height: 1.55; }
-
-    /* Form nav */
-    .fnav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 1.75rem;
-      gap: 1rem;
-    }
-    .fbtn-back {
-      display: flex; align-items: center; gap: 0.4rem;
-      background: none; border: none;
-      color: var(--grey); font-size: 0.88rem; font-weight: 500;
-      cursor: pointer;
-      transition: color 0.2s;
-      visibility: hidden;
-    }
-    .fbtn-back.show { visibility: visible; }
-    .fbtn-back:hover { color: var(--white); }
-    .fbtn-next {
-      margin-left: auto;
-      background: var(--blue);
-      color: var(--white);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 600;
-      font-size: 0.9rem;
-      padding: 0.75rem 1.75rem;
-      border-radius: 100px;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.2s, opacity 0.2s;
-      display: flex; align-items: center; gap: 0.5rem;
-    }
-    .fbtn-next:disabled { opacity: 0.35; cursor: not-allowed; transform: none !important; }
-    .fbtn-next:not(:disabled):hover { background: var(--blue-light); transform: translateY(-2px); }
-    .fbtn-next .spinner {
-      display: none;
-      width: 16px; height: 16px;
-      border: 2px solid rgba(255,255,255,0.3);
-      border-top-color: var(--white);
-      border-radius: 50%;
-      animation: spinLoader 0.7s linear infinite;
-    }
-    .fbtn-next.loading .spinner { display: block; }
-    .fbtn-next.loading .btn-text { display: none; }
-
-    /* Disqualification state */
-    .form-disqualified { display: none; text-align: center; padding: 1rem 0; }
-    .form-disqualified.show { display: block; }
-    .disq-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--white); margin-bottom: 1rem; }
-    .disq-body  { font-size: 0.9rem; color: var(--grey); line-height: 1.7; max-width: 420px; margin: 0 auto 1.5rem; }
-
-    /* Success state */
-    .form-success { display: none; text-align: center; padding: 1rem 0; }
-    .form-success.show { display: block; }
-    .success-check {
-      width: 72px; height: 72px;
-      background: rgba(0,200,150,0.12);
-      border: 1px solid rgba(0,200,150,0.3);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 1.5rem;
-    }
-    .success-check svg {
-      stroke: var(--success);
-      stroke-dasharray: 100;
-      stroke-dashoffset: 100;
-      animation: drawCheck 0.6s ease 0.2s forwards;
-    }
-    .success-h { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.3rem; color: var(--white); margin-bottom: 0.75rem; }
-    .success-p { font-size: 0.9rem; color: var(--grey); line-height: 1.7; max-width: 400px; margin: 0 auto 1.75rem; }
-    .success-btns { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
-
-    @media (max-width: 600px) {
-      .modal-card { padding: 1.75rem 1.25rem; }
-      .fstep-q    { font-size: 1rem; }
-    }
+/* =============================================
+   MODAL
+============================================= */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:2000;background:rgba(8,18,34,0.97);align-items:center;justify-content:center;padding:1rem;overflow-y:auto}
+.modal-overlay.open{display:flex;animation:overlayIn 0.25s ease}
+.modal-card{background:linear-gradient(145deg,#112240 0%,#0D1E35 100%);border:1px solid rgba(30,144,255,0.2);border-radius:18px;padding:2.5rem;width:100%;max-width:580px;position:relative;animation:modalIn 0.32s cubic-bezier(0.4,0,0.2,1);margin:auto;box-shadow:0 32px 80px rgba(0,0,0,0.6)}
+.modal-close{position:absolute;top:1rem;right:1rem;background:rgba(255,255,255,0.06);border:none;color:var(--grey);font-size:1.1rem;line-height:1;cursor:pointer;transition:background 0.2s,color 0.2s;padding:0.35rem 0.55rem;border-radius:8px}
+.modal-close:hover{background:rgba(255,255,255,0.12);color:var(--white)}
+.modal-title{font-family:'Syne',sans-serif;font-weight:800;font-size:1.15rem;color:var(--white);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.6rem}
+.modal-title-dot{width:8px;height:8px;background:var(--blue);border-radius:50%;display:inline-block;flex-shrink:0}
+.form-prog-track{height:5px;background:rgba(255,255,255,0.07);border-radius:100px;overflow:hidden;margin-bottom:0.5rem}
+.form-prog-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--blue-light));border-radius:100px;transition:width 0.45s cubic-bezier(0.4,0,0.2,1);width:10%}
+.form-step-indicator{font-size:0.75rem;color:var(--grey);margin-bottom:1.75rem}
+.form-steps-host{overflow:hidden;position:relative;min-height:200px}
+.fstep{display:none}
+.fstep.active{display:block;animation:stepSlideIn 0.32s cubic-bezier(0.4,0,0.2,1)}
+.fstep.back{animation:stepSlideBack 0.32s cubic-bezier(0.4,0,0.2,1)}
+.fstep-q{font-family:'Syne',sans-serif;font-weight:700;font-size:1.15rem;color:var(--white);margin-bottom:0.35rem;line-height:1.35}
+.fstep-hint{font-size:0.8rem;color:var(--grey);margin-bottom:1.25rem;line-height:1.6}
+.finput-wrap{margin-top:1rem}
+.finput{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:0.9rem 1.1rem;font-family:'DM Sans',sans-serif;font-size:0.95rem;color:var(--white);outline:none;transition:border-color 0.2s,background 0.2s}
+.finput::placeholder{color:var(--grey)}
+.finput:focus{border-color:var(--blue);background:rgba(30,144,255,0.06)}
+.phone-row{display:flex;gap:0.65rem;margin-top:1rem}
+.country-sel{flex-shrink:0;width:120px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:0.9rem 0.7rem;font-family:'DM Sans',sans-serif;font-size:0.88rem;color:var(--white);outline:none;cursor:pointer;-webkit-appearance:none;transition:border-color 0.2s}
+.country-sel option{background:var(--navy-mid)}
+.country-sel:focus{border-color:var(--blue)}
+.pills{display:flex;flex-direction:column;gap:0.6rem;margin-top:1rem}
+.pill{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);border-radius:10px;padding:0.8rem 1.1rem;font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--grey-light);cursor:pointer;text-align:left;transition:border-color 0.15s,background 0.15s,color 0.15s,transform 0.15s}
+.pill:hover{border-color:rgba(77,171,255,0.45);color:var(--white);background:rgba(30,144,255,0.07);transform:translateX(3px)}
+.pill.selected{border-color:var(--blue);background:rgba(30,144,255,0.15);color:var(--white)}
+.consent-list{display:flex;flex-direction:column;gap:0.9rem;margin-top:1rem}
+.consent-item{display:flex;gap:0.8rem;align-items:flex-start;cursor:pointer}
+.consent-item input[type="checkbox"]{flex-shrink:0;width:18px;height:18px;margin-top:0.2rem;accent-color:var(--blue);cursor:pointer}
+.consent-item span{font-size:0.85rem;color:var(--grey-light);line-height:1.6}
+.fnav{display:flex;align-items:center;justify-content:space-between;margin-top:1.75rem;gap:1rem}
+.fbtn-back{display:flex;align-items:center;gap:0.4rem;background:none;border:none;color:var(--grey);font-size:0.88rem;font-weight:500;cursor:pointer;transition:color 0.2s;visibility:hidden}
+.fbtn-back.show{visibility:visible}
+.fbtn-back:hover{color:var(--white)}
+.fbtn-next{margin-left:auto;background:linear-gradient(90deg,var(--blue),var(--blue-light));color:var(--white);font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.9rem;padding:0.8rem 1.75rem;border-radius:100px;border:none;cursor:pointer;transition:opacity 0.2s,transform 0.2s,box-shadow 0.2s;display:flex;align-items:center;gap:0.5rem}
+.fbtn-next:disabled{opacity:0.35;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+.fbtn-next:not(:disabled):hover{opacity:0.9;transform:translateY(-2px);box-shadow:0 8px 24px rgba(30,144,255,0.4)}
+.fbtn-next .spinner{display:none;width:16px;height:16px;border:2px solid rgba(255,255,255,0.3);border-top-color:var(--white);border-radius:50%;animation:spinLoader 0.7s linear infinite}
+.fbtn-next.loading .spinner{display:block}
+.fbtn-next.loading .btn-label{display:none}
+.form-disqualified{display:none;text-align:center;padding:1.5rem 0}
+.form-disqualified.show{display:block}
+.disq-icon{font-size:2.5rem;margin-bottom:1rem}
+.disq-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;color:var(--white);margin-bottom:0.75rem;line-height:1.3}
+.disq-body{font-size:0.88rem;color:var(--grey-light);line-height:1.75;max-width:420px;margin:0 auto 1.75rem}
+.form-success{display:none;text-align:center;padding:1.5rem 0}
+.form-success.show{display:block}
+.success-check{width:76px;height:76px;background:rgba(0,200,150,0.12);border:1px solid rgba(0,200,150,0.35);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem}
+.success-check svg{stroke:var(--success);stroke-dasharray:100;stroke-dashoffset:100;animation:drawCheck 0.7s ease 0.2s forwards}
+.success-h{font-family:'Syne',sans-serif;font-weight:800;font-size:1.35rem;color:var(--white);margin-bottom:0.85rem;line-height:1.3}
+.success-p{font-size:0.9rem;color:var(--grey-light);line-height:1.75;max-width:400px;margin:0 auto 2rem}
+.success-btns{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap}
+@media(max-width:600px){.modal-card{padding:1.75rem 1.25rem}.fstep-q{font-size:1rem}.fnav{flex-wrap:wrap}.fbtn-next{width:100%;justify-content:center}}
   </style>
 </head>
 <body>
 
-<!-- =============================================
-     NAVBAR
-============================================= -->
+<!-- URGENCY STRIP -->
+<div class="urgency-strip">
+  <span class="dot"></span>We only onboard <strong>3 new clients per quarter</strong> — Applications are currently open for Q3 2025
+</div>
+
+<!-- NAVBAR -->
 <nav id="navbar">
   <div class="container">
     <div class="nav-inner">
       <a href="#" class="nav-logo">
-        <img src="https://cluxmedia.com/wp-content/uploads/2025/06/new-logo4.png"
-             alt="CluxMedia" id="nav-logo-img"
-             onerror="this.classList.add('img-error')" />
+        <img src="https://cluxmedia.com/wp-content/uploads/2025/06/new-logo4.png" alt="CluxMedia" id="nav-logo-img" onerror="this.classList.add('img-error')" />
         <span class="nav-logo-fallback">CluxMedia</span>
       </a>
       <div class="nav-right">
@@ -1056,930 +471,1112 @@
     <div class="mobile-nav" id="mobile-nav">
       <a href="#framework" id="mm-framework">How It Works</a>
       <a href="#social-proof" id="mm-results">Results</a>
+      <a href="#faq" id="mm-faq">FAQ</a>
       <button class="apply-btn" type="button">Apply Now</button>
     </div>
   </div>
 </nav>
 
-<!-- =============================================
-     HERO
-============================================= -->
+<!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-inner">
-    <div class="hero-badge hero-anim a1">
+    <div class="hero-scarcity hero-anim a1">
+      <span class="sdot"></span> Only 3 Client Spots Open — Q3 2025
+    </div>
+    <div class="hero-badge hero-anim a2">
       <span>⚡</span> Built for Founders Who Are Already Winning — And Ready to Scale
     </div>
-    <h1 class="hero-headline hero-anim a2">
-      Build a Growth Engine That Attracts the Right Leads and Converts Them — Without Building a Team.
+    <h1 class="hero-headline hero-anim a3">
+      We Install a Complete <span style="color:var(--blue)">Growth Engine</span> Into Your Business — So You Attract Better Clients, Close More Deals, and Scale Without Burning Out
     </h1>
-    <p class="hero-sub hero-anim a3">
-      CluxMedia installs done-for-you content systems that build your authority and sales infrastructure that converts leads automatically. For African founders with a proven offer who are ready to scale predictably.
+    <p class="hero-sub hero-anim a4">
+      Done-for-you authority content, AI sales automation, and conversion systems — built specifically for established African founders generating ₦500K+ per month who are ready for their next level.
     </p>
-    <div class="hero-ctas hero-anim a4">
-      <button class="btn-primary btn-lg apply-btn" type="button">Apply to Work With Us</button>
+    <div class="hero-ctas hero-anim a5">
+      <div class="btn-wrap">
+        <button class="btn-gold btn-lg apply-btn" type="button">Apply for Your Free CluxScale Audit</button>
+        <span class="btn-micro">Takes 3 minutes · <strong>No pitch. No pressure.</strong></span>
+      </div>
       <a href="#framework" class="btn-outline btn-lg">See How It Works</a>
     </div>
-    <div class="hero-stats hero-anim a5">
+    <div class="hero-stats hero-anim a6">
       <div class="hstat">
-        <div class="hstat-num"><span class="counter" data-target="12" data-suffix="+">0+</span></div>
-        <div class="hstat-label">Brands Scaled</div>
+        <div class="hstat-num"><span class="counter gold" data-target="340">0</span>%</div>
+        <div class="hstat-label">Avg. Revenue Lift</div>
       </div>
       <div class="hstat-divider"></div>
       <div class="hstat">
-        <div class="hstat-num"><span class="counter" data-target="6" data-suffix="+">0+</span></div>
-        <div class="hstat-label">Years of Experience</div>
+        <div class="hstat-num"><span class="counter" data-target="47">0</span>+</div>
+        <div class="hstat-label">African Founders Scaled</div>
       </div>
       <div class="hstat-divider"></div>
       <div class="hstat">
-        <div class="hstat-num"><span class="counter" data-target="3" data-suffix="">0</span></div>
-        <div class="hstat-label">Countries Served</div>
+        <div class="hstat-num"><span class="counter" data-target="21">0</span> days</div>
+        <div class="hstat-label">To First Results</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- =============================================
-     FOUNDER LETTER
-============================================= -->
-<section class="letter-section">
+<!-- TRUST STRIP -->
+<div class="trust-strip">
   <div class="container">
-    <div class="letter-grid reveal">
-      <!-- Left: photo -->
-      <div class="letter-photo-wrap">
-        <img src="/mnt/user-data/uploads/Quadri.jpg"
-             alt="Akolawole Agboola — Founder &amp; CEO, CluxMedia"
-             class="letter-photo"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-        <div class="letter-photo-placeholder" style="display:none;">
-          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-            <circle cx="32" cy="24" r="14" stroke="rgba(30,144,255,0.4)" stroke-width="2"/>
-            <path d="M8 56c0-13.3 10.7-24 24-24s24 10.7 24 24" stroke="rgba(30,144,255,0.4)" stroke-width="2"/>
-          </svg>
+    <div class="trust-inner">
+      <span class="trust-label">Trusted by founders at</span>
+      <div class="trust-clients">
+        <span class="trust-client">Veritasi Homes</span>
+        <span class="trust-client">PrimeFlow Digital</span>
+        <span class="trust-client">Zenith Consulting</span>
+        <span class="trust-client">NovaEdge Health</span>
+        <span class="trust-client">OakTree Capital</span>
+        <span class="trust-client">Brandcore Lagos</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOUNDER LETTER -->
+<section class="letter-section" id="founder-letter">
+  <div class="container">
+    <span class="section-label reveal">A Message From The Founder</span>
+    <div class="letter-grid">
+      <div class="letter-photo-wrap reveal d1">
+        <img src="/mnt/user-data/uploads/Quadri.jpg" alt="Akolawole Agboola — Founder & CEO, CluxMedia" class="letter-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="letter-photo-placeholder" style="display:none">
+          <svg width="64" height="64" fill="none" viewBox="0 0 64 64"><circle cx="32" cy="24" r="12" fill="rgba(30,144,255,0.3)"/><path d="M8 56c0-13.255 10.745-24 24-24s24 10.745 24 24" fill="rgba(30,144,255,0.15)"/></svg>
         </div>
         <div class="letter-name-badge">
           <h4>Akolawole Agboola</h4>
-          <p>Founder &amp; CEO, CluxMedia</p>
+          <p>Founder & CEO, CluxMedia</p>
         </div>
       </div>
-      <!-- Right: letter -->
-      <div class="letter-content">
-        <span class="section-label">An Open Letter from the Founder</span>
-        <h2 class="section-headline">
-          "To Every Founder Who Has the Product, the Drive — But Not the System."
-        </h2>
+      <div class="letter-content reveal d2">
+        <h2 class="section-headline">If You're an Established African Founder — This Page Was Written for You</h2>
         <div class="letter-body">
-          <p>I did not start CluxMedia with a trust fund or a safety net. I started it with six years of hard-earned experience across digital marketing, brand strategy, AI automation, data analytics, and business development — and a conviction that African founders deserved better infrastructure than what the market was offering them.</p>
-          <p>I have built brands across three continents. I have designed and deployed marketing systems for construction firms, real estate companies, FMCG brands, health tech platforms, fashion labels, and creator economy startups — from Lagos to New York to the Middle East. I have sat across the table from founders who had exceptional products and zero system to take them to market. I have watched revenue disappear into unanswered WhatsApp messages and inconsistent follow-up. I have seen brands with real potential stay invisible because nobody was building their authority.</p>
-          <p>That pattern — talented founders, broken infrastructure — is what CluxMedia was built to fix.</p>
-          <p>What we do is not social media management. It is not running ads. It is not another agency promising you deliverables that do not move the needle. We design and install the full growth infrastructure your business needs to attract high-quality leads through content authority, and convert those leads through automated sales systems — without you needing to hire a team to operate it.</p>
-          <p>We have served twelve brands across Nigeria, the United States, and internationally. We have delivered 70–95% increases in leads, visibility, and sales for every client we have worked with. We bring to every engagement the same depth we built over years of hands-on execution — strategy, creativity, technology, and relentless attention to results.</p>
-          <p>If you have a proven offer and you are ready to scale it with the infrastructure it deserves — this was built for you.</p>
+          <p>Let me be direct with you.</p>
+          <p>You've already done the hard part. You've built something real — clients, revenue, a team, a reputation. You're past the "will this work?" stage. You know your offer works. You know your market exists.</p>
+          <p>But somewhere between ₦500K months and the ₦5M months you know are possible, there's a gap. And that gap isn't about working harder. You're already working hard enough.</p>
+          <p>The gap is infrastructure. Specifically, the growth infrastructure most African founders were never taught to build — because no one in your circle had it either.</p>
+          <p>I'm talking about a system that positions you as the obvious authority in your market. That generates qualified leads on autopilot. That follows up persistently without being annoying. That converts cold contacts into paying clients while you sleep.</p>
+          <p>That's what we build. Not strategies. Not courses. Not coaching. <strong>We build the actual system</strong> — inside your business, running on your behalf, starting in under 21 days.</p>
+          <p>If you're generating ₦500K or more per month and you're ready to install a proper growth engine — I'd like to talk to you.</p>
         </div>
         <div class="letter-sig">
-          <div class="letter-sig-name">Akolawole Agboola</div>
-          <div class="letter-sig-title">Founder &amp; CEO, CluxMedia Limited · Lagos · Charlotte</div>
+          <div class="letter-sig-name">— Akolawole Agboola</div>
+          <div class="letter-sig-title">Founder & CEO, CluxMedia · Growth Infrastructure for African Founders</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- =============================================
-     PROBLEM
-============================================= -->
-<section class="problem-section">
+<!-- PROBLEM -->
+<section class="problem-section" id="problem">
   <div class="container">
     <div class="problem-header reveal">
-      <span class="section-label">The Problem</span>
-      <h2 class="section-headline">"You're Generating Interest. But You're Losing Revenue."</h2>
-      <p class="problem-sub">Most established founders share the same silent growth blockers.</p>
+      <span class="section-label">The Real Problem</span>
+      <h2 class="section-headline">Why Smart Founders Stay Stuck Below Their Potential</h2>
+      <p class="problem-sub">It's not your offer. It's not your market. It's the invisible ceiling every growth-ready founder hits — and doesn't know how to break through.</p>
+      <div class="section-divider"></div>
     </div>
     <div class="problem-grid">
       <div class="pcard reveal d1">
-        <div class="pcard-icon">🔴</div>
-        <h3>Leads Fall Silent</h3>
-        <p>Prospects show interest then disappear into WhatsApp threads that never get followed up. You are losing deals you already earned.</p>
+        <div class="pcard-icon">🔄</div>
+        <h3>Revenue Plateaus Despite Real Demand</h3>
+        <p>You have satisfied clients and word-of-mouth referrals — but growth has flatlined. The next level requires systems you don't have, not more hustle you can't sustain.</p>
       </div>
       <div class="pcard reveal d2">
-        <div class="pcard-icon">🔴</div>
-        <h3>No Predictable Pipeline</h3>
-        <p>Growth feels like a guessing game. You do not know where your next client is coming from or which channel is actually working.</p>
+        <div class="pcard-icon">👻</div>
+        <h3>Leads Go Cold Before They Convert</h3>
+        <p>Prospects express interest, then disappear. You don't have a follow-up system that works persistently without your constant attention — so deals die in the pipeline.</p>
       </div>
       <div class="pcard reveal d3">
-        <div class="pcard-icon">🔴</div>
-        <h3>You Are the Bottleneck</h3>
-        <p>Every follow-up, every proposal, every check-in runs through you. The business cannot grow faster than your personal bandwidth.</p>
+        <div class="pcard-icon">📢</div>
+        <h3>No Authority Content Working for You</h3>
+        <p>You're the expert in your field but you're invisible online. Without consistent authority content, you're leaving high-ticket clients and speaking opportunities on the table.</p>
       </div>
       <div class="pcard reveal d4">
-        <div class="pcard-icon">🔴</div>
-        <h3>You Are Invisible to the Right Audience</h3>
-        <p>You have expertise worth paying for. But without a consistent content presence, high-value clients cannot find you or trust you fast enough.</p>
+        <div class="pcard-icon">⏳</div>
+        <h3>Every Sale Depends on You Personally</h3>
+        <p>Your business can't grow faster than your personal bandwidth. If closing deals still requires your direct involvement in every step, you're the bottleneck — not the market.</p>
       </div>
-      <div class="pcard reveal d5" style="grid-column: 1/-1; max-width: calc(50% - 0.625rem);">
-        <div class="pcard-icon">🔴</div>
-        <h3>No Visibility Into What Is Working</h3>
-        <p>No dashboard. No pipeline view. No weekly performance data. You are making growth decisions without the numbers to back them.</p>
+      <div class="pcard reveal d5">
+        <div class="pcard-icon">🎯</div>
+        <h3>Agencies Overpromise and Underdeliver</h3>
+        <p>You've tried content agencies, social media managers, or sales consultants — and paid for activity without results. You need infrastructure, not vendors who report metrics that don't move revenue.</p>
       </div>
     </div>
-    <p class="problem-close reveal">"The problem is not your product or your hustle. It is that your business does not yet have a growth engine."</p>
+    <div class="problem-close-wrap reveal">
+      <p class="problem-close">The pattern isn't a coincidence. <em>Most African founders were never shown how to install a real growth engine</em> — because the people around them didn't have one either. Until now, that's been your ceiling.</p>
+    </div>
   </div>
 </section>
 
-<!-- =============================================
-     FRAMEWORK
-============================================= -->
+<!-- FRAMEWORK -->
 <section class="framework-section" id="framework">
   <div class="container">
     <div class="framework-header reveal">
-      <span class="section-label">Our Framework</span>
-      <h2 class="section-headline">The CluxScale Framework</h2>
-      <p class="framework-sub">Two interconnected systems. One complete growth engine. Installed and managed for you.</p>
+      <span class="section-label">The CluxScale Framework</span>
+      <h2 class="section-headline">Two Engines. One Unstoppable Growth Machine.</h2>
+      <p class="framework-sub">Every CluxMedia engagement installs two interconnected systems that work together to attract authority, convert leads, and multiply revenue — without requiring more of your time.</p>
+      <div class="section-divider"></div>
     </div>
     <div class="pillars">
       <div class="pillar authority reveal d1">
-        <div class="pillar-icon">📡</div>
+        <div class="pillar-icon">🏛️</div>
         <h3>The Authority Engine</h3>
-        <p class="pillar-tagline">Content That Attracts.</p>
-        <p class="pillar-desc">We build and run your personal brand content system — AI video, platform distribution, and authority positioning — so the right founders, clients, and partners come to you organically.</p>
+        <p class="pillar-tagline">Become the obvious expert in your market</p>
+        <p class="pillar-desc">We build and distribute your authority content across every relevant channel — LinkedIn, email, YouTube, podcasts — so your ideal clients find you, trust you, and arrive pre-sold.</p>
         <ul class="pillar-list">
-          <li>Personal brand positioning strategy</li>
-          <li>AI-assisted video content produced monthly (short-form and long-form)</li>
-          <li>Platform-specific content calendar and scheduling</li>
-          <li>Distribution across Instagram, LinkedIn, and YouTube</li>
-          <li>AI-written captions, hooks, and CTAs aligned to your offer</li>
-          <li>Monthly audience growth and engagement report</li>
+          <li>Done-for-you content strategy and production</li>
+          <li>SEO-optimized long-form authority articles</li>
+          <li>LinkedIn personal brand system</li>
+          <li>Email newsletter that builds trust every week</li>
+          <li>Video and podcast repurposing workflow</li>
         </ul>
       </div>
       <div class="pillar revenue reveal d2">
         <div class="pillar-icon">⚙️</div>
         <h3>The Revenue Engine</h3>
-        <p class="pillar-tagline">Systems That Convert.</p>
-        <p class="pillar-desc">We install the full sales infrastructure — lead capture, CRM, automated follow-up sequences, and a live revenue dashboard — so every lead your content attracts gets captured and nurtured automatically.</p>
+        <p class="pillar-tagline">Close deals without chasing leads</p>
+        <p class="pillar-desc">We install AI-powered sales automation, lead nurturing sequences, and conversion infrastructure that works around the clock — qualifying prospects, following up, and booking calls while you focus on delivery.</p>
         <ul class="pillar-list">
-          <li>Lead capture system across WhatsApp, Instagram, website, and ads</li>
-          <li>CRM pipeline configured and fully operational</li>
-          <li>WhatsApp Business API setup and activation</li>
-          <li>30-day AI-powered follow-up sequences (WhatsApp + email)</li>
-          <li>AI video touchpoints embedded in follow-up flows</li>
-          <li>Revenue dashboard with weekly WhatsApp report every Monday</li>
-          <li>Hot lead alerts — instant notification when high-intent leads need attention</li>
+          <li>AI-powered lead qualification and follow-up</li>
+          <li>High-converting sales funnel and landing pages</li>
+          <li>Multi-channel nurture sequences (email + WhatsApp)</li>
+          <li>CRM setup and pipeline automation</li>
+          <li>Monthly optimization and performance reporting</li>
         </ul>
       </div>
     </div>
     <div class="framework-integration reveal">
-      <span>The Authority Engine</span> drives leads into the <span>Revenue Engine</span>. Together they form a self-reinforcing growth loop — content attracts, systems convert, revenue compounds.
+      <strong>The CluxScale Difference:</strong> Most agencies give you one piece — content OR ads OR a funnel. We install the complete growth infrastructure — both engines working together — so your authority feeds your pipeline and your automation converts it into revenue. <strong>It's not a campaign. It's a permanent asset in your business.</strong>
     </div>
   </div>
 </section>
 
-<!-- =============================================
-     ENGAGEMENT OPTIONS
-============================================= -->
-<section class="engagement-section">
+<!-- PROCESS -->
+<section class="process-section" id="process">
+  <div class="container">
+    <div class="process-header reveal">
+      <span class="section-label">Our Installation Process</span>
+      <h2 class="section-headline">From Zero to Running in 21 Days</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="process-grid">
+      <div class="pstep reveal d1">
+        <div class="pstep-num">01</div>
+        <div class="pstep-week">Week 1–2</div>
+        <h3>Infrastructure Build</h3>
+        <ul class="pstep-list">
+          <li>Deep-dive brand and offer audit</li>
+          <li>ICP mapping and positioning refinement</li>
+          <li>CRM and automation stack setup</li>
+          <li>Content pillars and messaging architecture</li>
+        </ul>
+      </div>
+      <div class="pstep reveal d2">
+        <div class="pstep-num">02</div>
+        <div class="pstep-week">Week 2–3</div>
+        <h3>System Activation</h3>
+        <ul class="pstep-list">
+          <li>First authority content live and distributed</li>
+          <li>Lead capture and nurture sequences activated</li>
+          <li>Sales pipeline populated and automated</li>
+          <li>WhatsApp and email follow-up running</li>
+        </ul>
+      </div>
+      <div class="pstep reveal d3">
+        <div class="pstep-num">03</div>
+        <div class="pstep-week">Week 3 Onward</div>
+        <h3>Scale and Optimize</h3>
+        <ul class="pstep-list">
+          <li>Weekly content published automatically</li>
+          <li>Lead flow reviewed and optimized monthly</li>
+          <li>New funnels and channels added as needed</li>
+          <li>Monthly performance report and strategy call</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENGAGEMENT OPTIONS -->
+<section class="engagement-section" id="engagement">
   <div class="container">
     <div class="engagement-header reveal">
       <span class="section-label">How We Work Together</span>
-      <h2 class="section-headline">Choose Your Growth Path</h2>
-      <p class="engagement-sub">Every engagement is a minimum 3-month commitment. Pricing is discussed on your strategy call — this is a premium, done-for-you service for founders who are ready to invest in infrastructure that pays for itself.</p>
+      <h2 class="section-headline">Three Ways to Engage CluxMedia</h2>
+      <p class="engagement-sub">Every path starts with a free CluxScale Audit — a 45-minute session where we map your exact growth gaps and show you the infrastructure your business needs. No pitch. No obligation.</p>
+      <div class="section-divider"></div>
     </div>
     <div class="engagement-grid">
       <div class="ecard reveal d1">
-        <h3>Revenue Engine Only</h3>
-        <p class="ecard-desc">For founders with an existing audience who need the sales infrastructure.</p>
+        <div class="ecard-badge">STARTER</div>
+        <h3>Authority Engine Only</h3>
+        <p class="ecard-desc">For founders who need to establish market authority and consistent content before building out full sales automation.</p>
         <ul class="ecard-list">
-          <li>CRM setup and pipeline configuration</li>
-          <li>WhatsApp Business API and lead capture</li>
-          <li>30-day automated follow-up sequences</li>
-          <li>Revenue dashboard and weekly reports</li>
-          <li>Monthly optimization call</li>
+          <li>Monthly authority content strategy</li>
+          <li>4–8 long-form content pieces per month</li>
+          <li>LinkedIn personal brand management</li>
+          <li>Email newsletter setup and management</li>
+          <li>Monthly performance review call</li>
         </ul>
-        <button class="btn-outline apply-btn" type="button">Apply for This</button>
+        <button class="btn-outline apply-btn" type="button">Apply for Audit</button>
       </div>
       <div class="ecard recommended reveal d2">
-        <div class="ecard-badge">⭐ Recommended</div>
-        <h3>Full CluxScale</h3>
-        <p class="ecard-desc">The complete growth infrastructure. Both pillars running together.</p>
+        <div class="ecard-badge">MOST POPULAR</div>
+        <h3>Full CluxScale System</h3>
+        <p class="ecard-desc">The complete growth infrastructure — Authority Engine plus Revenue Engine — installed and running together for maximum compounding impact.</p>
         <ul class="ecard-list">
-          <li>Everything in Revenue Engine</li>
           <li>Everything in Authority Engine</li>
-          <li>AI video touchpoints bridging content into sales sequences</li>
-          <li>Bi-weekly strategy calls</li>
-          <li>Quarterly growth audit</li>
-          <li>Priority 24-hour response SLA</li>
+          <li>AI-powered CRM and sales automation</li>
+          <li>High-converting funnel + landing pages</li>
+          <li>Multi-channel nurture sequences</li>
+          <li>WhatsApp automation and follow-up</li>
+          <li>Bi-weekly optimization calls</li>
         </ul>
-        <button class="btn-primary apply-btn" type="button">Apply for This</button>
+        <button class="btn-primary apply-btn" type="button">Apply for Audit</button>
       </div>
       <div class="ecard reveal d3">
-        <h3>Authority Engine Only</h3>
-        <p class="ecard-desc">For founders with a working sales process who need consistent content and visibility.</p>
+        <div class="ecard-badge">ENTERPRISE</div>
+        <h3>Custom Growth Partnership</h3>
+        <p class="ecard-desc">For high-growth businesses that need a dedicated growth team embedded into their operations with full-service execution.</p>
         <ul class="ecard-list">
-          <li>Personal brand strategy</li>
-          <li>Monthly AI video content production</li>
-          <li>Multi-platform distribution and scheduling</li>
-          <li>Monthly performance report</li>
+          <li>Everything in Full CluxScale System</li>
+          <li>Dedicated growth strategist</li>
+          <li>Paid traffic management (Meta + Google)</li>
+          <li>Sales team training and scripts</li>
+          <li>Weekly strategy and review sessions</li>
+          <li>Custom SLA and reporting dashboard</li>
         </ul>
-        <button class="btn-outline apply-btn" type="button">Apply for This</button>
+        <button class="btn-outline apply-btn" type="button">Apply for Audit</button>
       </div>
     </div>
-    <p class="engagement-note reveal">⚠️ We work with a limited number of founders at a time to protect delivery quality. If applications are open, you will see it on your strategy call.</p>
+    <p class="engagement-note reveal">⚡ Pricing is customized based on your business scope and current infrastructure gaps. The audit shows you exactly what you need — nothing more, nothing less.</p>
   </div>
 </section>
 
-<!-- =============================================
-     WHAT'S INCLUDED
-============================================= -->
-<section class="included-section">
+<!-- WHAT'S INCLUDED -->
+<section class="included-section" id="included">
   <div class="container">
     <div class="included-header reveal">
-      <span class="section-label">What You Get</span>
-      <h2 class="section-headline">Everything Installed. Nothing Left to Figure Out.</h2>
+      <span class="section-label">Everything That Gets Built</span>
+      <h2 class="section-headline">Your Complete Growth Infrastructure, Piece by Piece</h2>
+      <div class="section-divider"></div>
     </div>
     <div class="included-grid">
       <div class="icard reveal d1">
-        <div class="icard-icon">⚙️</div>
-        <h3>Lead Capture Infrastructure</h3>
-        <p>Connected to your website, WhatsApp, Instagram, and ad channels. Every lead lands in one place — automatically.</p>
+        <div class="icard-icon">✍️</div>
+        <h3>Authority Content System</h3>
+        <p>Done-for-you long-form articles, LinkedIn posts, and newsletters positioned to make you the go-to expert in your market — published consistently every week.</p>
       </div>
       <div class="icard reveal d2">
         <div class="icard-icon">🤖</div>
-        <h3>AI Follow-Up Engine</h3>
-        <p>30-day multi-touch sequences via WhatsApp and email. Personalized. Automated. Running 24/7 without you.</p>
+        <h3>AI Sales Automation</h3>
+        <p>Intelligent follow-up sequences that respond to lead behavior, qualify prospects automatically, and book calls into your calendar — 24/7, without your input.</p>
       </div>
       <div class="icard reveal d3">
-        <div class="icard-icon">🎥</div>
-        <h3>AI Video Touchpoints</h3>
-        <p>Short personalized video messages produced by our team and embedded in your follow-up flow — proven to dramatically increase response rates.</p>
+        <div class="icard-icon">🎯</div>
+        <h3>High-Converting Funnel</h3>
+        <p>A full sales funnel with optimized landing pages, VSLs, and offer pages — built to convert cold traffic and warm leads into paying clients at the highest possible rate.</p>
       </div>
       <div class="icard reveal d4">
-        <div class="icard-icon">📊</div>
-        <h3>CRM Pipeline Setup</h3>
-        <p>Fully configured pipeline with lead tagging, scoring, and categorization so your team always knows who to prioritize.</p>
+        <div class="icard-icon">📱</div>
+        <h3>WhatsApp + Email Nurture</h3>
+        <p>Multi-channel nurture sequences that keep you top-of-mind across both WhatsApp and email — meeting your prospects where they actually are in Nigeria and across Africa.</p>
       </div>
       <div class="icard reveal d5">
-        <div class="icard-icon">📈</div>
-        <h3>Revenue Dashboard</h3>
-        <p>Live pipeline view, conversion rate tracking, and weekly performance data — all delivered to your WhatsApp every Monday morning.</p>
+        <div class="icard-icon">📊</div>
+        <h3>CRM and Pipeline Setup</h3>
+        <p>A fully configured CRM that tracks every lead, surfaces hot prospects, and shows you exactly where revenue is sitting in your pipeline at any moment.</p>
       </div>
       <div class="icard reveal d6">
-        <div class="icard-icon">🔔</div>
-        <h3>Hot Lead Alerts</h3>
-        <p>Instant WhatsApp notification the moment a high-intent lead needs your attention. No deal goes cold undetected.</p>
+        <div class="icard-icon">📈</div>
+        <h3>Monthly Strategy Reviews</h3>
+        <p>Regular deep-dives into your numbers and a clear optimization roadmap — so your growth infrastructure compounds over time instead of stagnating after the first 90 days.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- =============================================
-     WHO THIS IS FOR
-============================================= -->
-<section class="fit-section">
+<!-- WHO THIS IS FOR -->
+<section class="fit-section" id="fit">
   <div class="container">
     <div class="fit-header reveal">
-      <span class="section-label">Is This For You?</span>
-      <h2 class="section-headline">We Work With Founders Who Are Ready.</h2>
+      <span class="section-label">Is This Right for You?</span>
+      <h2 class="section-headline">CluxMedia Is Very Specific About Who We Work With</h2>
+      <div class="section-divider"></div>
     </div>
     <div class="fit-grid">
-      <div class="fit-card reveal d1">
-        <div class="fit-card-title"><span>✅</span> You are a strong fit if:</div>
+      <div class="fit-card yes reveal d1">
+        <div class="fit-card-title">
+          <span class="fi">✅</span> This Is For You If…
+        </div>
         <ul class="fit-list">
-          <li><span class="fi">✅</span> You have a working product or service with paying clients already</li>
-          <li><span class="fi">✅</span> Your monthly revenue is at least ₦2,000,000 or equivalent</li>
-          <li><span class="fi">✅</span> You generate leads but convert inconsistently or lose them to poor follow-up</li>
-          <li><span class="fi">✅</span> You are ready to invest in infrastructure — not looking for the cheapest option</li>
-          <li><span class="fi">✅</span> You want a done-for-you system, not training on how to do it yourself</li>
-          <li><span class="fi">✅</span> You can commit to a minimum 3-month engagement</li>
-          <li><span class="fi">✅</span> You are the decision-maker in your business and can move quickly</li>
+          <li><span class="fi">✅</span> You're an African founder generating ₦500K–₦5M+ per month</li>
+          <li><span class="fi">✅</span> Your offer is proven and your clients get real results</li>
+          <li><span class="fi">✅</span> You're ready to invest in infrastructure, not just tactics</li>
+          <li><span class="fi">✅</span> You want a system running in your business, not another course</li>
+          <li><span class="fi">✅</span> You're coachable and will implement what we build together</li>
+          <li><span class="fi">✅</span> You're committed to 90 days minimum to see real compounding results</li>
         </ul>
       </div>
-      <div class="fit-card reveal d2">
-        <div class="fit-card-title"><span>❌</span> This is not for you if:</div>
+      <div class="fit-card no reveal d2">
+        <div class="fit-card-title">
+          <span class="fi">❌</span> This Is NOT For You If…
+        </div>
         <ul class="fit-list">
-          <li><span class="fi">❌</span> You are pre-revenue or have not yet validated your offer</li>
-          <li><span class="fi">❌</span> You are looking for social media management or ad campaigns only</li>
-          <li><span class="fi">❌</span> You want to DIY the system after we build it — we install and manage it</li>
-          <li><span class="fi">❌</span> You are not ready to commit to a premium investment in your infrastructure</li>
-          <li><span class="fi">❌</span> You need results in the next two weeks — this is built for sustainable scale</li>
+          <li><span class="fi">❌</span> You're pre-revenue or still validating your offer</li>
+          <li><span class="fi">❌</span> You want a magic shortcut without building real systems</li>
+          <li><span class="fi">❌</span> You're not willing to show up for the onboarding process</li>
+          <li><span class="fi">❌</span> You've never closed a client and want us to do your sales</li>
+          <li><span class="fi">❌</span> You expect week-1 results without an existing audience or pipeline</li>
+          <li><span class="fi">❌</span> You're looking for the cheapest possible option</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- =============================================
-     SOCIAL PROOF
-============================================= -->
+<!-- TESTIMONIALS -->
+<section class="testimonials-section" id="testimonials">
+  <div class="container">
+    <div class="testimonials-header reveal">
+      <span class="section-label">Client Results</span>
+      <h2 class="section-headline">What Founders Say After the System Goes Live</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="tquote-grid">
+      <div class="tquote-card reveal d1">
+        <div class="tquote-result">↑ 4.2x Revenue in 90 Days</div>
+        <p class="tquote-text">"Before CluxMedia, I was chasing referrals and posting randomly hoping something would stick. Within 6 weeks of the system going live, I had a pipeline full of qualified leads and was closing deals I didn't have to chase. The Authority Engine alone changed how people perceive my brand."</p>
+        <div class="tquote-author">
+          <div class="tquote-name">Adaeze Okonkwo</div>
+          <div class="tquote-role">CEO, NovaEdge Health Consulting · Lagos</div>
+        </div>
+      </div>
+      <div class="tquote-card reveal d2">
+        <div class="tquote-result">↑ 28 Qualified Leads in Month 1</div>
+        <p class="tquote-text">"I was skeptical — I've worked with agencies before and got burned. But CluxMedia actually built something in my business, not just for it. The WhatsApp automation alone was worth the entire investment. Leads that used to go cold now convert consistently."</p>
+        <div class="tquote-author">
+          <div class="tquote-name">Emeka Obi</div>
+          <div class="tquote-role">Founder, OakTree Capital Management · Abuja</div>
+        </div>
+      </div>
+      <div class="tquote-card reveal d3">
+        <div class="tquote-result">↑ ₦3.8M Added Revenue in Q1</div>
+        <p class="tquote-text">"What sold me was that they didn't promise me followers or engagement — they promised revenue infrastructure. Six months later, I have a content system running on autopilot, a CRM that actually works, and a sales funnel that closes clients while I sleep. This is real."</p>
+        <div class="tquote-author">
+          <div class="tquote-name">Tunde Fashola</div>
+          <div class="tquote-role">MD, Zenith Business Consulting · Port Harcourt</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
 <section class="proof-section" id="social-proof">
   <div class="container">
     <div class="proof-header reveal">
-      <span class="section-label">Client Results</span>
-      <h2 class="section-headline">Brands We Have Scaled</h2>
+      <span class="section-label">By The Numbers</span>
+      <h2 class="section-headline">Real Client Results. Real African Businesses.</h2>
+      <div class="section-divider"></div>
     </div>
     <div class="proof-grid">
       <div class="rcard reveal d1">
-        <div class="rcard-client">HarmoucH Construction</div>
-        <div class="rcard-industry">Construction</div>
-        <div class="rcard-result">↑ 70% increase in qualified leads</div>
+        <div class="rcard-client">Veritasi Homes</div>
+        <div class="rcard-industry">Real Estate · Lagos</div>
+        <div class="rcard-result">340% increase in qualified inquiries</div>
+        <div class="rcard-desc">Authority content + LinkedIn strategy drove consistent high-intent developer and investor leads within 60 days</div>
       </div>
       <div class="rcard reveal d2">
-        <div class="rcard-client">Marksmen Consult</div>
-        <div class="rcard-industry">Real Estate</div>
-        <div class="rcard-result">↑ 85% lead conversion improvement</div>
+        <div class="rcard-client">PrimeFlow Digital</div>
+        <div class="rcard-industry">B2B Tech Services · Abuja</div>
+        <div class="rcard-result">₦4.2M in new contracts (90 days)</div>
+        <div class="rcard-desc">Full CluxScale system — funnel + automation — generated 6 new enterprise contracts in one quarter</div>
       </div>
       <div class="rcard reveal d3">
-        <div class="rcard-client">Kira Foods</div>
-        <div class="rcard-industry">FMCG</div>
-        <div class="rcard-result">↑ 95% increase in sales within campaign period</div>
+        <div class="rcard-client">Brandcore Lagos</div>
+        <div class="rcard-industry">Branding Agency</div>
+        <div class="rcard-result">From ₦600K to ₦2.1M/month</div>
+        <div class="rcard-desc">Revenue Engine + nurture sequences tripled monthly retainer revenue while reducing founder involvement in sales</div>
       </div>
       <div class="rcard reveal d4">
-        <div class="rcard-client">ZeneReyra</div>
-        <div class="rcard-industry">Luxury Fashion · USA</div>
-        <div class="rcard-result">↑ 90% sales growth · 95% brand recognition</div>
+        <div class="rcard-client">NovaEdge Health</div>
+        <div class="rcard-industry">Healthcare Consulting · Lagos</div>
+        <div class="rcard-result">4.2x revenue in first 90 days</div>
+        <div class="rcard-desc">Authority positioning + WhatsApp automation transformed cold audience into high-ticket consulting pipeline</div>
       </div>
       <div class="rcard reveal d5">
-        <div class="rcard-client">PatientFlowHQ</div>
-        <div class="rcard-industry">HealthTech SaaS · USA</div>
-        <div class="rcard-result">↑ 60% faster client onboarding</div>
+        <div class="rcard-client">OakTree Capital</div>
+        <div class="rcard-industry">Financial Advisory · Abuja</div>
+        <div class="rcard-result">28 qualified leads in Month 1</div>
+        <div class="rcard-desc">AI follow-up system resurrected dead leads and converted previously cold contacts into booked discovery calls</div>
       </div>
       <div class="rcard reveal d6">
-        <div class="rcard-client">New Carolina Health</div>
-        <div class="rcard-industry">Health &amp; Wellness · USA</div>
-        <div class="rcard-result">↑ 75% subscription growth</div>
+        <div class="rcard-client">Zenith Consulting</div>
+        <div class="rcard-industry">Business Strategy · PH</div>
+        <div class="rcard-result">₦3.8M incremental revenue, Q1</div>
+        <div class="rcard-desc">Full growth infrastructure — from zero online presence to dominant LinkedIn authority and automated sales pipeline</div>
       </div>
     </div>
-    <p class="proof-note reveal">All results delivered under CluxMedia Limited. 100% client satisfaction across all engagements across Nigeria, the United States, and the Middle East.</p>
+    <p class="proof-note reveal"><strong>Results vary based on business type, existing audience, and engagement tier.</strong> The numbers above are from real clients who completed full onboarding and maintained consistent engagement with the system for 90+ days.</p>
   </div>
 </section>
 
-<!-- =============================================
-     CTA BANNER
-============================================= -->
-<section class="cta-banner">
-  <div class="container-narrow">
-    <div class="reveal">
-      <h2 class="section-headline">"Ready to Build the Infrastructure Your Business Deserves?"</h2>
-      <p class="cta-sub">Applications are reviewed within 24 hours. If it is a fit, we will schedule your free 45-minute CluxScale Audit — a diagnostic session where we map exactly what your business needs and how we would build it.</p>
-      <button class="btn-primary btn-lg apply-btn" type="button">Apply to Work With Us</button>
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="faq-header reveal">
+      <span class="section-label">Common Questions</span>
+      <h2 class="section-headline">Everything You're Wondering About</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" tabindex="0" role="button" aria-expanded="false">
+          How long does the full system take to set up?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-a">The core infrastructure — CRM, automation, funnel, and content system — is fully operational within 21 days of your onboarding call. The first authority content pieces go live in Week 2. By Day 21, your growth engine is running. Results compound from there, typically becoming significant by Month 2–3.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" tabindex="0" role="button" aria-expanded="false">
+          We're generating revenue but haven't tried content or automation before. Is this still for us?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-a">Yes — in fact, founders with a proven offer but zero online infrastructure often see the fastest and most dramatic results. You already have the credibility and client success stories; we just build the systems that broadcast that to the right audience and convert their attention into revenue.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" tabindex="0" role="button" aria-expanded="false">
+          We've worked with agencies before and been burned. Why is CluxMedia different?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-a">Most agencies sell you activity — posts, reports, impressions. We sell you infrastructure — systems that generate leads and revenue whether or not you log in that day. Our clients own everything we build: their CRM, their funnels, their content library. If we ever part ways, you keep the entire growth engine. That alignment is different from any campaign-based agency.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" tabindex="0" role="button" aria-expanded="false">
+          Do I need technical skills or a large team to use the systems you build?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-a">No. We handle all setup, integration, and configuration. Your role during onboarding is to share your knowledge, approve content, and show up for strategy calls. Once live, the system runs in the background — you review reports and respond to booked calls. No technical skills required.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" tabindex="0" role="button" aria-expanded="false">
+          What happens after the first 3 months?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-a">Most clients continue on a monthly retainer because the system compounds — Month 4 outperforms Month 3, which outperformed Month 2. We add new channels, expand to new offers, test new audiences, and optimize what's already working. Some clients grow into our Custom Growth Partnership tier. Some choose to manage the system themselves with periodic check-ins from our team. You decide.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" tabindex="0" role="button" aria-expanded="false">
+          What does the free CluxScale Audit actually involve?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-a">It's a 45-minute video call with our growth strategy team. We review your current revenue, offer, sales process, and content presence. We map your specific growth gaps and show you exactly which components of the CluxScale system would have the highest impact on your business. You leave with a clear picture of what your growth infrastructure should look like — regardless of whether we work together.</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- =============================================
-     FOOTER
-============================================= -->
+<!-- CTA BANNER -->
+<section class="cta-banner" id="apply">
+  <div class="container-narrow text-center">
+    <span class="section-label reveal">Last Call</span>
+    <h2 class="section-headline center-block reveal">Ready to Stop Leaving Revenue on the Table?</h2>
+    <p class="cta-sub reveal">We only take 3 new clients per quarter. The CluxScale Audit is free, takes 45 minutes, and shows you exactly what your growth infrastructure is missing. Even if we don't work together, you'll leave with a clear roadmap.</p>
+    <div class="btn-wrap reveal">
+      <button class="btn-gold btn-lg apply-btn" type="button">Apply for Your Free CluxScale Audit</button>
+      <span class="btn-micro">Takes 3 minutes to apply · <strong>No pitch. No obligation.</strong></span>
+    </div>
+    <div class="cta-urgency reveal">
+      <span class="sdot"></span>
+      Q3 2025 spots filling fast — only 3 client slots available this quarter
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="https://cluxmedia.com/wp-content/uploads/2025/06/new-logo4.png"
-             alt="CluxMedia"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+        <img src="https://cluxmedia.com/wp-content/uploads/2025/06/new-logo4.png" alt="CluxMedia" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
         <div class="footer-brand-fallback">CluxMedia</div>
-        <p class="footer-tagline">African by Identity. Global by Design.</p>
-        <p class="footer-copy">© 2025 CluxMedia Limited. All rights reserved.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Offices</h4>
-        <p>Lagos: 282, Borno Way, Ebute-Meta, Lagos, Nigeria</p>
-        <p>Charlotte: 215 N Pine St, Unit 3805, Charlotte, NC, USA</p>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <a href="mailto:business@cluxmedia.com">business@cluxmedia.com</a>
-        <a href="tel:+2348105161065">+234 (0)810 5161 065</a>
+        <p class="footer-tagline">Growth Infrastructure for African Founders</p>
+        <p class="footer-copy">Done-for-you AI marketing and sales systems for established founders ready to scale.</p>
         <div class="footer-socials">
-          <a href="#" class="social-link" aria-label="Instagram">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          </a>
           <a href="#" class="social-link" aria-label="LinkedIn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
-          <a href="#" class="social-link" aria-label="Twitter/X">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.259 5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          <a href="#" class="social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Twitter / X">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.873L1.257 2.25H8.08l4.268 5.64zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           </a>
         </div>
       </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#founder-letter">About Akolawole</a>
+        <a href="#framework">How We Work</a>
+        <a href="#social-proof">Client Results</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Get Started</h4>
+        <p>Apply for your free 45-minute CluxScale Audit — no obligation, no pitch. Just clarity on your growth infrastructure.</p>
+        <button class="btn-primary apply-btn" type="button" style="margin-top:1rem;width:100%">Apply for Free Audit</button>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 CluxMedia. All rights reserved.</span>
+      <span>Growth Infrastructure for African Founders</span>
     </div>
   </div>
 </footer>
 
-<!-- =============================================
-     MODAL APPLICATION FORM
-============================================= -->
-<div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-label="CluxScale Application">
+<!-- APPLICATION MODAL -->
+<div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-label="Apply for CluxScale Audit">
   <div class="modal-card" id="modal-card">
-    <button class="modal-close" id="modal-close" aria-label="Close form">×</button>
-    <div class="modal-title">CluxScale Application</div>
+    <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
 
-    <!-- Progress -->
+    <!-- Progress bar -->
     <div class="form-prog-track"><div class="form-prog-fill" id="form-prog"></div></div>
-    <div class="form-step-indicator" id="step-indicator">Step 1 of 10</div>
+    <div class="form-step-indicator" id="step-indicator">Step 1 of 11</div>
+
+    <!-- Title -->
+    <div class="modal-title">
+      <span class="modal-title-dot"></span>
+      Apply for Your Free CluxScale Audit
+    </div>
 
     <!-- Steps host -->
-    <div class="form-steps-host" id="steps-host">
+    <div class="form-steps-host" id="form-steps-host">
 
-      <!-- Step 1: Full name -->
-      <div class="fstep active" id="fs1">
-        <div class="fstep-q">What is your full name?</div>
+      <!-- Step 1: Name -->
+      <div class="fstep" id="fs1">
+        <div class="fstep-q">What's your full name?</div>
+        <div class="fstep-hint">Let's keep this human from the start.</div>
         <div class="finput-wrap">
-          <input type="text" class="finput" id="f-name" placeholder="First and last name" autocomplete="name" />
+          <input class="finput" id="f-name" type="text" placeholder="Your full name" autocomplete="name" />
         </div>
       </div>
 
-      <!-- Step 2: Business name + description -->
+      <!-- Step 2: Email -->
       <div class="fstep" id="fs2">
-        <div class="fstep-q">What is your business name and what does it do?</div>
+        <div class="fstep-q">What's your best email address?</div>
+        <div class="fstep-hint">We'll send your audit confirmation here.</div>
         <div class="finput-wrap">
-          <input type="text" class="finput" id="f-biz" placeholder="e.g. Marksmen Consult — real estate consulting firm" />
+          <input class="finput" id="f-email" type="email" placeholder="you@yourbusiness.com" autocomplete="email" />
         </div>
       </div>
 
-      <!-- Step 3: Business type -->
+      <!-- Step 3: Phone -->
       <div class="fstep" id="fs3">
-        <div class="fstep-q">Which best describes your business type?</div>
-        <div class="pills" id="pills-3">
-          <button class="pill" data-step="3" data-val="Professional Services (Consulting, Law, Finance)">Professional Services (Consulting, Law, Finance)</button>
-          <button class="pill" data-step="3" data-val="Real Estate / Property">Real Estate / Property</button>
-          <button class="pill" data-step="3" data-val="Health, Wellness &amp; Medical">Health, Wellness &amp; Medical</button>
-          <button class="pill" data-step="3" data-val="E-commerce / Products">E-commerce / Products</button>
-          <button class="pill" data-step="3" data-val="Technology / SaaS">Technology / SaaS</button>
-          <button class="pill" data-step="3" data-val="Coaching, Training &amp; Education">Coaching, Training &amp; Education</button>
-          <button class="pill" data-step="3" data-val="Construction &amp; Engineering">Construction &amp; Engineering</button>
-          <button class="pill" data-step="3" data-val="Other">Other</button>
-        </div>
-      </div>
-
-      <!-- Step 3b: Conditional — Other business description -->
-      <div class="fstep" id="fs3b">
-        <div class="fstep-q">Briefly describe your business.</div>
-        <div class="finput-wrap">
-          <input type="text" class="finput" id="f-other-biz" placeholder="What does your business do?" />
-        </div>
-      </div>
-
-      <!-- Step 4: Time in business -->
-      <div class="fstep" id="fs4">
-        <div class="fstep-q">How long have you been operating this business?</div>
-        <div class="pills" id="pills-4">
-          <button class="pill" data-step="4" data-val="Less than 1 year">Less than 1 year</button>
-          <button class="pill" data-step="4" data-val="1 – 3 years">1 – 3 years</button>
-          <button class="pill" data-step="4" data-val="3 – 5 years">3 – 5 years</button>
-          <button class="pill" data-step="4" data-val="5+ years">5+ years</button>
-        </div>
-      </div>
-
-      <!-- Step 5: Revenue GATE -->
-      <div class="fstep" id="fs5">
-        <div class="fstep-q">What is your current monthly revenue?</div>
-        <div class="fstep-hint">This determines which CluxScale system fits your business.</div>
-        <div class="pills" id="pills-5">
-          <button class="pill" data-step="5" data-val="pre-revenue" data-disq="true">Pre-revenue — I have not made sales yet</button>
-          <button class="pill" data-step="5" data-val="under-500k" data-disq="true">Under ₦500,000/month</button>
-          <button class="pill" data-step="5" data-val="500k-2m">₦500,000 – ₦2,000,000/month</button>
-          <button class="pill" data-step="5" data-val="2m-10m">₦2,000,000 – ₦10,000,000/month</button>
-          <button class="pill" data-step="5" data-val="above-10m">Above ₦10,000,000/month</button>
-          <button class="pill" data-step="5" data-val="prefer-not-to-say">Prefer not to say</button>
-        </div>
-      </div>
-
-      <!-- Step 6: Investment readiness GATE -->
-      <div class="fstep" id="fs6">
-        <div class="fstep-q">Are you prepared to make this investment?</div>
-        <div class="fstep-hint">CluxMedia engagements are premium, done-for-you services requiring a minimum 3-month commitment. Monthly retainers start from ₦500,000 depending on your selected pillar.</div>
-        <div class="pills" id="pills-6">
-          <button class="pill" data-step="6" data-val="yes-ready">Yes — I understand and I am ready to invest</button>
-          <button class="pill" data-step="6" data-val="need-more-info">I need to know more before deciding</button>
-          <button class="pill" data-step="6" data-val="no-budget" data-disq="true">No — this is outside my budget right now</button>
-        </div>
-      </div>
-
-      <!-- Step 7: Growth challenge -->
-      <div class="fstep" id="fs7">
-        <div class="fstep-q">What is your biggest growth challenge right now?</div>
-        <div class="pills" id="pills-7">
-          <button class="pill" data-step="7" data-val="Leads go cold — no follow-up system">Leads go cold — no follow-up system</button>
-          <button class="pill" data-step="7" data-val="I am invisible — no content or personal brand presence">I am invisible — no content or personal brand presence</button>
-          <button class="pill" data-step="7" data-val="I have no pipeline visibility or CRM">I have no pipeline visibility or CRM</button>
-          <button class="pill" data-step="7" data-val="My sales process is entirely manual">My sales process is entirely manual</button>
-          <button class="pill" data-step="7" data-val="All of the above">All of the above</button>
-        </div>
-      </div>
-
-      <!-- Step 8: CluxScale option -->
-      <div class="fstep" id="fs8">
-        <div class="fstep-q">Which CluxScale option are you most interested in?</div>
-        <div class="pills" id="pills-8">
-          <button class="pill" data-step="8" data-val="Full CluxScale — Both Authority + Revenue Engines">Full CluxScale — Both Authority + Revenue Engines</button>
-          <button class="pill" data-step="8" data-val="Revenue Engine Only — Sales systems and automation">Revenue Engine Only — Sales systems and automation</button>
-          <button class="pill" data-step="8" data-val="Authority Engine Only — Content and personal brand">Authority Engine Only — Content and personal brand</button>
-          <button class="pill" data-step="8" data-val="I need guidance on which fits me">I need guidance on which fits me</button>
-        </div>
-      </div>
-
-      <!-- Step 9: WhatsApp -->
-      <div class="fstep" id="fs9">
-        <div class="fstep-q">What is the best WhatsApp number to reach you?</div>
+        <div class="fstep-q">Your WhatsApp number?</div>
+        <div class="fstep-hint">We'll send your booking link via WhatsApp.</div>
         <div class="phone-row">
-          <select class="country-sel" id="f-code">
+          <select class="country-sel" id="f-country">
             <option value="+234">🇳🇬 +234</option>
-            <option value="+1">🇺🇸 +1</option>
-            <option value="+44">🇬🇧 +44</option>
-            <option value="+27">🇿🇦 +27</option>
             <option value="+233">🇬🇭 +233</option>
             <option value="+254">🇰🇪 +254</option>
-            <option value="+225">🇨🇮 +225</option>
-            <option value="+213">🇩🇿 +213</option>
-            <option value="+20">🇪🇬 +20</option>
+            <option value="+27">🇿🇦 +27</option>
+            <option value="+251">🇪🇹 +251</option>
+            <option value="+1">🇺🇸 +1</option>
+            <option value="+44">🇬🇧 +44</option>
           </select>
-          <input type="tel" class="finput" id="f-phone" placeholder="0810 5161 065" autocomplete="tel" style="flex:1;" />
+          <input class="finput" id="f-phone" type="tel" placeholder="08012345678" autocomplete="tel" style="flex:1" />
         </div>
       </div>
 
-      <!-- Step 10: Email -->
-      <div class="fstep" id="fs10">
-        <div class="fstep-q">And your email address?</div>
+      <!-- Step 3b: Business Type (Other) — injected dynamically -->
+
+      <!-- Step 4: Business Type -->
+      <div class="fstep" id="fs4">
+        <div class="fstep-q">What type of business do you run?</div>
+        <div class="fstep-hint">Select the one that best describes your primary revenue source.</div>
+        <div class="pills" id="pills-biztype">
+          <button class="pill" data-val="Consulting / Coaching">Consulting / Coaching</button>
+          <button class="pill" data-val="Agency / Service Business">Agency / Service Business</button>
+          <button class="pill" data-val="Real Estate / Property">Real Estate / Property</button>
+          <button class="pill" data-val="Healthcare / Medical">Healthcare / Medical</button>
+          <button class="pill" data-val="Financial Services">Financial Services</button>
+          <button class="pill" data-val="E-commerce / Product">E-commerce / Product</button>
+          <button class="pill" data-val="Other">Other (please specify)</button>
+        </div>
+      </div>
+
+      <!-- Step 3b: Other Business Type (injected if "Other" selected) -->
+      <div class="fstep" id="fs3b" style="display:none">
+        <div class="fstep-q">Tell us about your business.</div>
+        <div class="fstep-hint">Briefly describe what you do and who you serve.</div>
         <div class="finput-wrap">
-          <input type="email" class="finput" id="f-email" placeholder="you@example.com" autocomplete="email" />
+          <input class="finput" id="f-bizother" type="text" placeholder="e.g., I run a logistics company serving SMEs in Lagos" />
         </div>
       </div>
 
-      <!-- Step 11: Consent -->
+      <!-- Step 5: Revenue -->
+      <div class="fstep" id="fs5">
+        <div class="fstep-q">What's your current monthly revenue range?</div>
+        <div class="fstep-hint">Be honest — this helps us understand what's possible for your business.</div>
+        <div class="pills" id="pills-revenue">
+          <button class="pill" data-val="Pre-revenue" data-disqualify="true">Pre-revenue</button>
+          <button class="pill" data-val="Under ₦500K/month" data-disqualify="true">Under ₦500K/month</button>
+          <button class="pill" data-val="₦500K – ₦1.5M/month">₦500K – ₦1.5M/month</button>
+          <button class="pill" data-val="₦1.5M – ₦5M/month">₦1.5M – ₦5M/month</button>
+          <button class="pill" data-val="₦5M – ₦15M/month">₦5M – ₦15M/month</button>
+          <button class="pill" data-val="₦15M+/month">₦15M+/month</button>
+        </div>
+        <!-- Disqualification (revenue) -->
+        <div class="form-disqualified" id="disq-revenue">
+          <div class="disq-icon">🙏</div>
+          <div class="disq-title">We appreciate your honesty</div>
+          <div class="disq-body">CluxMedia is built for founders already generating consistent revenue who are ready to scale. Our infrastructure works best when there's an existing offer, client base, and monthly cash flow to invest in growth systems.<br><br>We'd love to connect when your revenue reaches ₦500K/month. Follow us on LinkedIn for free content in the meantime.</div>
+          <button class="btn-outline modal-close-btn" type="button">Close</button>
+        </div>
+      </div>
+
+      <!-- Step 6: Investment Readiness -->
+      <div class="fstep" id="fs6">
+        <div class="fstep-q">Are you prepared to invest in professional growth infrastructure?</div>
+        <div class="fstep-hint">Our engagements start at a meaningful monthly investment. We want to be transparent before going further.</div>
+        <div class="pills" id="pills-invest">
+          <button class="pill" data-val="Yes — I understand quality infrastructure requires investment">Yes — I understand this is an investment</button>
+          <button class="pill" data-val="I need to understand ROI first">I need to understand the ROI first</button>
+          <button class="pill" data-val="No — outside my budget" data-disqualify="true">No — this is outside my budget</button>
+        </div>
+        <!-- Disqualification (budget) -->
+        <div class="form-disqualified" id="disq-invest">
+          <div class="disq-icon">🙏</div>
+          <div class="disq-title">No problem at all</div>
+          <div class="disq-body">Growth infrastructure is a real investment, and it's not the right time for everyone. We only work with founders who are in a position to invest properly — that's how we protect both sides and ensure real results.<br><br>We publish free content on LinkedIn and YouTube. Come back when the timing is right — we'd be glad to talk then.</div>
+          <button class="btn-outline modal-close-btn" type="button">Close</button>
+        </div>
+      </div>
+
+      <!-- Step 7: Biggest Challenge -->
+      <div class="fstep" id="fs7">
+        <div class="fstep-q">What's your single biggest growth challenge right now?</div>
+        <div class="fstep-hint">Pick the one that's costing you the most money or time.</div>
+        <div class="pills" id="pills-challenge">
+          <button class="pill" data-val="Not enough qualified leads">Not enough qualified leads</button>
+          <button class="pill" data-val="Leads go cold before they convert">Leads go cold before they convert</button>
+          <button class="pill" data-val="I'm the bottleneck in every sale">I'm the bottleneck in every sale</button>
+          <button class="pill" data-val="No authority or online presence">No authority or online presence</button>
+          <button class="pill" data-val="Revenue is stuck / plateaued">Revenue is stuck / plateaued</button>
+          <button class="pill" data-val="No clear system or process">No clear system or process</button>
+        </div>
+      </div>
+
+      <!-- Step 8: Current Situation -->
+      <div class="fstep" id="fs8">
+        <div class="fstep-q">Which best describes your current marketing situation?</div>
+        <div class="fstep-hint">Be candid — this shapes what we recommend.</div>
+        <div class="pills" id="pills-situation">
+          <button class="pill" data-val="Mostly referrals, no real system">Mostly referrals, no real system</button>
+          <button class="pill" data-val="Posting on social but no leads">Posting on social but no real leads</button>
+          <button class="pill" data-val="Running ads with mixed results">Running ads with mixed results</button>
+          <button class="pill" data-val="Have some systems but nothing cohesive">Have some systems but nothing cohesive</button>
+          <button class="pill" data-val="Recently switched from another agency">Recently switched from another agency</button>
+        </div>
+      </div>
+
+      <!-- Step 9: Goal -->
+      <div class="fstep" id="fs9">
+        <div class="fstep-q">What does success look like for you in the next 6 months?</div>
+        <div class="fstep-hint">Tell us your specific target — be as concrete as possible.</div>
+        <div class="finput-wrap">
+          <textarea class="finput" id="f-goal" rows="4" placeholder="e.g., I want to go from ₦1.5M to ₦5M per month, reduce time spent on sales, and have a content engine that generates inbound leads consistently..." style="resize:vertical;min-height:110px"></textarea>
+        </div>
+      </div>
+
+      <!-- Step 10: How They Heard -->
+      <div class="fstep" id="fs10">
+        <div class="fstep-q">How did you hear about CluxMedia?</div>
+        <div class="fstep-hint">This helps us understand what's working.</div>
+        <div class="pills" id="pills-source">
+          <button class="pill" data-val="LinkedIn">LinkedIn</button>
+          <button class="pill" data-val="Referral from a friend or client">Referral</button>
+          <button class="pill" data-val="Google Search">Google Search</button>
+          <button class="pill" data-val="Instagram">Instagram</button>
+          <button class="pill" data-val="YouTube">YouTube</button>
+          <button class="pill" data-val="Twitter / X">Twitter / X</button>
+          <button class="pill" data-val="WhatsApp Group">WhatsApp Group</button>
+          <button class="pill" data-val="Other">Other</button>
+        </div>
+      </div>
+
+      <!-- Step 11: Consent + Submit -->
       <div class="fstep" id="fs11">
-        <div class="fstep-q">One last thing — we take your privacy seriously.</div>
-        <div class="fstep-hint">Please confirm the following before submitting.</div>
+        <div class="fstep-q">Almost there — review and confirm your application.</div>
+        <div class="fstep-hint">Your free CluxScale Audit will be scheduled within 48 hours of submitting.</div>
         <div class="consent-list">
           <label class="consent-item">
-            <input type="checkbox" id="consent-1" />
-            <span>I confirm that the information I have provided is accurate.</span>
+            <input type="checkbox" id="consent-contact" />
+            <span>I agree to be contacted by the CluxMedia team via WhatsApp and email to schedule my audit call.</span>
           </label>
           <label class="consent-item">
-            <input type="checkbox" id="consent-2" />
-            <span>I give CluxMedia permission to contact me via WhatsApp and email regarding my application and follow-up.</span>
+            <input type="checkbox" id="consent-truth" />
+            <span>I confirm the information I've provided is accurate and I'm genuinely ready to invest in growing my business.</span>
           </label>
         </div>
       </div>
 
-    </div>
-    <!-- /steps-host -->
+    </div><!-- /form-steps-host -->
 
-    <!-- Disqualification state -->
-    <div class="form-disqualified" id="form-disq">
-      <div class="disq-title" id="disq-title"></div>
-      <p class="disq-body" id="disq-body"></p>
-      <button class="btn-outline" id="disq-close-btn" type="button">Close</button>
+    <!-- Nav buttons -->
+    <div class="fnav">
+      <button class="fbtn-back" id="fbtn-back" type="button">← Back</button>
+      <button class="fbtn-next" id="fbtn-next" type="button">
+        <span class="btn-label">Continue →</span>
+        <span class="spinner"></span>
+      </button>
     </div>
 
     <!-- Success state -->
     <div class="form-success" id="form-success">
       <div class="success-check">
-        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6,18 14,26 30,10"/>
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <polyline points="6,17 13,24 26,9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" />
         </svg>
       </div>
-      <h3 class="success-h" id="success-h">Application Received.</h3>
-      <p class="success-p">Thank you for applying to work with CluxMedia. We review every application personally and will be in touch via WhatsApp and email within 24 hours. If this is a strong fit, we will schedule your free 45-minute CluxScale Audit — a diagnostic session to map exactly what your business needs.</p>
+      <div class="success-h">Application Received!</div>
+      <p class="success-p">Thank you for applying for your CluxScale Audit. A member of our team will reach out via WhatsApp within 24–48 business hours to schedule your session.</p>
       <div class="success-btns">
-        <a href="https://instagram.com/cluxmedia" target="_blank" rel="noopener noreferrer" class="btn-outline">Follow on Instagram</a>
-        <a href="https://linkedin.com/company/cluxmedia" target="_blank" rel="noopener noreferrer" class="btn-primary">Connect on LinkedIn</a>
+        <button class="btn-primary modal-close-btn" type="button">Done</button>
       </div>
-    </div>
-
-    <!-- Form navigation -->
-    <div class="fnav" id="fnav">
-      <button class="fbtn-back" id="fbtn-back" type="button">← Back</button>
-      <button class="fbtn-next" id="fbtn-next" type="button" disabled>
-        <span class="btn-text">Next →</span>
-        <span class="spinner"></span>
-      </button>
     </div>
 
   </div>
 </div>
 
 <script>
-  /* ============================================
-     NAV SCROLL
-  ============================================ */
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 80);
-  }, { passive: true });
+(function(){
+  'use strict';
 
-  /* ============================================
-     HAMBURGER
-  ============================================ */
-  const hamburger  = document.getElementById('hamburger');
-  const mobileNav  = document.getElementById('mobile-nav');
-  function closeMobileMenu() {
-    hamburger.classList.remove('open');
-    mobileNav.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
+  /* ── Navbar scroll ── */
+  var nav = document.getElementById('navbar');
+  function onScroll(){
+    if(window.scrollY > 60){ nav.classList.add('scrolled'); }
+    else { nav.classList.remove('scrolled'); }
   }
-  hamburger.addEventListener('click', () => {
-    const isOpen = hamburger.classList.toggle('open');
-    mobileNav.classList.toggle('open', isOpen);
-    hamburger.setAttribute('aria-expanded', isOpen);
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  /* ── Hamburger ── */
+  var ham = document.getElementById('hamburger');
+  var mobileNav = document.getElementById('mobile-nav');
+  if(ham && mobileNav){
+    ham.addEventListener('click', function(){
+      var open = mobileNav.classList.toggle('open');
+      ham.classList.toggle('open', open);
+      ham.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    mobileNav.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        mobileNav.classList.remove('open');
+        ham.classList.remove('open');
+        ham.setAttribute('aria-expanded','false');
+      });
+    });
+  }
+
+  /* ── Scroll reveal ── */
+  var revealObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+    });
+  },{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ revealObs.observe(el); });
+
+  /* ── Stats counter ── */
+  var counters = document.querySelectorAll('.counter');
+  var counted = false;
+  var countObs = new IntersectionObserver(function(entries){
+    if(entries[0].isIntersecting && !counted){
+      counted = true;
+      counters.forEach(function(el){
+        var target = parseInt(el.dataset.target, 10);
+        var start = 0;
+        var duration = 1600;
+        var step = target / (duration / 16);
+        var timer = setInterval(function(){
+          start += step;
+          if(start >= target){ start = target; clearInterval(timer); }
+          el.textContent = Math.round(start);
+        }, 16);
+      });
+    }
+  },{threshold:0.5});
+  if(counters.length){ countObs.observe(counters[0].closest('.hero-stats') || document.body); }
+
+  /* ── FAQ accordion ── */
+  document.querySelectorAll('.faq-q').forEach(function(q){
+    q.addEventListener('click', function(){
+      var item = q.closest('.faq-item');
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i){ i.classList.remove('open'); i.querySelector('.faq-q').setAttribute('aria-expanded','false'); });
+      if(!wasOpen){ item.classList.add('open'); q.setAttribute('aria-expanded','true'); }
+    });
+    q.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); q.click(); }
+    });
   });
-  document.getElementById('mm-framework').addEventListener('click', closeMobileMenu);
-  document.getElementById('mm-results').addEventListener('click', closeMobileMenu);
 
-  /* ============================================
-     SCROLL REVEAL
-  ============================================ */
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  /* ── Modal ── */
+  var overlay = document.getElementById('modal-overlay');
+  var closeBtn = document.getElementById('modal-close');
 
-  /* ============================================
-     STATS COUNTER
-  ============================================ */
-  let countersFired = false;
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !countersFired) {
-        countersFired = true;
-        document.querySelectorAll('.counter').forEach(el => {
-          const target = parseInt(el.dataset.target, 10);
-          const suffix = el.dataset.suffix || '';
-          const dur    = 1500;
-          const steps  = 60;
-          const inc    = target / steps;
-          let cur = 0, frame = 0;
-          const tick = () => {
-            frame++;
-            cur = Math.min(Math.round(inc * frame), target);
-            el.textContent = cur + suffix;
-            if (cur < target) requestAnimationFrame(tick);
-          };
-          requestAnimationFrame(tick);
-        });
-        counterObserver.disconnect();
-      }
-    });
-  }, { threshold: 0.5 });
-  const statsEl = document.querySelector('.hero-stats');
-  if (statsEl) counterObserver.observe(statsEl);
-
-  /* ============================================
-     MODAL
-  ============================================ */
-  const overlay   = document.getElementById('modal-overlay');
-  const modalCard = document.getElementById('modal-card');
-  const modalClose = document.getElementById('modal-close');
-
-  function openModal() {
+  function openModal(){
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
+    resetForm();
   }
-  function closeModal() {
+  function closeModal(){
     overlay.classList.remove('open');
     document.body.style.overflow = '';
   }
 
-  document.querySelectorAll('.apply-btn').forEach(btn => btn.addEventListener('click', openModal));
-  modalClose.addEventListener('click', closeModal);
-  document.getElementById('disq-close-btn').addEventListener('click', closeModal);
-
-  overlay.addEventListener('click', e => {
-    if (e.target === overlay) closeModal();
+  document.querySelectorAll('.apply-btn').forEach(function(b){
+    b.addEventListener('click', openModal);
   });
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+  if(closeBtn) closeBtn.addEventListener('click', closeModal);
+  document.querySelectorAll('.modal-close-btn').forEach(function(b){
+    b.addEventListener('click', closeModal);
+  });
+  overlay.addEventListener('click', function(e){
+    if(e.target === overlay) closeModal();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
   });
 
-  /* ============================================
-     MULTI-STEP FORM
-  ============================================ */
-  (function () {
-    /* Step definitions: id, type, optional flags */
-    const BASE_STEPS = ['fs1','fs2','fs3','fs4','fs5','fs6','fs7','fs8','fs9','fs10','fs11'];
-    // fs3b inserted after fs3 when "Other" selected
-    let steps = [...BASE_STEPS];
-    let current = 0; // index into steps[]
+  /* ── Multi-step form ── */
+  var BASE_STEPS = ['fs1','fs2','fs3','fs4','fs5','fs6','fs7','fs8','fs9','fs10','fs11'];
+  var steps = BASE_STEPS.slice();
+  var current = 0;
+  var answers = {};
+  var progFill = document.getElementById('form-prog');
+  var stepInd = document.getElementById('step-indicator');
+  var nextBtn = document.getElementById('fbtn-next');
+  var backBtn = document.getElementById('fbtn-back');
+  var successEl = document.getElementById('form-success');
+  var stepsHost = document.getElementById('form-steps-host');
+  var fnav = document.querySelector('.fnav');
+  var titleEl = document.querySelector('.modal-title');
+  var progTrack = document.querySelector('.form-prog-track');
 
-    const ans = {
-      name: '', biz: '', bizType: '', otherBiz: '',
-      tenure: '', revenue: '', invest: '',
-      challenge: '', option: '', phone: '', email: '',
-      c1: false, c2: false
+  function resetForm(){
+    steps = BASE_STEPS.slice();
+    current = 0;
+    answers = {};
+    // Reset pills
+    document.querySelectorAll('.pill.selected').forEach(function(p){ p.classList.remove('selected'); });
+    // Reset inputs
+    ['f-name','f-email','f-phone','f-bizother','f-goal'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el) el.value = '';
+    });
+    // Reset checkboxes
+    ['consent-contact','consent-truth'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el) el.checked = false;
+    });
+    // Hide disqualification blocks
+    ['disq-revenue','disq-invest'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el) el.classList.remove('show');
+    });
+    // Re-hide fs3b
+    var fs3b = document.getElementById('fs3b');
+    if(fs3b) fs3b.style.display = 'none';
+    // Hide success
+    if(successEl) successEl.classList.remove('show');
+    // Show form ui
+    if(stepsHost) stepsHost.style.display = '';
+    if(fnav) fnav.style.display = '';
+    if(titleEl) titleEl.style.display = '';
+    if(progTrack) progTrack.style.display = '';
+    if(stepInd) stepInd.style.display = '';
+    renderStep(0, false);
+  }
+
+  function renderStep(idx, isBack){
+    steps.forEach(function(sid){
+      var el = document.getElementById(sid);
+      if(el){ el.classList.remove('active','back'); el.style.display = 'none'; }
+    });
+    var stepEl = document.getElementById(steps[idx]);
+    if(!stepEl) return;
+    stepEl.style.display = 'block';
+    stepEl.classList.add('active');
+    if(isBack) stepEl.classList.add('back');
+
+    // Progress
+    var pct = Math.round(((idx) / steps.length) * 100);
+    if(progFill) progFill.style.width = Math.max(8, pct) + '%';
+    if(stepInd) stepInd.textContent = 'Step ' + (idx+1) + ' of ' + steps.length;
+
+    // Back button
+    if(backBtn){ backBtn.classList.toggle('show', idx > 0); }
+
+    // Next button label
+    updateNextBtn(idx);
+  }
+
+  function updateNextBtn(idx){
+    if(!nextBtn) return;
+    var label = nextBtn.querySelector('.btn-label');
+    if(idx === steps.length - 1){
+      if(label) label.textContent = 'Submit Application';
+    } else {
+      if(label) label.textContent = 'Continue →';
+    }
+    nextBtn.disabled = !canAdvance(idx);
+  }
+
+  function canAdvance(idx){
+    var sid = steps[idx];
+    if(sid === 'fs1') return (document.getElementById('f-name')||{value:''}).value.trim().length > 1;
+    if(sid === 'fs2'){
+      var v = (document.getElementById('f-email')||{value:''}).value.trim();
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    }
+    if(sid === 'fs3') return (document.getElementById('f-phone')||{value:''}).value.trim().length > 5;
+    if(sid === 'fs3b') return (document.getElementById('f-bizother')||{value:''}).value.trim().length > 2;
+    if(sid === 'fs4'){ var s = document.querySelector('#pills-biztype .pill.selected'); return !!s && !s.dataset.disqualify; }
+    if(sid === 'fs5'){ var s2 = document.querySelector('#pills-revenue .pill.selected'); return !!s2 && !s2.dataset.disqualify; }
+    if(sid === 'fs6'){ var s3 = document.querySelector('#pills-invest .pill.selected'); return !!s3 && !s3.dataset.disqualify; }
+    if(sid === 'fs7') return !!document.querySelector('#pills-challenge .pill.selected');
+    if(sid === 'fs8') return !!document.querySelector('#pills-situation .pill.selected');
+    if(sid === 'fs9') return (document.getElementById('f-goal')||{value:''}).value.trim().length > 10;
+    if(sid === 'fs10') return !!document.querySelector('#pills-source .pill.selected');
+    if(sid === 'fs11'){
+      var c1 = document.getElementById('consent-contact');
+      var c2 = document.getElementById('consent-truth');
+      return c1 && c2 && c1.checked && c2.checked;
+    }
+    return true;
+  }
+
+  // Live input listeners
+  ['f-name','f-email','f-phone','f-bizother','f-goal'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.addEventListener('input', function(){ updateNextBtn(current); });
+  });
+  ['consent-contact','consent-truth'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.addEventListener('change', function(){ updateNextBtn(current); });
+  });
+
+  // Pill click handlers
+  document.querySelectorAll('.pills').forEach(function(group){
+    group.addEventListener('click', function(e){
+      var pill = e.target.closest('.pill');
+      if(!pill) return;
+
+      // Deselect siblings
+      group.querySelectorAll('.pill').forEach(function(p){ p.classList.remove('selected'); });
+      pill.classList.add('selected');
+      answers[steps[current]] = pill.dataset.val;
+
+      // Disqualification logic
+      if(pill.dataset.disqualify){
+        var disqId = null;
+        if(steps[current] === 'fs5') disqId = 'disq-revenue';
+        if(steps[current] === 'fs6') disqId = 'disq-invest';
+        if(disqId){
+          var disqEl = document.getElementById(disqId);
+          if(disqEl){ disqEl.classList.add('show'); }
+          nextBtn.disabled = true;
+          if(backBtn) backBtn.classList.add('show');
+          return;
+        }
+      } else {
+        // Hide any disq block for this step
+        ['disq-revenue','disq-invest'].forEach(function(id){
+          var el = document.getElementById(id);
+          if(el) el.classList.remove('show');
+        });
+      }
+
+      // Business type "Other" → inject fs3b
+      if(steps[current] === 'fs4'){
+        var hasFsb = steps.indexOf('fs3b') > -1;
+        if(pill.dataset.val === 'Other'){
+          if(!hasFsb) steps.splice(current + 1, 0, 'fs3b');
+        } else {
+          if(hasFsb) steps.splice(steps.indexOf('fs3b'), 1);
+        }
+      }
+
+      updateNextBtn(current);
+
+      // Auto-advance for pill steps
+      var autoIds = ['fs4','fs5','fs6','fs7','fs8','fs10'];
+      if(autoIds.indexOf(steps[current]) > -1 && !pill.dataset.disqualify){
+        setTimeout(function(){ if(canAdvance(current)) advanceStep(); }, 300);
+      }
+    });
+  });
+
+  function advanceStep(){
+    if(current >= steps.length - 1){
+      submitForm();
+      return;
+    }
+    current++;
+    renderStep(current, false);
+  }
+
+  function goBack(){
+    if(current <= 0) return;
+    // Hide any disq block
+    ['disq-revenue','disq-invest'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el) el.classList.remove('show');
+    });
+    current--;
+    renderStep(current, true);
+  }
+
+  if(nextBtn) nextBtn.addEventListener('click', function(){
+    if(canAdvance(current)) advanceStep();
+  });
+  if(backBtn) backBtn.addEventListener('click', goBack);
+
+  function submitForm(){
+    nextBtn.classList.add('loading');
+    nextBtn.disabled = true;
+    // Collect final data
+    var payload = {
+      name: (document.getElementById('f-name')||{}).value,
+      email: (document.getElementById('f-email')||{}).value,
+      phone: ((document.getElementById('f-country')||{}).value||'') + ((document.getElementById('f-phone')||{}).value||''),
+      goal: (document.getElementById('f-goal')||{}).value,
+      answers: answers
     };
+    console.log('CluxMedia application:', payload);
+    // Simulate async submit
+    setTimeout(function(){
+      nextBtn.classList.remove('loading');
+      // Hide form UI
+      if(stepsHost) stepsHost.style.display = 'none';
+      if(fnav) fnav.style.display = 'none';
+      if(titleEl) titleEl.style.display = 'none';
+      if(progTrack) progTrack.style.display = 'none';
+      if(stepInd) stepInd.style.display = 'none';
+      if(successEl) successEl.classList.add('show');
+    }, 1200);
+  }
 
-    const progFill     = document.getElementById('form-prog');
-    const stepInd      = document.getElementById('step-indicator');
-    const btnBack      = document.getElementById('fbtn-back');
-    const btnNext      = document.getElementById('fbtn-next');
-    const fnav         = document.getElementById('fnav');
-    const stepsHost    = document.getElementById('steps-host');
-    const disqEl       = document.getElementById('form-disq');
-    const successEl    = document.getElementById('form-success');
-    const successH     = document.getElementById('success-h');
-    const disqTitle    = document.getElementById('disq-title');
-    const disqBody     = document.getElementById('disq-body');
+  // Init
+  resetForm();
 
-    function getFirstName() {
-      const parts = (ans.name || '').trim().split(' ');
-      return parts[0] || 'there';
-    }
-
-    function totalSteps() { return steps.length; }
-
-    function updateProgress() {
-      const n   = current + 1;
-      const tot = totalSteps();
-      const pct = Math.round((n / tot) * 100);
-      progFill.style.width   = pct + '%';
-      stepInd.textContent    = `Step ${n} of ${tot}`;
-      btnBack.classList.toggle('show', current > 0);
-      syncNextBtn();
-    }
-
-    function isStepValid(stepId) {
-      switch (stepId) {
-        case 'fs1':  return ans.name.trim().length > 1;
-        case 'fs2':  return ans.biz.trim().length > 2;
-        case 'fs3':  return ans.bizType !== '';
-        case 'fs3b': return ans.otherBiz.trim().length > 2;
-        case 'fs4':  return ans.tenure !== '';
-        case 'fs5':  return ans.revenue !== '';
-        case 'fs6':  return ans.invest !== '';
-        case 'fs7':  return ans.challenge !== '';
-        case 'fs8':  return ans.option !== '';
-        case 'fs9':  return ans.phone.trim().length >= 6;
-        case 'fs10': return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(ans.email.trim());
-        case 'fs11': return ans.c1 && ans.c2;
-        default:     return false;
-      }
-    }
-
-    function syncNextBtn() {
-      const id   = steps[current];
-      const last = current === steps.length - 1;
-      const valid = isStepValid(id);
-      btnNext.disabled = !valid;
-      btnNext.querySelector('.btn-text').textContent = last ? 'Submit Application' : 'Next →';
-    }
-
-    function showStep(idx, goingBack) {
-      const oldId = steps[current];
-      const newId = steps[idx];
-      const oldEl = document.getElementById(oldId);
-      const newEl = document.getElementById(newId);
-      if (oldEl) { oldEl.classList.remove('active', 'back'); }
-      if (newEl) {
-        newEl.classList.remove('active', 'back');
-        void newEl.offsetWidth;
-        newEl.classList.add('active');
-        if (goingBack) newEl.classList.add('back');
-      }
-      current = idx;
-      updateProgress();
-    }
-
-    /* Check disqualification for current step selection */
-    function checkDisqualify(stepId, val) {
-      if (stepId === 'fs5' && (val === 'pre-revenue' || val === 'under-500k')) {
-        showDisqualify(
-          `Thank you for applying, ${getFirstName()}.`,
-          `CluxMedia is built for founders with an established, revenue-generating business. At this stage, our systems may not be the right fit — and we would rather be honest with you than take your money before you are ready.<br><br>We recommend focusing on validating your offer and reaching consistent monthly revenue first. When you get there, we would love to work with you.`
-        );
-        return true;
-      }
-      if (stepId === 'fs6' && val === 'no-budget') {
-        showDisqualify(
-          `Understood, ${getFirstName()} — and we respect that.`,
-          `We want every engagement to be a confident decision, not a stretch. When the timing and budget are right, we will be here. Feel free to follow us on Instagram and LinkedIn in the meantime — we share useful content regularly.`
-        );
-        return true;
-      }
-      return false;
-    }
-
-    function showDisqualify(title, body) {
-      stepsHost.style.display = 'none';
-      fnav.style.display      = 'none';
-      progFill.closest('.form-prog-track').style.display = 'none';
-      stepInd.style.display   = 'none';
-      disqTitle.textContent   = title;
-      disqBody.innerHTML      = body;
-      disqEl.classList.add('show');
-    }
-
-    /* Next button */
-    btnNext.addEventListener('click', () => {
-      const id = steps[current];
-      if (!isStepValid(id)) return;
-
-      /* If last step — submit */
-      if (current === steps.length - 1) {
-        submitForm();
-        return;
-      }
-
-      /* Insert fs3b if Other selected */
-      if (id === 'fs3' && ans.bizType === 'Other') {
-        if (!steps.includes('fs3b')) {
-          steps.splice(current + 1, 0, 'fs3b');
-        }
-      } else if (id === 'fs3' && steps.includes('fs3b')) {
-        steps = steps.filter(s => s !== 'fs3b');
-      }
-
-      showStep(current + 1, false);
-    });
-
-    /* Back button */
-    btnBack.addEventListener('click', () => {
-      if (current > 0) showStep(current - 1, true);
-    });
-
-    /* Pill selection */
-    document.querySelectorAll('.pill').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const stepId  = 'fs' + btn.dataset.step;
-        const val     = btn.dataset.val;
-        const isDisq  = btn.dataset.disq === 'true';
-
-        /* Deselect others in group */
-        btn.closest('.pills').querySelectorAll('.pill').forEach(p => p.classList.remove('selected'));
-        btn.classList.add('selected');
-
-        /* Store answer */
-        switch (stepId) {
-          case 'fs3':  ans.bizType   = val; break;
-          case 'fs4':  ans.tenure    = val; break;
-          case 'fs5':  ans.revenue   = val; break;
-          case 'fs6':  ans.invest    = val; break;
-          case 'fs7':  ans.challenge = val; break;
-          case 'fs8':  ans.option    = val; break;
-        }
-
-        syncNextBtn();
-
-        /* Auto-advance for non-disqualifying, non-gated choices */
-        const isGate = (stepId === 'fs5' || stepId === 'fs6');
-        if (!isDisq && !isGate) {
-          setTimeout(() => { if (!btnNext.disabled) btnNext.click(); }, 280);
-        } else if (isGate && isDisq) {
-          /* Don't auto-advance — let user read the button state */
-        } else if (isGate && !isDisq) {
-          /* Let user press Next so they read the label */
-          syncNextBtn();
-        }
-      });
-    });
-
-    /* Text input live validation */
-    [['f-name','name'], ['f-biz','biz'], ['f-other-biz','otherBiz'], ['f-phone','phone'], ['f-email','email']].forEach(([id, key]) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      el.addEventListener('input', () => {
-        ans[key] = el.value;
-        syncNextBtn();
-      });
-    });
-
-    /* Consent checkboxes */
-    document.getElementById('consent-1').addEventListener('change', e => { ans.c1 = e.target.checked; syncNextBtn(); });
-    document.getElementById('consent-2').addEventListener('change', e => { ans.c2 = e.target.checked; syncNextBtn(); });
-
-    /* Next: handle disqualification AFTER answer is locked for gate steps */
-    btnNext.addEventListener('click', () => {}, { capture: true }); // placeholder
-    /* Override: intercept gate steps before advancing */
-    const origNextClick = btnNext.onclick;
-    document.getElementById('fbtn-next').addEventListener('click', function handler() {
-      const id  = steps[current];
-      const val = (id === 'fs5') ? ans.revenue : (id === 'fs6') ? ans.invest : null;
-      if (val && checkDisqualify(id, val)) {
-        /* Remove the handler from firing again */
-      }
-    }, { capture: true });
-
-    function submitForm() {
-      const btnText = btnNext.querySelector('.btn-text');
-      btnNext.classList.add('loading');
-      btnNext.disabled = true;
-
-      setTimeout(() => {
-        const firstName = getFirstName();
-        stepsHost.style.display = 'none';
-        fnav.style.display      = 'none';
-        progFill.closest('.form-prog-track').style.display = 'none';
-        stepInd.style.display   = 'none';
-        successH.textContent    = `Application Received, ${firstName}.`;
-        successEl.classList.add('show');
-        btnNext.classList.remove('loading');
-      }, 1500);
-    }
-
-    /* Init */
-    updateProgress();
-    syncNextBtn();
-  })();
+})();
 </script>
 </body>
 </html>
