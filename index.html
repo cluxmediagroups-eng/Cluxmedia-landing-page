@@ -3,2376 +3,1983 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CluxMedia — AI-Powered Sales Systems for African Founders</title>
-  <meta name="description" content="We install done-for-you marketing and sales automation for African founders who are tired of losing leads. Book your free strategy call." />
-  <meta property="og:title" content="CluxMedia — AI-Powered Sales Systems for African Founders" />
-  <meta property="og:description" content="We install done-for-you marketing and sales automation for African founders who are tired of losing leads. Book your free strategy call." />
+  <title>CluxMedia — AI-Powered Growth Infrastructure for African Founders</title>
+  <meta name="description" content="CluxMedia installs done-for-you content systems and sales automation for established African founders ready to scale. Apply for your free CluxScale Audit." />
+  <meta property="og:title" content="CluxMedia — Build the Growth Engine Your Business Deserves" />
+  <meta property="og:description" content="Authority content. Sales systems. AI automation. Done for you. For African founders who are ready to scale." />
   <meta property="og:image" content="https://cluxmedia.com/wp-content/uploads/2025/06/new-logo4.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
-
-    /* =========================================
-       CSS VARIABLES
-    ========================================= */
+    /* =============================================
+       VARIABLES
+    ============================================= */
     :root {
-      --navy:       #0A1628;
-      --navy-mid:   #112240;
-      --blue:       #1E90FF;
-      --blue-light: #4DABFF;
-      --white:      #FFFFFF;
-      --grey:       #8892A4;
-      --success:    #00C896;
+      --navy:        #0A1628;
+      --navy-mid:    #112240;
+      --navy-card:   #0D1E35;
+      --blue:        #1E90FF;
+      --blue-light:  #4DABFF;
+      --blue-glow:   rgba(30,144,255,0.15);
+      --white:       #FFFFFF;
+      --off-white:   #F0F4F8;
+      --grey:        #8892A4;
+      --success:     #00C896;
+      --red-signal:  #FF4D4D;
     }
 
-    /* =========================================
+    /* =============================================
        RESET & BASE
-    ========================================= */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    ============================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'DM Sans', sans-serif;
-      background-color: var(--navy);
-      color: var(--white);
-      line-height: 1.6;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--off-white);
+      background: var(--navy);
       overflow-x: hidden;
     }
+    img   { display: block; max-width: 100%; }
+    a     { text-decoration: none; color: inherit; }
+    button { cursor: pointer; font-family: 'DM Sans', sans-serif; }
 
-    h1, h2, h3, h4 {
+    /* =============================================
+       TYPOGRAPHY SCALE
+    ============================================= */
+    .hero-headline {
       font-family: 'Syne', sans-serif;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* =========================================
-       LAYOUT UTILITIES
-    ========================================= */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    .section-label {
-      display: inline-block;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--blue-light);
-      margin-bottom: 16px;
-    }
-
-    .section-heading {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: clamp(32px, 4vw, 52px);
+      font-size: clamp(2rem, 4.5vw, 3.8rem);
+      max-width: 820px;
       line-height: 1.15;
+      font-weight: 800;
       color: var(--white);
-      margin-bottom: 16px;
+    }
+    .section-headline {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.8rem);
+      max-width: 700px;
+      line-height: 1.2;
+      font-weight: 800;
+      color: var(--white);
+    }
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.75rem;
     }
 
-    .section-subheading {
-      font-size: 18px;
-      color: var(--grey);
-      max-width: 600px;
+    /* =============================================
+       LAYOUT UTILITIES
+    ============================================= */
+    .container        { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    .container-narrow { max-width: 900px;  margin: 0 auto; padding: 0 1.5rem; }
+    .section-pad      { padding: 5.5rem 0; }
+
+    /* =============================================
+       ANIMATION KEYFRAMES
+    ============================================= */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes drawCheck {
+      from { stroke-dashoffset: 100; }
+      to   { stroke-dashoffset: 0; }
+    }
+    @keyframes spinLoader {
+      to { transform: rotate(360deg); }
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(32px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes overlayIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
     }
 
-    /* =========================================
-       SCROLL REVEAL ANIMATION
-    ========================================= */
-    .fade-up {
+    /* Hero page-load stagger */
+    @keyframes heroUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-anim           { opacity: 0; animation: heroUp 0.75s ease forwards; }
+    .hero-anim.a1        { animation-delay: 0.10s; }
+    .hero-anim.a2        { animation-delay: 0.22s; }
+    .hero-anim.a3        { animation-delay: 0.34s; }
+    .hero-anim.a4        { animation-delay: 0.46s; }
+    .hero-anim.a5        { animation-delay: 0.60s; }
+
+    /* Scroll reveal */
+    .reveal {
       opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
     }
+    .reveal.visible        { opacity: 1; transform: translateY(0); }
+    .reveal.d1             { transition-delay: 0.10s; }
+    .reveal.d2             { transition-delay: 0.20s; }
+    .reveal.d3             { transition-delay: 0.30s; }
+    .reveal.d4             { transition-delay: 0.40s; }
+    .reveal.d5             { transition-delay: 0.50s; }
+    .reveal.d6             { transition-delay: 0.60s; }
 
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .fade-up.d1 { transition-delay: 0.10s; }
-    .fade-up.d2 { transition-delay: 0.20s; }
-    .fade-up.d3 { transition-delay: 0.30s; }
-    .fade-up.d4 { transition-delay: 0.40s; }
-    .fade-up.d5 { transition-delay: 0.50s; }
-    .fade-up.d6 { transition-delay: 0.60s; }
-
-    /* =========================================
-       BUTTON STYLES
-    ========================================= */
+    /* =============================================
+       BUTTONS
+    ============================================= */
     .btn-primary {
       display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
       background: var(--blue);
       color: var(--white);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
-      font-size: 16px;
-      padding: 14px 32px;
-      border-radius: 8px;
       border: none;
-      cursor: pointer;
-      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      padding: 0.75rem 1.75rem;
+      border-radius: 100px;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
     }
-
     .btn-primary:hover {
       background: var(--blue-light);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(30, 144, 255, 0.35);
+      box-shadow: 0 8px 24px rgba(30,144,255,0.4);
     }
-
-    .btn-secondary {
+    .btn-outline {
       display: inline-block;
-      background: transparent;
-      color: var(--white);
       font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
-      font-size: 16px;
-      padding: 14px 32px;
-      border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      cursor: pointer;
-      transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--blue);
+      font-weight: 600;
+      font-size: 0.95rem;
+      background: transparent;
       color: var(--blue-light);
+      border: 1.5px solid var(--blue);
+      padding: 0.75rem 1.75rem;
+      border-radius: 100px;
+      transition: background 0.2s, transform 0.2s;
+      white-space: nowrap;
+    }
+    .btn-outline:hover {
+      background: var(--blue-glow);
       transform: translateY(-2px);
     }
+    .btn-lg {
+      padding: 0.9rem 2.2rem;
+      font-size: 1rem;
+    }
 
-    /* =========================================
-       NAVIGATION
-    ========================================= */
+    /* =============================================
+       NAVBAR
+    ============================================= */
     #navbar {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      padding: 18px 0;
-      transition: background 0.35s ease, backdrop-filter 0.35s ease, box-shadow 0.35s ease;
+      top: 0; left: 0; right: 0;
+      z-index: 900;
+      padding: 1rem 0;
+      border-bottom: 1px solid transparent;
+      transition: background 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
     }
-
     #navbar.scrolled {
-      background: rgba(10, 22, 40, 0.88);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+      background: rgba(10,22,40,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      border-bottom-color: rgba(30,144,255,0.2);
     }
-
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 1rem;
     }
-
-    .nav-logo img {
-      height: 38px;
-      width: auto;
-    }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .nav-cta {
-      display: inline-block;
-      background: var(--blue);
+    .nav-logo { display: flex; align-items: center; flex-shrink: 0; }
+    .nav-logo img { height: 40px; width: auto; object-fit: contain; }
+    .nav-logo-fallback {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
       color: var(--white);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
-      font-size: 14px;
-      padding: 10px 22px;
-      border-radius: 6px;
-      transition: background 0.2s ease, transform 0.2s ease;
-      white-space: nowrap;
+      display: none;
     }
+    .nav-logo img.img-error { display: none; }
+    .nav-logo img.img-error ~ .nav-logo-fallback { display: block; }
 
-    .nav-cta:hover {
-      background: var(--blue-light);
-      transform: translateY(-1px);
-    }
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
 
     /* Hamburger */
     .hamburger {
       display: none;
       flex-direction: column;
-      justify-content: center;
       gap: 5px;
       background: none;
       border: none;
-      cursor: pointer;
       padding: 4px;
-      width: 32px;
-      height: 32px;
     }
-
     .hamburger span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--white);
-      border-radius: 2px;
+      display: block; width: 22px; height: 2px;
+      background: var(--white); border-radius: 2px;
       transition: transform 0.3s ease, opacity 0.3s ease;
       transform-origin: center;
     }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    .hamburger.open span:nth-child(1) {
-      transform: translateY(7px) rotate(45deg);
-    }
-    .hamburger.open span:nth-child(2) {
-      opacity: 0;
-      transform: scaleX(0);
-    }
-    .hamburger.open span:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
-    }
-
-    /* Mobile dropdown */
-    .mobile-menu {
+    .mobile-nav {
       display: none;
       flex-direction: column;
-      align-items: center;
-      gap: 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.07);
-      margin-top: 18px;
-      padding-top: 12px;
-      padding-bottom: 8px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      margin-top: 1rem;
+      padding: 0.75rem 0 0.5rem;
     }
-
-    .mobile-menu.open {
-      display: flex;
-    }
-
-    .mobile-menu a {
-      display: block;
-      width: 100%;
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a,
+    .mobile-nav button {
+      display: block; width: 100%;
+      padding: 0.75rem 0;
       text-align: center;
-      padding: 12px 0;
-      font-size: 16px;
-      font-weight: 500;
+      font-size: 0.95rem; font-weight: 500;
       color: var(--grey);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      transition: color 0.2s ease;
+      background: none; border: none;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: color 0.2s;
     }
+    .mobile-nav a:last-child,
+    .mobile-nav button:last-child { border-bottom: none; }
+    .mobile-nav a:hover,
+    .mobile-nav button:hover { color: var(--white); }
 
-    .mobile-menu a:last-child {
-      border-bottom: none;
-    }
-
-    .mobile-menu a:hover {
-      color: var(--white);
-    }
-
-    /* =========================================
-       RESPONSIVE — NAV
-    ========================================= */
     @media (max-width: 768px) {
-      .hamburger {
-        display: flex;
-      }
+      .hamburger { display: flex; }
     }
 
-    /* =========================================
-       HERO SECTION
-    ========================================= */
-
-    /* Page-load stagger for hero elements */
-    @keyframes heroUp {
-      from { opacity: 0; transform: translateY(28px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero-anim {
-      opacity: 0;
-      animation: heroUp 0.75s ease forwards;
-    }
-    .hero-anim.a1 { animation-delay: 0.10s; }
-    .hero-anim.a2 { animation-delay: 0.22s; }
-    .hero-anim.a3 { animation-delay: 0.34s; }
-    .hero-anim.a4 { animation-delay: 0.46s; }
-    .hero-anim.a5 { animation-delay: 0.58s; }
-    .hero-anim.a6 { animation-delay: 0.70s; }
-
-    /* Slow spin for outer geo ring */
-    @keyframes slowSpin {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
-    }
-    @keyframes slowSpinR {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(-360deg); }
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 0.8; r: 12; }
-      50%       { opacity: 1;   r: 16; }
-    }
-
+    /* =============================================
+       HERO
+    ============================================= */
     .hero {
-      position: relative;
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding: 130px 0 90px;
-      overflow: hidden;
-      background: var(--navy);
+      padding: 8rem 0 5rem;
+      background: linear-gradient(to bottom, rgba(10,22,40,0.88) 0%, rgba(10,22,40,0.75) 100%),
+                  url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600') center/cover no-repeat;
+      text-align: center;
     }
-
-    /* Dot-grid + circuit SVG backdrop */
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .hero-bg svg {
-      width: 100%;
-      height: 100%;
-      opacity: 0.13;
-    }
-
     .hero-inner {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: column;
       align-items: center;
+      gap: 1.5rem;
     }
-
-    /* Badge */
     .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: rgba(30, 144, 255, 0.10);
-      border: 1px solid rgba(30, 144, 255, 0.28);
+      gap: 0.5rem;
+      background: var(--blue-glow);
+      border: 1px solid var(--blue);
       color: var(--blue-light);
-      font-size: 13px;
-      font-weight: 500;
-      padding: 6px 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.45rem 1.1rem;
       border-radius: 100px;
-      margin-bottom: 28px;
+      font-family: 'DM Sans', sans-serif;
     }
-
-    /* Headline */
-    .hero h1 {
-      font-size: clamp(40px, 5.5vw, 72px);
-      font-weight: 800;
-      line-height: 1.07;
-      letter-spacing: -0.02em;
-      color: var(--white);
-      margin-bottom: 24px;
-    }
-
-    .hero h1 em {
-      font-style: normal;
-      color: var(--blue);
-    }
-
-    /* Sub-headline */
+    .hero .hero-headline { text-align: center; margin: 0 auto; }
     .hero-sub {
-      font-size: 18px;
-      line-height: 1.7;
+      max-width: 680px;
       color: var(--grey);
-      max-width: 520px;
-      margin-bottom: 40px;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      text-align: center;
     }
-
-    /* CTA row */
     .hero-ctas {
       display: flex;
-      align-items: center;
-      gap: 16px;
+      gap: 1rem;
       flex-wrap: wrap;
-      margin-bottom: 56px;
+      justify-content: center;
     }
-
-    /* Stats bar */
     .hero-stats {
-      display: flex;
-      align-items: flex-start;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-
-    .hero-stat {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .hero-stat-num {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 30px;
-      line-height: 1;
-      color: var(--white);
-    }
-
-    .hero-stat-num .prefix {
-      color: var(--blue-light);
-    }
-
-    .hero-stat-num .counter {
-      color: var(--white);
-    }
-
-    .hero-stat-num .suffix {
-      color: var(--blue);
-    }
-
-    .hero-stat-label {
-      font-size: 13px;
-      color: var(--grey);
-    }
-
-    .hero-divider {
-      width: 1px;
-      height: 40px;
-      background: rgba(255,255,255,0.1);
-      align-self: center;
-    }
-
-    /* Right-side geometric visual */
-    .hero-visual {
       display: flex;
       justify-content: center;
       align-items: center;
-    }
-
-    .hero-geo {
+      gap: 3rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
       width: 100%;
-      max-width: 460px;
-      aspect-ratio: 1;
+      max-width: 640px;
+    }
+    .hstat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .hstat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+    .hstat-label {
+      font-size: 0.8rem;
+      color: var(--grey);
+      white-space: nowrap;
+    }
+    .hstat-divider {
+      width: 1px;
+      height: 40px;
+      background: rgba(255,255,255,0.12);
+    }
+    @media (max-width: 600px) {
+      .hero-ctas { flex-direction: column; align-items: center; }
+      .hstat-divider { display: none; }
+      .hero-stats { gap: 1.5rem; }
     }
 
-    .geo-spin-cw  { transform-origin: 240px 240px; animation: slowSpin  28s linear infinite; }
-    .geo-spin-ccw { transform-origin: 240px 240px; animation: slowSpinR 20s linear infinite; }
-    .geo-core-pulse { animation: pulse 3s ease-in-out infinite; }
-
-    /* =========================================
-       RESPONSIVE — HERO
-    ========================================= */
-    @media (max-width: 1024px) {
-      .hero-inner {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
-      .hero-visual { display: none; }
-    }
-
-    @media (max-width: 768px) {
-      .hero {
-        padding: 110px 0 70px;
-        text-align: center;
-      }
-      .hero-badge {
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .hero-sub {
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .hero-ctas {
-        justify-content: center;
-      }
-      .hero-stats {
-        justify-content: center;
-      }
-      .hero-divider { display: none; }
-    }
-
-    /* =========================================
-       OPEN LETTER SECTION
-    ========================================= */
+    /* =============================================
+       FOUNDER LETTER
+    ============================================= */
     .letter-section {
       background: var(--navy-mid);
-      padding: 108px 0;
+      padding: 5.5rem 0;
     }
-
-    .letter-inner {
-      max-width: 780px;
-      margin: 0 auto;
+    .letter-grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 4rem;
+      align-items: start;
     }
-
-    .letter-card {
-      border-left: 3px solid var(--blue);
-      padding-left: 40px;
+    .letter-photo-wrap { position: relative; }
+    .letter-photo {
+      width: 100%;
+      max-width: 340px;
+      aspect-ratio: 3/4;
+      border-radius: 16px;
+      object-fit: cover;
+      box-shadow: 0 0 0 3px rgba(30,144,255,0.3), 0 20px 60px rgba(0,0,0,0.4);
+      background: var(--navy-card);
     }
-
-    .letter-body {
-      color: #b8c8d8;
-      font-size: 17px;
-      line-height: 1.85;
+    /* Placeholder if image missing */
+    .letter-photo-placeholder {
+      width: 100%;
+      max-width: 340px;
+      aspect-ratio: 3/4;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--navy-card) 0%, var(--navy-mid) 100%);
+      box-shadow: 0 0 0 3px rgba(30,144,255,0.3), 0 20px 60px rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-
-    .letter-body p + p {
-      margin-top: 22px;
+    .letter-name-badge {
+      background: var(--navy-card);
+      border-radius: 10px;
+      padding: 0.9rem 1.2rem;
+      margin-top: 1rem;
     }
-
-    .letter-sig {
-      margin-top: 36px;
+    .letter-name-badge h4 {
       font-family: 'Syne', sans-serif;
       font-weight: 700;
-      font-size: 15px;
-      color: var(--blue-light);
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 0.2rem;
+    }
+    .letter-name-badge p {
+      font-size: 0.85rem;
+      color: var(--grey);
+    }
+    .letter-content { display: flex; flex-direction: column; gap: 1.25rem; }
+    .letter-body {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--off-white);
+    }
+    .letter-body p + p { margin-top: 1.1rem; }
+    .letter-sig {
+      border-top: 1px solid rgba(30,144,255,0.3);
+      padding-top: 1.25rem;
+      margin-top: 0.5rem;
+    }
+    .letter-sig-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--white);
+    }
+    .letter-sig-title { font-size: 0.85rem; color: var(--grey); margin-top: 0.2rem; }
+    @media (max-width: 900px) {
+      .letter-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .letter-photo, .letter-photo-placeholder { max-width: 280px; margin: 0 auto; }
+      .letter-name-badge { max-width: 280px; margin: 1rem auto 0; }
     }
 
-    @media (max-width: 768px) {
-      .letter-card {
-        padding-left: 24px;
-      }
-      .letter-body {
-        font-size: 16px;
-      }
-    }
-
-    /* =========================================
+    /* =============================================
        PROBLEM SECTION
-    ========================================= */
+    ============================================= */
     .problem-section {
-      padding: 108px 0;
-      background: var(--navy);
+      padding: 5.5rem 0;
+      background: linear-gradient(to bottom, rgba(10,22,40,0.88) 0%, rgba(10,22,40,0.80) 100%),
+                  url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600') center/cover no-repeat;
     }
-
-    .problem-header {
-      margin-bottom: 56px;
-    }
-
+    .problem-header { text-align: center; margin-bottom: 3.5rem; }
+    .problem-header .section-headline { margin: 0 auto 1rem; }
+    .problem-sub { color: var(--grey); max-width: 580px; margin: 0 auto; }
     .problem-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin-bottom: 40px;
+      gap: 1.25rem;
+      margin-bottom: 3rem;
     }
-
-    .problem-card {
-      background: var(--navy-mid);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-left: 3px solid transparent;
+    .pcard {
+      background: var(--navy-card);
       border-radius: 12px;
-      padding: 28px 30px;
-      transition: border-left-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+      border-left: 3px solid var(--red-signal);
+      padding: 1.5rem;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
-
-    .problem-card:hover {
-      border-left-color: #e05555;
-      box-shadow: -4px 0 24px rgba(224, 85, 85, 0.12);
+    .pcard:hover {
+      box-shadow: -4px 0 16px var(--red-signal), 0 8px 32px rgba(0,0,0,0.3);
       transform: translateX(3px);
     }
-
-    .problem-card:last-child {
-      grid-column: 1 / -1;
-      max-width: calc(50% - 10px);
-    }
-
-    .problem-icon {
-      font-size: 18px;
-      margin-bottom: 12px;
-    }
-
-    .problem-card h3 {
+    .pcard-icon { font-size: 1.3rem; margin-bottom: 0.6rem; }
+    .pcard h3 {
       font-family: 'Syne', sans-serif;
       font-weight: 700;
-      font-size: 17px;
+      font-size: 1rem;
       color: var(--white);
-      margin-bottom: 10px;
+      margin-bottom: 0.5rem;
     }
-
-    .problem-card p {
-      font-size: 14px;
-      color: var(--grey);
-      line-height: 1.7;
-    }
-
-    .problem-closing {
-      background: rgba(30,144,255,0.05);
-      border: 1px solid rgba(30,144,255,0.15);
-      border-radius: 12px;
-      padding: 28px 36px;
+    .pcard p { font-size: 0.9rem; color: var(--grey); line-height: 1.65; }
+    .problem-close {
       text-align: center;
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 19px;
-      color: var(--white);
-      line-height: 1.5;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--off-white);
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    @media (max-width: 640px) {
+      .problem-grid { grid-template-columns: 1fr; }
     }
 
-    @media (max-width: 768px) {
-      .problem-grid {
-        grid-template-columns: 1fr;
-      }
-      .problem-card:last-child {
-        grid-column: auto;
-        max-width: 100%;
-      }
-      .problem-closing {
-        font-size: 17px;
-        padding: 24px;
-      }
-    }
-
-    /* =========================================
-       FRAMEWORK SECTION
-    ========================================= */
+    /* =============================================
+       FRAMEWORK
+    ============================================= */
     .framework-section {
-      background: var(--navy-mid);
-      padding: 108px 0;
+      padding: 5.5rem 0;
+      background: linear-gradient(to bottom, rgba(10,22,40,0.88) 0%, rgba(10,22,40,0.80) 100%),
+                  url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600') center/cover no-repeat;
     }
-
-    .framework-header {
-      margin-bottom: 64px;
-    }
-
+    .framework-header { text-align: center; margin-bottom: 3.5rem; }
+    .framework-header .section-headline { margin: 0 auto 1rem; }
+    .framework-sub { color: var(--grey); max-width: 600px; margin: 0 auto; }
     .pillars {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
     }
-
     .pillar {
-      background: var(--navy);
+      background: var(--navy-card);
+      border-radius: 14px;
       border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 16px;
-      padding: 40px 32px;
-      transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      padding: 2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
     .pillar:hover {
-      border-color: var(--blue);
       transform: translateY(-5px);
-      box-shadow: 0 20px 48px rgba(30,144,255,0.14);
+      box-shadow: 0 20px 48px rgba(30,144,255,0.15);
     }
-
-    .pillar-num {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 52px;
-      line-height: 1;
-      color: rgba(30,144,255,0.18);
-      margin-bottom: 12px;
-    }
-
-    .pillar-icon {
-      font-size: 32px;
-      margin-bottom: 18px;
-    }
-
+    .pillar.authority { border-top: 4px solid var(--blue); }
+    .pillar.revenue   { border-top: 4px solid var(--success); }
+    .pillar-icon { font-size: 2rem; margin-bottom: 1rem; }
     .pillar h3 {
       font-family: 'Syne', sans-serif;
       font-weight: 700;
-      font-size: 24px;
+      font-size: 1.3rem;
       color: var(--white);
-      margin-bottom: 16px;
+      margin-bottom: 0.4rem;
     }
-
-    .pillar p {
-      font-size: 15px;
-      color: var(--grey);
-      line-height: 1.75;
+    .pillar-tagline {
+      font-weight: 600;
+      color: var(--off-white);
+      margin-bottom: 0.9rem;
+      font-size: 0.95rem;
     }
-
-    @media (max-width: 900px) {
-      .pillars {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* =========================================
-       PHASES SECTION
-    ========================================= */
-    .phases-section {
-      background: var(--navy);
-      padding: 108px 0;
-    }
-
-    .phases-header {
-      text-align: center;
-      margin-bottom: 64px;
-    }
-
-    .phases-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-    }
-
-    .phase-card {
-      background: var(--navy-mid);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 16px;
-      padding: 40px;
-    }
-
-    .phase-tag {
-      display: inline-block;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 8px;
-    }
-
-    .phase-card h3 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 22px;
-      color: var(--white);
-      margin-bottom: 32px;
-    }
-
-    .phase-item {
+    .pillar-desc { font-size: 0.9rem; color: var(--grey); margin-bottom: 1.25rem; line-height: 1.7; }
+    .pillar-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .pillar-list li {
+      font-size: 0.88rem;
+      color: var(--off-white);
       display: flex;
       align-items: flex-start;
-      gap: 14px;
-      margin-bottom: 20px;
+      gap: 0.5rem;
     }
-
-    .phase-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .phase-check {
-      flex-shrink: 0;
-      width: 22px;
-      height: 22px;
-      background: rgba(30,144,255,0.12);
-      border: 1px solid rgba(30,144,255,0.3);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 1px;
-    }
-
-    .phase-check svg {
-      width: 11px;
-      height: 11px;
-      stroke: var(--blue);
-      stroke-width: 2.5;
-      fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .phase-item span {
-      font-size: 15px;
-      color: #b8c8d8;
-      line-height: 1.6;
-    }
-
-    @media (max-width: 768px) {
-      .phases-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* =========================================
-       WHAT'S INCLUDED SECTION
-    ========================================= */
-    .included-section {
-      background: var(--navy-mid);
-      padding: 108px 0;
-    }
-
-    .included-header {
+    .pillar-list li::before { content: '→'; color: var(--blue); flex-shrink: 0; }
+    .pillar.revenue .pillar-list li::before { color: var(--success); }
+    .framework-integration {
       text-align: center;
-      margin-bottom: 64px;
-    }
-
-    .included-header .section-subheading {
+      background: var(--blue-glow);
+      border: 1px solid rgba(30,144,255,0.2);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      max-width: 760px;
       margin: 0 auto;
+      font-size: 0.95rem;
+      color: var(--off-white);
+      line-height: 1.7;
+    }
+    .framework-integration span { color: var(--blue-light); font-weight: 600; }
+    @media (max-width: 768px) {
+      .pillars { grid-template-columns: 1fr; }
     }
 
+    /* =============================================
+       ENGAGEMENT OPTIONS
+    ============================================= */
+    .engagement-section { background: var(--navy); padding: 5.5rem 0; }
+    .engagement-header  { text-align: center; margin-bottom: 3.5rem; }
+    .engagement-header .section-headline { margin: 0 auto 1rem; }
+    .engagement-sub { color: var(--grey); max-width: 640px; margin: 0 auto; font-size: 0.95rem; line-height: 1.7; }
+    .engagement-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .ecard {
+      background: var(--navy-card);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .ecard:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
+    .ecard.recommended {
+      border-color: rgba(30,144,255,0.45);
+      box-shadow: 0 0 0 1px rgba(30,144,255,0.2), 0 8px 32px rgba(30,144,255,0.12);
+    }
+    .ecard.recommended:hover {
+      box-shadow: 0 0 0 1px rgba(30,144,255,0.5), 0 20px 48px rgba(30,144,255,0.2);
+    }
+    .ecard-badge {
+      display: inline-block;
+      background: var(--blue-glow);
+      border: 1px solid var(--blue);
+      color: var(--blue-light);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.25rem 0.7rem;
+      border-radius: 100px;
+      align-self: flex-start;
+    }
+    .ecard h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--white);
+    }
+    .ecard-desc { font-size: 0.88rem; color: var(--grey); line-height: 1.65; }
+    .ecard-list { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; flex: 1; }
+    .ecard-list li { font-size: 0.85rem; color: var(--off-white); display: flex; gap: 0.5rem; align-items: flex-start; }
+    .ecard-list li::before { content: '✓'; color: var(--success); flex-shrink: 0; font-weight: 600; }
+    .ecard .btn-outline { margin-top: auto; text-align: center; width: 100%; }
+    .engagement-note {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--grey);
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 1rem;
+      background: rgba(255,255,255,0.03);
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    @media (max-width: 900px)  { .engagement-grid { grid-template-columns: 1fr; max-width: 500px; margin-left: auto; margin-right: auto; } }
+
+    /* =============================================
+       WHAT'S INCLUDED
+    ============================================= */
+    .included-section {
+      padding: 5.5rem 0;
+      background: linear-gradient(to bottom, rgba(10,22,40,0.88) 0%, rgba(10,22,40,0.80) 100%),
+                  url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600') center/cover no-repeat;
+    }
+    .included-header { text-align: center; margin-bottom: 3.5rem; }
+    .included-header .section-headline { margin: 0 auto; }
     .included-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 1.25rem;
     }
-
-    .included-card {
-      background: var(--navy);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 14px;
-      padding: 32px 28px;
-      transition: border-color 0.3s ease, transform 0.3s ease;
+    .icard {
+      background: rgba(13,30,53,0.85);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color 0.3s, transform 0.3s;
     }
+    .icard:hover { border-color: rgba(30,144,255,0.4); transform: translateY(-3px); }
+    .icard-icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
+    .icard h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--white); margin-bottom: 0.5rem; }
+    .icard p { font-size: 0.85rem; color: var(--grey); line-height: 1.65; }
+    @media (max-width: 900px) { .included-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .included-grid { grid-template-columns: 1fr; } }
 
-    .included-card:hover {
-      border-color: rgba(30,144,255,0.4);
-      transform: translateY(-4px);
-    }
-
-    .included-icon {
-      font-size: 28px;
-      margin-bottom: 16px;
-    }
-
-    .included-card h3 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 17px;
-      color: var(--white);
-      margin-bottom: 10px;
-    }
-
-    .included-card p {
-      font-size: 14px;
-      color: var(--grey);
-      line-height: 1.7;
-    }
-
-    @media (max-width: 900px) {
-      .included-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .included-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* =========================================
-       TESTIMONIALS SECTION
-    ========================================= */
-    .testimonials-section {
-      background: var(--navy);
-      padding: 108px 0;
-    }
-
-    .testimonials-header {
-      text-align: center;
-      margin-bottom: 64px;
-    }
-
-    .testimonials-header .section-subheading {
-      margin: 12px auto 0;
-    }
-
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .tcard {
-      background: var(--navy-mid);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-top: 3px solid var(--blue);
-      border-radius: 14px;
-      padding: 36px 32px;
-    }
-
-    .tcard-quote {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 72px;
-      line-height: 0.65;
-      color: rgba(30,144,255,0.16);
-      margin-bottom: 20px;
-      user-select: none;
-    }
-
-    .tcard-text {
-      font-size: 16px;
-      color: #b8c8d8;
-      line-height: 1.8;
-      font-style: italic;
-      margin-bottom: 28px;
-    }
-
-    .tcard-author {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 13px;
-      color: var(--blue-light);
-    }
-
-    @media (max-width: 900px) {
-      .testimonials-grid {
-        grid-template-columns: 1fr;
-        max-width: 540px;
-        margin: 0 auto;
-      }
-    }
-
-    /* =========================================
-       WHO THIS IS FOR SECTION
-    ========================================= */
-    .fit-section {
-      background: var(--navy-mid);
-      padding: 108px 0;
-    }
-
-    .fit-header {
-      text-align: center;
-      margin-bottom: 64px;
-    }
-
-    .fit-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-    }
-
+    /* =============================================
+       WHO THIS IS FOR
+    ============================================= */
+    .fit-section { background: var(--navy); padding: 5.5rem 0; }
+    .fit-header { text-align: center; margin-bottom: 3.5rem; }
+    .fit-header .section-headline { margin: 0 auto; }
+    .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
     .fit-card {
-      background: var(--navy);
+      background: var(--navy-card);
       border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 16px;
-      padding: 40px;
+      border-radius: 14px;
+      padding: 2rem;
     }
-
     .fit-card-title {
       font-family: 'Syne', sans-serif;
       font-weight: 700;
-      font-size: 18px;
+      font-size: 1rem;
       color: var(--white);
-      margin-bottom: 28px;
+      margin-bottom: 1.25rem;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 0.5rem;
     }
+    .fit-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .fit-list li { font-size: 0.9rem; color: var(--grey); display: flex; gap: 0.6rem; align-items: flex-start; line-height: 1.55; }
+    .fit-list li .fi { flex-shrink: 0; font-size: 1rem; margin-top: 0.05rem; }
+    @media (max-width: 640px) { .fit-grid { grid-template-columns: 1fr; } }
 
-    .fit-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 18px;
+    /* =============================================
+       SOCIAL PROOF
+    ============================================= */
+    .proof-section { background: var(--navy-mid); padding: 5.5rem 0; }
+    .proof-header  { text-align: center; margin-bottom: 3rem; }
+    .proof-header .section-headline { margin: 0 auto; }
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2rem;
     }
-
-    .fit-item:last-child {
-      margin-bottom: 0;
+    .rcard {
+      background: var(--navy-card);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 1.4rem;
+      transition: border-color 0.3s, transform 0.3s;
     }
-
-    .fit-emoji {
-      flex-shrink: 0;
-      font-size: 16px;
-      margin-top: 1px;
-    }
-
-    .fit-item p {
-      font-size: 15px;
-      color: var(--grey);
-      line-height: 1.6;
-    }
-
-    @media (max-width: 768px) {
-      .fit-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* =========================================
-       APPLICATION FORM SECTION
-    ========================================= */
-    .apply-section {
-      background: var(--navy);
-      padding: 108px 0;
-    }
-
-    .apply-header {
+    .rcard:hover { border-color: rgba(30,144,255,0.3); transform: translateY(-3px); }
+    .rcard-client { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--white); margin-bottom: 0.25rem; }
+    .rcard-industry { font-size: 0.78rem; color: var(--blue-light); font-weight: 600; margin-bottom: 0.6rem; }
+    .rcard-result { font-size: 0.88rem; color: var(--success); font-weight: 600; }
+    .proof-note {
       text-align: center;
-      margin-bottom: 56px;
-    }
-
-    .apply-header .section-subheading {
-      margin: 12px auto 0;
-    }
-
-    .form-wrap {
-      max-width: 640px;
+      font-size: 0.85rem;
+      color: var(--grey);
+      max-width: 580px;
       margin: 0 auto;
+    }
+    @media (max-width: 900px) { .proof-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .proof-grid { grid-template-columns: 1fr; } }
+
+    /* =============================================
+       CTA BANNER
+    ============================================= */
+    .cta-banner {
+      padding: 6rem 0;
+      background: linear-gradient(to bottom, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.92) 100%),
+                  url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1600') center/cover no-repeat;
+      text-align: center;
+    }
+    .cta-banner .section-headline { margin: 0 auto 1.25rem; }
+    .cta-sub {
+      color: var(--grey);
+      max-width: 560px;
+      margin: 0 auto 2.25rem;
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(30,144,255,0.15);
+      padding: 4rem 0 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1.5fr 1.5fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-brand img { height: 36px; width: auto; margin-bottom: 1rem; }
+    .footer-brand-fallback {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--white);
+      margin-bottom: 1rem;
+      display: none;
+    }
+    .footer-tagline { font-size: 0.9rem; color: var(--grey); margin-bottom: 0.4rem; }
+    .footer-copy    { font-size: 0.8rem; color: var(--grey); opacity: 0.7; }
+    .footer-col h4 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .footer-col p, .footer-col a {
+      display: block;
+      font-size: 0.88rem;
+      color: var(--grey);
+      margin-bottom: 0.5rem;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--white); }
+    .footer-socials { display: flex; gap: 0.75rem; margin-top: 1.25rem; }
+    .social-link {
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem;
+      transition: background 0.2s;
+      color: var(--white);
+    }
+    .social-link:hover { background: var(--blue); }
+    @media (max-width: 768px) {
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    /* =============================================
+       MODAL OVERLAY
+    ============================================= */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(10,22,40,0.97);
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      overflow-y: auto;
+    }
+    .modal-overlay.open {
+      display: flex;
+      animation: overlayIn 0.25s ease;
+    }
+    .modal-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(30,144,255,0.2);
+      border-radius: 16px;
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 580px;
+      position: relative;
+      animation: modalIn 0.3s ease;
+      margin: auto;
+    }
+    .modal-close {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      background: none; border: none;
+      color: var(--grey);
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: color 0.2s;
+      padding: 0.25rem 0.5rem;
+    }
+    .modal-close:hover { color: var(--white); }
+    .modal-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--white);
+      margin-bottom: 1.5rem;
     }
 
     /* Progress bar */
-    .prog-wrap {
-      margin-bottom: 28px;
-    }
-
-    .prog-meta {
-      display: flex;
-      justify-content: space-between;
-      font-size: 13px;
-      color: var(--grey);
-      margin-bottom: 8px;
-    }
-
-    .prog-track {
+    .form-prog-track {
       height: 4px;
       background: rgba(255,255,255,0.08);
       border-radius: 4px;
       overflow: hidden;
+      margin-bottom: 0.5rem;
     }
-
-    .prog-fill {
+    .form-prog-fill {
       height: 100%;
       background: var(--blue);
       border-radius: 4px;
-      transition: width 0.45s cubic-bezier(0.4,0,0.2,1);
+      transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+      width: 10%;
+    }
+    .form-step-indicator {
+      font-size: 0.78rem;
+      color: var(--grey);
+      margin-bottom: 1.75rem;
     }
 
-    /* Form card */
-    .form-card {
-      background: var(--navy-mid);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px;
-      padding: 48px 48px 40px;
+    /* Steps container */
+    .form-steps-host {
+      overflow: hidden;
+      position: relative;
     }
-
-    /* Steps */
-    .steps-host {
-      min-height: 260px;
-    }
-
     .fstep {
       display: none;
     }
-
     .fstep.active {
       display: block;
-      animation: stepIn 0.38s cubic-bezier(0.4,0,0.2,1);
+      animation: stepSlideIn 0.32s cubic-bezier(0.4,0,0.2,1);
     }
-
-    .fstep.back-in {
-      animation: stepInBack 0.38s cubic-bezier(0.4,0,0.2,1);
+    .fstep.back {
+      animation: stepSlideBack 0.32s cubic-bezier(0.4,0,0.2,1);
     }
-
-    @keyframes stepIn {
-      from { opacity: 0; transform: translateX(32px); }
+    @keyframes stepSlideIn {
+      from { opacity: 0; transform: translateX(30px); }
       to   { opacity: 1; transform: translateX(0); }
     }
-    @keyframes stepInBack {
-      from { opacity: 0; transform: translateX(-32px); }
+    @keyframes stepSlideBack {
+      from { opacity: 0; transform: translateX(-30px); }
       to   { opacity: 1; transform: translateX(0); }
     }
-
     .fstep-q {
       font-family: 'Syne', sans-serif;
       font-weight: 700;
-      font-size: 22px;
+      font-size: 1.15rem;
       color: var(--white);
+      margin-bottom: 0.4rem;
       line-height: 1.35;
-      margin-bottom: 10px;
     }
-
     .fstep-hint {
-      font-size: 13px;
+      font-size: 0.82rem;
       color: var(--grey);
-      margin-bottom: 28px;
+      margin-bottom: 1.25rem;
     }
 
-    /* Text / email / tel inputs */
-    .finput-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    .finput-row.single {
-      grid-template-columns: 1fr;
-    }
-
+    /* Text inputs */
+    .finput-wrap { margin-top: 1rem; }
     .finput {
       width: 100%;
       background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.11);
+      border: 1px solid rgba(255,255,255,0.12);
       border-radius: 10px;
-      padding: 14px 18px;
+      padding: 0.85rem 1rem;
       font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
+      font-size: 0.95rem;
       color: var(--white);
       outline: none;
-      transition: border-color 0.2s ease, background 0.2s ease;
+      transition: border-color 0.2s;
     }
-
     .finput::placeholder { color: var(--grey); }
-
-    .finput:focus {
-      border-color: var(--blue);
-      background: rgba(30,144,255,0.05);
-    }
+    .finput:focus { border-color: var(--blue); background: rgba(30,144,255,0.06); }
 
     /* Phone row */
-    .phone-row {
-      display: flex;
-      gap: 12px;
-    }
-
+    .phone-row { display: flex; gap: 0.6rem; margin-top: 1rem; }
     .country-sel {
       flex-shrink: 0;
-      width: 134px;
+      width: 120px;
       background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.11);
+      border: 1px solid rgba(255,255,255,0.12);
       border-radius: 10px;
-      padding: 14px 10px;
+      padding: 0.85rem 0.6rem;
       font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
+      font-size: 0.88rem;
       color: var(--white);
       outline: none;
       cursor: pointer;
-      transition: border-color 0.2s ease;
       -webkit-appearance: none;
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238892A4' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 10px center;
-      padding-right: 28px;
     }
-
     .country-sel option { background: var(--navy-mid); }
     .country-sel:focus  { border-color: var(--blue); }
 
-    /* Choice pills */
-    .pills {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
+    /* Pills */
+    .pills { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1rem; }
     .pill {
       background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.10);
       border-radius: 10px;
-      padding: 13px 20px;
+      padding: 0.75rem 1rem;
       font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
+      font-size: 0.9rem;
       color: var(--grey);
       cursor: pointer;
       text-align: left;
-      width: 100%;
-      transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
     }
+    .pill:hover { border-color: rgba(77,171,255,0.4); color: var(--white); background: rgba(30,144,255,0.06); }
+    .pill.selected { border-color: var(--blue); background: rgba(30,144,255,0.14); color: var(--white); }
 
-    .pill:hover {
-      border-color: rgba(77,171,255,0.45);
-      color: var(--white);
-      background: rgba(30,144,255,0.06);
+    /* Consent checkboxes */
+    .consent-list { display: flex; flex-direction: column; gap: 0.85rem; margin-top: 1rem; }
+    .consent-item { display: flex; gap: 0.75rem; align-items: flex-start; cursor: pointer; }
+    .consent-item input[type="checkbox"] {
+      flex-shrink: 0;
+      width: 18px; height: 18px;
+      margin-top: 0.15rem;
+      accent-color: var(--blue);
+      cursor: pointer;
     }
+    .consent-item span { font-size: 0.85rem; color: var(--grey); line-height: 1.55; }
 
-    .pill.selected {
-      border-color: var(--blue);
-      background: rgba(30,144,255,0.14);
-      color: var(--white);
-    }
-
-    /* Nav row */
+    /* Form nav */
     .fnav {
       display: flex;
       align-items: center;
-      margin-top: 36px;
+      justify-content: space-between;
+      margin-top: 1.75rem;
+      gap: 1rem;
     }
-
     .fbtn-back {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: none;
-      border: none;
-      color: var(--grey);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
+      display: flex; align-items: center; gap: 0.4rem;
+      background: none; border: none;
+      color: var(--grey); font-size: 0.88rem; font-weight: 500;
       cursor: pointer;
-      padding: 0;
-      transition: color 0.2s ease;
+      transition: color 0.2s;
       visibility: hidden;
     }
-
+    .fbtn-back.show { visibility: visible; }
     .fbtn-back:hover { color: var(--white); }
-
-    .fbtn-back svg {
-      width: 15px;
-      height: 15px;
-      stroke: currentColor;
-      stroke-width: 2;
-      fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
     .fbtn-next {
       margin-left: auto;
       background: var(--blue);
       color: var(--white);
       font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
-      font-size: 15px;
-      padding: 13px 34px;
-      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 100px;
       border: none;
       cursor: pointer;
-      transition: background 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+      transition: background 0.2s, transform 0.2s, opacity 0.2s;
+      display: flex; align-items: center; gap: 0.5rem;
     }
+    .fbtn-next:disabled { opacity: 0.35; cursor: not-allowed; transform: none !important; }
+    .fbtn-next:not(:disabled):hover { background: var(--blue-light); transform: translateY(-2px); }
+    .fbtn-next .spinner {
+      display: none;
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: var(--white);
+      border-radius: 50%;
+      animation: spinLoader 0.7s linear infinite;
+    }
+    .fbtn-next.loading .spinner { display: block; }
+    .fbtn-next.loading .btn-text { display: none; }
 
-    .fbtn-next:disabled {
-      opacity: 0.35;
-      cursor: not-allowed;
-      transform: none !important;
-    }
-
-    .fbtn-next:not(:disabled):hover {
-      background: var(--blue-light);
-      transform: translateY(-2px);
-    }
+    /* Disqualification state */
+    .form-disqualified { display: none; text-align: center; padding: 1rem 0; }
+    .form-disqualified.show { display: block; }
+    .disq-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--white); margin-bottom: 1rem; }
+    .disq-body  { font-size: 0.9rem; color: var(--grey); line-height: 1.7; max-width: 420px; margin: 0 auto 1.5rem; }
 
     /* Success state */
-    .form-success {
-      display: none;
-      text-align: center;
-      padding: 32px 0 16px;
-    }
-
+    .form-success { display: none; text-align: center; padding: 1rem 0; }
     .form-success.show { display: block; }
-
-    .success-ring {
-      width: 76px;
-      height: 76px;
+    .success-check {
+      width: 72px; height: 72px;
       background: rgba(0,200,150,0.12);
       border: 1px solid rgba(0,200,150,0.3);
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 24px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem;
     }
-
-    .success-ring svg {
-      width: 36px;
-      height: 36px;
+    .success-check svg {
       stroke: var(--success);
-      stroke-width: 2.5;
-      fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+      stroke-dasharray: 100;
+      stroke-dashoffset: 100;
+      animation: drawCheck 0.6s ease 0.2s forwards;
     }
+    .success-h { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.3rem; color: var(--white); margin-bottom: 0.75rem; }
+    .success-p { font-size: 0.9rem; color: var(--grey); line-height: 1.7; max-width: 400px; margin: 0 auto 1.75rem; }
+    .success-btns { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
 
-    .success-h {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 26px;
-      color: var(--white);
-      margin-bottom: 14px;
-      line-height: 1.3;
+    @media (max-width: 600px) {
+      .modal-card { padding: 1.75rem 1.25rem; }
+      .fstep-q    { font-size: 1rem; }
     }
-
-    .success-p {
-      font-size: 16px;
-      color: var(--grey);
-      max-width: 420px;
-      margin: 0 auto 32px;
-      line-height: 1.7;
-    }
-
-    .success-link {
-      display: inline-block;
-      background: var(--success);
-      color: var(--navy);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
-      font-size: 15px;
-      padding: 13px 32px;
-      border-radius: 8px;
-      transition: opacity 0.2s ease;
-    }
-
-    .success-link:hover { opacity: 0.88; }
-
-    @media (max-width: 640px) {
-      .form-card {
-        padding: 32px 22px 28px;
-      }
-      .finput-row {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* =========================================
-       FOOTER
-    ========================================= */
-    footer {
-      background: var(--navy-mid);
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 72px 0 32px;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 40px;
-      padding-bottom: 56px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      margin-bottom: 32px;
-    }
-
-    .footer-brand img {
-      height: 34px;
-      width: auto;
-      margin-bottom: 16px;
-    }
-
-    .footer-tagline {
-      font-size: 14px;
-      color: var(--grey);
-      line-height: 1.65;
-      max-width: 220px;
-      margin-bottom: 22px;
-    }
-
-    .footer-socials {
-      display: flex;
-      gap: 10px;
-    }
-
-    .fsocial {
-      width: 36px;
-      height: 36px;
-      background: rgba(255,255,255,0.06);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s ease;
-    }
-
-    .fsocial:hover { background: var(--blue); }
-
-    .fsocial svg {
-      width: 15px;
-      height: 15px;
-      fill: var(--white);
-    }
-
-    .footer-col h4 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--white);
-      margin-bottom: 18px;
-    }
-
-    .footer-col p,
-    .footer-col a {
-      display: block;
-      font-size: 14px;
-      color: var(--grey);
-      margin-bottom: 10px;
-      transition: color 0.2s ease;
-    }
-
-    .footer-col a:hover { color: var(--white); }
-
-    .footer-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 13px;
-      color: var(--grey);
-    }
-
-    @media (max-width: 1024px) {
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-      .footer-bottom {
-        flex-direction: column;
-        gap: 6px;
-        text-align: center;
-      }
-    }
-
   </style>
 </head>
 <body>
 
-  <!-- =========================================
-       NAVIGATION
-  ========================================= -->
-  <nav id="navbar">
-    <div class="container">
-      <div class="nav-inner">
-
-        <a href="#" class="nav-logo">
-          <img
-            src="https://cluxmedia.com/wp-content/uploads/2025/06/new-logo4.png"
-            alt="CluxMedia"
-          />
-        </a>
-
-        <div class="nav-right">
-          <a href="#apply" class="nav-cta">Apply Now</a>
-          <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </div>
-
-      </div>
-
-      <!-- Mobile menu -->
-      <div class="mobile-menu" id="mobile-menu" role="navigation">
-        <a href="#system" id="mm-how">How It Works</a>
-        <a href="#apply" id="mm-apply">Apply Now</a>
+<!-- =============================================
+     NAVBAR
+============================================= -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="https://cluxmedia.com/wp-content/uploads/2025/06/new-logo4.png"
+             alt="CluxMedia" id="nav-logo-img"
+             onerror="this.classList.add('img-error')" />
+        <span class="nav-logo-fallback">CluxMedia</span>
+      </a>
+      <div class="nav-right">
+        <button class="btn-primary apply-btn" type="button">Apply Now</button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
-  </nav>
-
-  <!-- =========================================
-       HERO
-  ========================================= -->
-  <section class="hero" id="hero">
-
-    <!-- Animated circuit / dot-grid background -->
-    <div class="hero-bg" aria-hidden="true">
-      <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <pattern id="dotgrid" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse">
-            <circle cx="2" cy="2" r="1.4" fill="#1E90FF" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#dotgrid)" />
-        <g stroke="#1E90FF" stroke-width="1" fill="none">
-          <path d="M0 220 H380 V160 H760 V260 H1080 V120 H1440" opacity="0.7"/>
-          <path d="M0 520 H220 V460 H540 V570 H880 V510 H1440" opacity="0.5"/>
-          <path d="M0 760 H320 V700 H660 V800 H1000 V730 H1440" opacity="0.4"/>
-          <line x1="220"  y1="0"   x2="220"  y2="460"  opacity="0.5"/>
-          <line x1="540"  y1="0"   x2="540"  y2="570"  opacity="0.4"/>
-          <line x1="880"  y1="0"   x2="880"  y2="510"  opacity="0.4"/>
-          <line x1="1080" y1="0"   x2="1080" y2="120"  opacity="0.5"/>
-          <line x1="320"  y1="900" x2="320"  y2="700"  opacity="0.4"/>
-          <line x1="660"  y1="900" x2="660"  y2="800"  opacity="0.4"/>
-          <line x1="380"  y1="0"   x2="380"  y2="160"  opacity="0.5"/>
-          <line x1="760"  y1="0"   x2="760"  y2="260"  opacity="0.5"/>
-        </g>
-        <g fill="#1E90FF">
-          <circle cx="380"  cy="160" r="4" opacity="0.9"/>
-          <circle cx="760"  cy="160" r="4" opacity="0.9"/>
-          <circle cx="760"  cy="260" r="4" opacity="0.9"/>
-          <circle cx="1080" cy="120" r="4" opacity="0.9"/>
-          <circle cx="220"  cy="460" r="4" opacity="0.7"/>
-          <circle cx="540"  cy="460" r="4" opacity="0.7"/>
-          <circle cx="540"  cy="570" r="4" opacity="0.7"/>
-          <circle cx="880"  cy="510" r="4" opacity="0.7"/>
-          <circle cx="320"  cy="700" r="4" opacity="0.6"/>
-          <circle cx="660"  cy="700" r="4" opacity="0.6"/>
-          <circle cx="660"  cy="800" r="4" opacity="0.6"/>
-          <circle cx="1000" cy="730" r="4" opacity="0.6"/>
-        </g>
-      </svg>
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="#framework" id="mm-framework">How It Works</a>
+      <a href="#social-proof" id="mm-results">Results</a>
+      <button class="apply-btn" type="button">Apply Now</button>
     </div>
+  </div>
+</nav>
 
-    <div class="container">
-      <div class="hero-inner">
+<!-- =============================================
+     HERO
+============================================= -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-badge hero-anim a1">
+      <span>⚡</span> Built for Founders Who Are Already Winning — And Ready to Scale
+    </div>
+    <h1 class="hero-headline hero-anim a2">
+      Build a Growth Engine That Attracts the Right Leads and Converts Them — Without Building a Team.
+    </h1>
+    <p class="hero-sub hero-anim a3">
+      CluxMedia installs done-for-you content systems that build your authority and sales infrastructure that converts leads automatically. For African founders with a proven offer who are ready to scale predictably.
+    </p>
+    <div class="hero-ctas hero-anim a4">
+      <button class="btn-primary btn-lg apply-btn" type="button">Apply to Work With Us</button>
+      <a href="#framework" class="btn-outline btn-lg">See How It Works</a>
+    </div>
+    <div class="hero-stats hero-anim a5">
+      <div class="hstat">
+        <div class="hstat-num"><span class="counter" data-target="12" data-suffix="+">0+</span></div>
+        <div class="hstat-label">Brands Scaled</div>
+      </div>
+      <div class="hstat-divider"></div>
+      <div class="hstat">
+        <div class="hstat-num"><span class="counter" data-target="6" data-suffix="+">0+</span></div>
+        <div class="hstat-label">Years of Experience</div>
+      </div>
+      <div class="hstat-divider"></div>
+      <div class="hstat">
+        <div class="hstat-num"><span class="counter" data-target="3" data-suffix="">0</span></div>
+        <div class="hstat-label">Countries Served</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <!-- Left: copy -->
-        <div class="hero-copy">
-          <div class="hero-badge hero-anim a1">
-            <span>⚡</span> AI-Powered Sales Systems for African Founders
-          </div>
-
-          <h1 class="hero-anim a2">
-            Build a Sales Engine<br>That Works <em>While You Don't.</em>
-          </h1>
-
-          <p class="hero-sub hero-anim a3">
-            Most African founders generate leads but have no system to follow up, convert, or retain them. We install the full marketing and sales infrastructure — powered by AI — so your business grows even when you step away.
-          </p>
-
-          <div class="hero-ctas hero-anim a4">
-            <a href="#apply" class="btn-primary">Apply Now</a>
-            <a href="#system" class="btn-secondary">See How It Works</a>
-          </div>
-
-          <div class="hero-stats hero-anim a5">
-            <div class="hero-stat">
-              <div class="hero-stat-num">
-                <span class="counter" data-target="47" data-suffix="+">47+</span>
-              </div>
-              <div class="hero-stat-label">Founders Served</div>
-            </div>
-            <div class="hero-divider"></div>
-            <div class="hero-stat">
-              <div class="hero-stat-num">
-                <span class="prefix">₦</span><span class="counter" data-target="800" data-suffix="M+">800M+</span>
-              </div>
-              <div class="hero-stat-label">Revenue Influenced</div>
-            </div>
-            <div class="hero-divider"></div>
-            <div class="hero-stat">
-              <div class="hero-stat-num">
-                <span class="counter" data-target="3" data-suffix=" Wks">3 Wks</span>
-              </div>
-              <div class="hero-stat-label">Avg. Installation Time</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: abstract geometric SVG -->
-        <div class="hero-visual hero-anim a6" aria-hidden="true">
-          <svg class="hero-geo" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Outer dashed ring (spinning CW) -->
-            <circle class="geo-spin-cw" cx="240" cy="240" r="218"
-              stroke="#1E90FF" stroke-width="1"
-              stroke-dasharray="10 7" opacity="0.25"/>
-            <!-- Mid ring (spinning CCW) -->
-            <circle class="geo-spin-ccw" cx="240" cy="240" r="162"
-              stroke="#4DABFF" stroke-width="1"
-              stroke-dasharray="5 9" opacity="0.20"/>
-            <!-- Static inner ring -->
-            <circle cx="240" cy="240" r="100"
-              stroke="#1E90FF" stroke-width="1.5" opacity="0.35"/>
-            <!-- Core glow -->
-            <circle cx="240" cy="240" r="46"
-              fill="rgba(30,144,255,0.10)" stroke="#1E90FF" stroke-width="1.5" opacity="0.6"/>
-            <!-- Core dot (pulsing) -->
-            <circle class="geo-core-pulse" cx="240" cy="240" r="12"
-              fill="#1E90FF" opacity="0.85"/>
-            <!-- Axis spokes -->
-            <line x1="240" y1="22"  x2="240" y2="140" stroke="#1E90FF" stroke-width="1" opacity="0.45"/>
-            <line x1="240" y1="340" x2="240" y2="458" stroke="#1E90FF" stroke-width="1" opacity="0.45"/>
-            <line x1="22"  y1="240" x2="140" y2="240" stroke="#1E90FF" stroke-width="1" opacity="0.45"/>
-            <line x1="340" y1="240" x2="458" y2="240" stroke="#1E90FF" stroke-width="1" opacity="0.45"/>
-            <!-- Diagonal spokes -->
-            <line x1="86"  y1="86"  x2="168" y2="168" stroke="#4DABFF" stroke-width="1" opacity="0.28"/>
-            <line x1="394" y1="86"  x2="312" y2="168" stroke="#4DABFF" stroke-width="1" opacity="0.28"/>
-            <line x1="86"  y1="394" x2="168" y2="312" stroke="#4DABFF" stroke-width="1" opacity="0.28"/>
-            <line x1="394" y1="394" x2="312" y2="312" stroke="#4DABFF" stroke-width="1" opacity="0.28"/>
-            <!-- Cardinal satellite nodes -->
-            <circle cx="240" cy="78"  r="10" fill="rgba(30,144,255,0.15)" stroke="#1E90FF" stroke-width="1.5" opacity="0.8"/>
-            <circle cx="402" cy="240" r="10" fill="rgba(30,144,255,0.15)" stroke="#1E90FF" stroke-width="1.5" opacity="0.8"/>
-            <circle cx="240" cy="402" r="10" fill="rgba(30,144,255,0.15)" stroke="#1E90FF" stroke-width="1.5" opacity="0.8"/>
-            <circle cx="78"  cy="240" r="10" fill="rgba(30,144,255,0.15)" stroke="#1E90FF" stroke-width="1.5" opacity="0.8"/>
-            <!-- Corner nodes -->
-            <circle cx="102" cy="102" r="7" fill="rgba(77,171,255,0.15)" stroke="#4DABFF" stroke-width="1.5" opacity="0.7"/>
-            <circle cx="378" cy="102" r="7" fill="rgba(77,171,255,0.15)" stroke="#4DABFF" stroke-width="1.5" opacity="0.7"/>
-            <circle cx="102" cy="378" r="7" fill="rgba(77,171,255,0.15)" stroke="#4DABFF" stroke-width="1.5" opacity="0.7"/>
-            <circle cx="378" cy="378" r="7" fill="rgba(77,171,255,0.15)" stroke="#4DABFF" stroke-width="1.5" opacity="0.7"/>
-            <!-- Success-colour arcs -->
-            <path d="M240 22 A218 218 0 0 1 418 130" stroke="#00C896" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
-            <path d="M240 458 A218 218 0 0 1 62 350"  stroke="#00C896" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+<!-- =============================================
+     FOUNDER LETTER
+============================================= -->
+<section class="letter-section">
+  <div class="container">
+    <div class="letter-grid reveal">
+      <!-- Left: photo -->
+      <div class="letter-photo-wrap">
+        <img src="/mnt/user-data/uploads/Quadri.jpg"
+             alt="Akolawole Agboola — Founder &amp; CEO, CluxMedia"
+             class="letter-photo"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+        <div class="letter-photo-placeholder" style="display:none;">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="24" r="14" stroke="rgba(30,144,255,0.4)" stroke-width="2"/>
+            <path d="M8 56c0-13.3 10.7-24 24-24s24 10.7 24 24" stroke="rgba(30,144,255,0.4)" stroke-width="2"/>
           </svg>
         </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- =========================================
-       OPEN LETTER
-  ========================================= -->
-  <section class="letter-section">
-    <div class="container">
-      <div class="letter-inner">
-        <div class="fade-up">
-          <div class="section-label">An Open Letter from the Founders</div>
-          <h2 class="section-heading" style="max-width:660px; margin-bottom:48px;">
-            "To Every African Founder Tired of Hustling Without a System."
-          </h2>
+        <div class="letter-name-badge">
+          <h4>Akolawole Agboola</h4>
+          <p>Founder &amp; CEO, CluxMedia</p>
         </div>
-        <div class="letter-card fade-up d1">
-          <div class="letter-body">
-            <p>We've been in the trenches of African business for over three years. We ran a digital agency. We tried everything — social media management, branding, content, influencer campaigns, video production. We had the skills. We had the drive. What we didn't have was a focused system that solved one specific, painful problem for one specific type of client.</p>
-            <p>We watched founders around us — talented, hardworking people — lose deals not because their product was bad, but because their leads went cold on WhatsApp. Because nobody followed up. Because there was no pipeline, no structure, no visibility. The revenue was there. The system to capture it wasn't.</p>
-            <p>That's what we decided to fix. We combined two core skills — AI automation and AI video — and built a service that does one thing with excellence: installs a complete marketing and sales engine into your business. Lead capture, automated follow-up, CRM pipeline, revenue dashboard. Done for you. Running in three weeks.</p>
-            <p>We built CluxMedia to be the growth infrastructure partner we wish existed when we were starting out. If you're a founder who's generating interest but losing revenue to silence and chaos — this was built for you.</p>
-          </div>
-          <div class="letter-sig">— The CluxMedia Team, Lagos &amp; New York</div>
+      </div>
+      <!-- Right: letter -->
+      <div class="letter-content">
+        <span class="section-label">An Open Letter from the Founder</span>
+        <h2 class="section-headline">
+          "To Every Founder Who Has the Product, the Drive — But Not the System."
+        </h2>
+        <div class="letter-body">
+          <p>I did not start CluxMedia with a trust fund or a safety net. I started it with six years of hard-earned experience across digital marketing, brand strategy, AI automation, data analytics, and business development — and a conviction that African founders deserved better infrastructure than what the market was offering them.</p>
+          <p>I have built brands across three continents. I have designed and deployed marketing systems for construction firms, real estate companies, FMCG brands, health tech platforms, fashion labels, and creator economy startups — from Lagos to New York to the Middle East. I have sat across the table from founders who had exceptional products and zero system to take them to market. I have watched revenue disappear into unanswered WhatsApp messages and inconsistent follow-up. I have seen brands with real potential stay invisible because nobody was building their authority.</p>
+          <p>That pattern — talented founders, broken infrastructure — is what CluxMedia was built to fix.</p>
+          <p>What we do is not social media management. It is not running ads. It is not another agency promising you deliverables that do not move the needle. We design and install the full growth infrastructure your business needs to attract high-quality leads through content authority, and convert those leads through automated sales systems — without you needing to hire a team to operate it.</p>
+          <p>We have served twelve brands across Nigeria, the United States, and internationally. We have delivered 70–95% increases in leads, visibility, and sales for every client we have worked with. We bring to every engagement the same depth we built over years of hands-on execution — strategy, creativity, technology, and relentless attention to results.</p>
+          <p>If you have a proven offer and you are ready to scale it with the infrastructure it deserves — this was built for you.</p>
+        </div>
+        <div class="letter-sig">
+          <div class="letter-sig-name">Akolawole Agboola</div>
+          <div class="letter-sig-title">Founder &amp; CEO, CluxMedia Limited · Lagos · Charlotte</div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- =========================================
-       PROBLEM
-  ========================================= -->
-  <section class="problem-section">
-    <div class="container">
+<!-- =============================================
+     PROBLEM
+============================================= -->
+<section class="problem-section">
+  <div class="container">
+    <div class="problem-header reveal">
+      <span class="section-label">The Problem</span>
+      <h2 class="section-headline">"You're Generating Interest. But You're Losing Revenue."</h2>
+      <p class="problem-sub">Most established founders share the same silent growth blockers.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="pcard reveal d1">
+        <div class="pcard-icon">🔴</div>
+        <h3>Leads Fall Silent</h3>
+        <p>Prospects show interest then disappear into WhatsApp threads that never get followed up. You are losing deals you already earned.</p>
+      </div>
+      <div class="pcard reveal d2">
+        <div class="pcard-icon">🔴</div>
+        <h3>No Predictable Pipeline</h3>
+        <p>Growth feels like a guessing game. You do not know where your next client is coming from or which channel is actually working.</p>
+      </div>
+      <div class="pcard reveal d3">
+        <div class="pcard-icon">🔴</div>
+        <h3>You Are the Bottleneck</h3>
+        <p>Every follow-up, every proposal, every check-in runs through you. The business cannot grow faster than your personal bandwidth.</p>
+      </div>
+      <div class="pcard reveal d4">
+        <div class="pcard-icon">🔴</div>
+        <h3>You Are Invisible to the Right Audience</h3>
+        <p>You have expertise worth paying for. But without a consistent content presence, high-value clients cannot find you or trust you fast enough.</p>
+      </div>
+      <div class="pcard reveal d5" style="grid-column: 1/-1; max-width: calc(50% - 0.625rem);">
+        <div class="pcard-icon">🔴</div>
+        <h3>No Visibility Into What Is Working</h3>
+        <p>No dashboard. No pipeline view. No weekly performance data. You are making growth decisions without the numbers to back them.</p>
+      </div>
+    </div>
+    <p class="problem-close reveal">"The problem is not your product or your hustle. It is that your business does not yet have a growth engine."</p>
+  </div>
+</section>
 
-      <div class="problem-header fade-up">
-        <div class="section-label">The Problem</div>
-        <h2 class="section-heading">"Sound Familiar?"</h2>
-        <p class="section-subheading">Most founders share the same silent revenue leaks.</p>
+<!-- =============================================
+     FRAMEWORK
+============================================= -->
+<section class="framework-section" id="framework">
+  <div class="container">
+    <div class="framework-header reveal">
+      <span class="section-label">Our Framework</span>
+      <h2 class="section-headline">The CluxScale Framework</h2>
+      <p class="framework-sub">Two interconnected systems. One complete growth engine. Installed and managed for you.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar authority reveal d1">
+        <div class="pillar-icon">📡</div>
+        <h3>The Authority Engine</h3>
+        <p class="pillar-tagline">Content That Attracts.</p>
+        <p class="pillar-desc">We build and run your personal brand content system — AI video, platform distribution, and authority positioning — so the right founders, clients, and partners come to you organically.</p>
+        <ul class="pillar-list">
+          <li>Personal brand positioning strategy</li>
+          <li>AI-assisted video content produced monthly (short-form and long-form)</li>
+          <li>Platform-specific content calendar and scheduling</li>
+          <li>Distribution across Instagram, LinkedIn, and YouTube</li>
+          <li>AI-written captions, hooks, and CTAs aligned to your offer</li>
+          <li>Monthly audience growth and engagement report</li>
+        </ul>
+      </div>
+      <div class="pillar revenue reveal d2">
+        <div class="pillar-icon">⚙️</div>
+        <h3>The Revenue Engine</h3>
+        <p class="pillar-tagline">Systems That Convert.</p>
+        <p class="pillar-desc">We install the full sales infrastructure — lead capture, CRM, automated follow-up sequences, and a live revenue dashboard — so every lead your content attracts gets captured and nurtured automatically.</p>
+        <ul class="pillar-list">
+          <li>Lead capture system across WhatsApp, Instagram, website, and ads</li>
+          <li>CRM pipeline configured and fully operational</li>
+          <li>WhatsApp Business API setup and activation</li>
+          <li>30-day AI-powered follow-up sequences (WhatsApp + email)</li>
+          <li>AI video touchpoints embedded in follow-up flows</li>
+          <li>Revenue dashboard with weekly WhatsApp report every Monday</li>
+          <li>Hot lead alerts — instant notification when high-intent leads need attention</li>
+        </ul>
+      </div>
+    </div>
+    <div class="framework-integration reveal">
+      <span>The Authority Engine</span> drives leads into the <span>Revenue Engine</span>. Together they form a self-reinforcing growth loop — content attracts, systems convert, revenue compounds.
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     ENGAGEMENT OPTIONS
+============================================= -->
+<section class="engagement-section">
+  <div class="container">
+    <div class="engagement-header reveal">
+      <span class="section-label">How We Work Together</span>
+      <h2 class="section-headline">Choose Your Growth Path</h2>
+      <p class="engagement-sub">Every engagement is a minimum 3-month commitment. Pricing is discussed on your strategy call — this is a premium, done-for-you service for founders who are ready to invest in infrastructure that pays for itself.</p>
+    </div>
+    <div class="engagement-grid">
+      <div class="ecard reveal d1">
+        <h3>Revenue Engine Only</h3>
+        <p class="ecard-desc">For founders with an existing audience who need the sales infrastructure.</p>
+        <ul class="ecard-list">
+          <li>CRM setup and pipeline configuration</li>
+          <li>WhatsApp Business API and lead capture</li>
+          <li>30-day automated follow-up sequences</li>
+          <li>Revenue dashboard and weekly reports</li>
+          <li>Monthly optimization call</li>
+        </ul>
+        <button class="btn-outline apply-btn" type="button">Apply for This</button>
+      </div>
+      <div class="ecard recommended reveal d2">
+        <div class="ecard-badge">⭐ Recommended</div>
+        <h3>Full CluxScale</h3>
+        <p class="ecard-desc">The complete growth infrastructure. Both pillars running together.</p>
+        <ul class="ecard-list">
+          <li>Everything in Revenue Engine</li>
+          <li>Everything in Authority Engine</li>
+          <li>AI video touchpoints bridging content into sales sequences</li>
+          <li>Bi-weekly strategy calls</li>
+          <li>Quarterly growth audit</li>
+          <li>Priority 24-hour response SLA</li>
+        </ul>
+        <button class="btn-primary apply-btn" type="button">Apply for This</button>
+      </div>
+      <div class="ecard reveal d3">
+        <h3>Authority Engine Only</h3>
+        <p class="ecard-desc">For founders with a working sales process who need consistent content and visibility.</p>
+        <ul class="ecard-list">
+          <li>Personal brand strategy</li>
+          <li>Monthly AI video content production</li>
+          <li>Multi-platform distribution and scheduling</li>
+          <li>Monthly performance report</li>
+        </ul>
+        <button class="btn-outline apply-btn" type="button">Apply for This</button>
+      </div>
+    </div>
+    <p class="engagement-note reveal">⚠️ We work with a limited number of founders at a time to protect delivery quality. If applications are open, you will see it on your strategy call.</p>
+  </div>
+</section>
+
+<!-- =============================================
+     WHAT'S INCLUDED
+============================================= -->
+<section class="included-section">
+  <div class="container">
+    <div class="included-header reveal">
+      <span class="section-label">What You Get</span>
+      <h2 class="section-headline">Everything Installed. Nothing Left to Figure Out.</h2>
+    </div>
+    <div class="included-grid">
+      <div class="icard reveal d1">
+        <div class="icard-icon">⚙️</div>
+        <h3>Lead Capture Infrastructure</h3>
+        <p>Connected to your website, WhatsApp, Instagram, and ad channels. Every lead lands in one place — automatically.</p>
+      </div>
+      <div class="icard reveal d2">
+        <div class="icard-icon">🤖</div>
+        <h3>AI Follow-Up Engine</h3>
+        <p>30-day multi-touch sequences via WhatsApp and email. Personalized. Automated. Running 24/7 without you.</p>
+      </div>
+      <div class="icard reveal d3">
+        <div class="icard-icon">🎥</div>
+        <h3>AI Video Touchpoints</h3>
+        <p>Short personalized video messages produced by our team and embedded in your follow-up flow — proven to dramatically increase response rates.</p>
+      </div>
+      <div class="icard reveal d4">
+        <div class="icard-icon">📊</div>
+        <h3>CRM Pipeline Setup</h3>
+        <p>Fully configured pipeline with lead tagging, scoring, and categorization so your team always knows who to prioritize.</p>
+      </div>
+      <div class="icard reveal d5">
+        <div class="icard-icon">📈</div>
+        <h3>Revenue Dashboard</h3>
+        <p>Live pipeline view, conversion rate tracking, and weekly performance data — all delivered to your WhatsApp every Monday morning.</p>
+      </div>
+      <div class="icard reveal d6">
+        <div class="icard-icon">🔔</div>
+        <h3>Hot Lead Alerts</h3>
+        <p>Instant WhatsApp notification the moment a high-intent lead needs your attention. No deal goes cold undetected.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     WHO THIS IS FOR
+============================================= -->
+<section class="fit-section">
+  <div class="container">
+    <div class="fit-header reveal">
+      <span class="section-label">Is This For You?</span>
+      <h2 class="section-headline">We Work With Founders Who Are Ready.</h2>
+    </div>
+    <div class="fit-grid">
+      <div class="fit-card reveal d1">
+        <div class="fit-card-title"><span>✅</span> You are a strong fit if:</div>
+        <ul class="fit-list">
+          <li><span class="fi">✅</span> You have a working product or service with paying clients already</li>
+          <li><span class="fi">✅</span> Your monthly revenue is at least ₦2,000,000 or equivalent</li>
+          <li><span class="fi">✅</span> You generate leads but convert inconsistently or lose them to poor follow-up</li>
+          <li><span class="fi">✅</span> You are ready to invest in infrastructure — not looking for the cheapest option</li>
+          <li><span class="fi">✅</span> You want a done-for-you system, not training on how to do it yourself</li>
+          <li><span class="fi">✅</span> You can commit to a minimum 3-month engagement</li>
+          <li><span class="fi">✅</span> You are the decision-maker in your business and can move quickly</li>
+        </ul>
+      </div>
+      <div class="fit-card reveal d2">
+        <div class="fit-card-title"><span>❌</span> This is not for you if:</div>
+        <ul class="fit-list">
+          <li><span class="fi">❌</span> You are pre-revenue or have not yet validated your offer</li>
+          <li><span class="fi">❌</span> You are looking for social media management or ad campaigns only</li>
+          <li><span class="fi">❌</span> You want to DIY the system after we build it — we install and manage it</li>
+          <li><span class="fi">❌</span> You are not ready to commit to a premium investment in your infrastructure</li>
+          <li><span class="fi">❌</span> You need results in the next two weeks — this is built for sustainable scale</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     SOCIAL PROOF
+============================================= -->
+<section class="proof-section" id="social-proof">
+  <div class="container">
+    <div class="proof-header reveal">
+      <span class="section-label">Client Results</span>
+      <h2 class="section-headline">Brands We Have Scaled</h2>
+    </div>
+    <div class="proof-grid">
+      <div class="rcard reveal d1">
+        <div class="rcard-client">HarmoucH Construction</div>
+        <div class="rcard-industry">Construction</div>
+        <div class="rcard-result">↑ 70% increase in qualified leads</div>
+      </div>
+      <div class="rcard reveal d2">
+        <div class="rcard-client">Marksmen Consult</div>
+        <div class="rcard-industry">Real Estate</div>
+        <div class="rcard-result">↑ 85% lead conversion improvement</div>
+      </div>
+      <div class="rcard reveal d3">
+        <div class="rcard-client">Kira Foods</div>
+        <div class="rcard-industry">FMCG</div>
+        <div class="rcard-result">↑ 95% increase in sales within campaign period</div>
+      </div>
+      <div class="rcard reveal d4">
+        <div class="rcard-client">ZeneReyra</div>
+        <div class="rcard-industry">Luxury Fashion · USA</div>
+        <div class="rcard-result">↑ 90% sales growth · 95% brand recognition</div>
+      </div>
+      <div class="rcard reveal d5">
+        <div class="rcard-client">PatientFlowHQ</div>
+        <div class="rcard-industry">HealthTech SaaS · USA</div>
+        <div class="rcard-result">↑ 60% faster client onboarding</div>
+      </div>
+      <div class="rcard reveal d6">
+        <div class="rcard-client">New Carolina Health</div>
+        <div class="rcard-industry">Health &amp; Wellness · USA</div>
+        <div class="rcard-result">↑ 75% subscription growth</div>
+      </div>
+    </div>
+    <p class="proof-note reveal">All results delivered under CluxMedia Limited. 100% client satisfaction across all engagements across Nigeria, the United States, and the Middle East.</p>
+  </div>
+</section>
+
+<!-- =============================================
+     CTA BANNER
+============================================= -->
+<section class="cta-banner">
+  <div class="container-narrow">
+    <div class="reveal">
+      <h2 class="section-headline">"Ready to Build the Infrastructure Your Business Deserves?"</h2>
+      <p class="cta-sub">Applications are reviewed within 24 hours. If it is a fit, we will schedule your free 45-minute CluxScale Audit — a diagnostic session where we map exactly what your business needs and how we would build it.</p>
+      <button class="btn-primary btn-lg apply-btn" type="button">Apply to Work With Us</button>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     FOOTER
+============================================= -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="https://cluxmedia.com/wp-content/uploads/2025/06/new-logo4.png"
+             alt="CluxMedia"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+        <div class="footer-brand-fallback">CluxMedia</div>
+        <p class="footer-tagline">African by Identity. Global by Design.</p>
+        <p class="footer-copy">© 2025 CluxMedia Limited. All rights reserved.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Offices</h4>
+        <p>Lagos: 282, Borno Way, Ebute-Meta, Lagos, Nigeria</p>
+        <p>Charlotte: 215 N Pine St, Unit 3805, Charlotte, NC, USA</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:business@cluxmedia.com">business@cluxmedia.com</a>
+        <a href="tel:+2348105161065">+234 (0)810 5161 065</a>
+        <div class="footer-socials">
+          <a href="#" class="social-link" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Twitter/X">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.259 5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- =============================================
+     MODAL APPLICATION FORM
+============================================= -->
+<div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-label="CluxScale Application">
+  <div class="modal-card" id="modal-card">
+    <button class="modal-close" id="modal-close" aria-label="Close form">×</button>
+    <div class="modal-title">CluxScale Application</div>
+
+    <!-- Progress -->
+    <div class="form-prog-track"><div class="form-prog-fill" id="form-prog"></div></div>
+    <div class="form-step-indicator" id="step-indicator">Step 1 of 10</div>
+
+    <!-- Steps host -->
+    <div class="form-steps-host" id="steps-host">
+
+      <!-- Step 1: Full name -->
+      <div class="fstep active" id="fs1">
+        <div class="fstep-q">What is your full name?</div>
+        <div class="finput-wrap">
+          <input type="text" class="finput" id="f-name" placeholder="First and last name" autocomplete="name" />
+        </div>
       </div>
 
-      <div class="problem-grid">
-        <div class="problem-card fade-up d1">
-          <div class="problem-icon">🔴</div>
-          <h3>Leads go cold</h3>
-          <p>Prospects show interest, then disappear into WhatsApp threads that never get followed up. You lose deals you already earned.</p>
-        </div>
-        <div class="problem-card fade-up d2">
-          <div class="problem-icon">🔴</div>
-          <h3>No predictable pipeline</h3>
-          <p>Growth feels like a guessing game. You don't know where your next client is coming from or what's working.</p>
-        </div>
-        <div class="problem-card fade-up d3">
-          <div class="problem-icon">🔴</div>
-          <h3>You're the bottleneck</h3>
-          <p>Every lead goes through you. Every follow-up depends on you. Taking a weekend off means revenue stops.</p>
-        </div>
-        <div class="problem-card fade-up d4">
-          <div class="problem-icon">🔴</div>
-          <h3>You compete on price, not value</h3>
-          <p>Without a system that builds trust and demonstrates expertise, prospects don't see why they should pay your rate.</p>
-        </div>
-        <div class="problem-card fade-up d5">
-          <div class="problem-icon">🔴</div>
-          <h3>No visibility into what's working</h3>
-          <p>You have no dashboard, no pipeline view, no weekly report. You're flying blind on your own revenue.</p>
+      <!-- Step 2: Business name + description -->
+      <div class="fstep" id="fs2">
+        <div class="fstep-q">What is your business name and what does it do?</div>
+        <div class="finput-wrap">
+          <input type="text" class="finput" id="f-biz" placeholder="e.g. Marksmen Consult — real estate consulting firm" />
         </div>
       </div>
 
-      <div class="problem-closing fade-up d2">
-        "The problem isn't your product or your effort. It's that your business doesn't have a sales engine yet."
+      <!-- Step 3: Business type -->
+      <div class="fstep" id="fs3">
+        <div class="fstep-q">Which best describes your business type?</div>
+        <div class="pills" id="pills-3">
+          <button class="pill" data-step="3" data-val="Professional Services (Consulting, Law, Finance)">Professional Services (Consulting, Law, Finance)</button>
+          <button class="pill" data-step="3" data-val="Real Estate / Property">Real Estate / Property</button>
+          <button class="pill" data-step="3" data-val="Health, Wellness &amp; Medical">Health, Wellness &amp; Medical</button>
+          <button class="pill" data-step="3" data-val="E-commerce / Products">E-commerce / Products</button>
+          <button class="pill" data-step="3" data-val="Technology / SaaS">Technology / SaaS</button>
+          <button class="pill" data-step="3" data-val="Coaching, Training &amp; Education">Coaching, Training &amp; Education</button>
+          <button class="pill" data-step="3" data-val="Construction &amp; Engineering">Construction &amp; Engineering</button>
+          <button class="pill" data-step="3" data-val="Other">Other</button>
+        </div>
+      </div>
+
+      <!-- Step 3b: Conditional — Other business description -->
+      <div class="fstep" id="fs3b">
+        <div class="fstep-q">Briefly describe your business.</div>
+        <div class="finput-wrap">
+          <input type="text" class="finput" id="f-other-biz" placeholder="What does your business do?" />
+        </div>
+      </div>
+
+      <!-- Step 4: Time in business -->
+      <div class="fstep" id="fs4">
+        <div class="fstep-q">How long have you been operating this business?</div>
+        <div class="pills" id="pills-4">
+          <button class="pill" data-step="4" data-val="Less than 1 year">Less than 1 year</button>
+          <button class="pill" data-step="4" data-val="1 – 3 years">1 – 3 years</button>
+          <button class="pill" data-step="4" data-val="3 – 5 years">3 – 5 years</button>
+          <button class="pill" data-step="4" data-val="5+ years">5+ years</button>
+        </div>
+      </div>
+
+      <!-- Step 5: Revenue GATE -->
+      <div class="fstep" id="fs5">
+        <div class="fstep-q">What is your current monthly revenue?</div>
+        <div class="fstep-hint">This determines which CluxScale system fits your business.</div>
+        <div class="pills" id="pills-5">
+          <button class="pill" data-step="5" data-val="pre-revenue" data-disq="true">Pre-revenue — I have not made sales yet</button>
+          <button class="pill" data-step="5" data-val="under-500k" data-disq="true">Under ₦500,000/month</button>
+          <button class="pill" data-step="5" data-val="500k-2m">₦500,000 – ₦2,000,000/month</button>
+          <button class="pill" data-step="5" data-val="2m-10m">₦2,000,000 – ₦10,000,000/month</button>
+          <button class="pill" data-step="5" data-val="above-10m">Above ₦10,000,000/month</button>
+          <button class="pill" data-step="5" data-val="prefer-not-to-say">Prefer not to say</button>
+        </div>
+      </div>
+
+      <!-- Step 6: Investment readiness GATE -->
+      <div class="fstep" id="fs6">
+        <div class="fstep-q">Are you prepared to make this investment?</div>
+        <div class="fstep-hint">CluxMedia engagements are premium, done-for-you services requiring a minimum 3-month commitment. Monthly retainers start from ₦500,000 depending on your selected pillar.</div>
+        <div class="pills" id="pills-6">
+          <button class="pill" data-step="6" data-val="yes-ready">Yes — I understand and I am ready to invest</button>
+          <button class="pill" data-step="6" data-val="need-more-info">I need to know more before deciding</button>
+          <button class="pill" data-step="6" data-val="no-budget" data-disq="true">No — this is outside my budget right now</button>
+        </div>
+      </div>
+
+      <!-- Step 7: Growth challenge -->
+      <div class="fstep" id="fs7">
+        <div class="fstep-q">What is your biggest growth challenge right now?</div>
+        <div class="pills" id="pills-7">
+          <button class="pill" data-step="7" data-val="Leads go cold — no follow-up system">Leads go cold — no follow-up system</button>
+          <button class="pill" data-step="7" data-val="I am invisible — no content or personal brand presence">I am invisible — no content or personal brand presence</button>
+          <button class="pill" data-step="7" data-val="I have no pipeline visibility or CRM">I have no pipeline visibility or CRM</button>
+          <button class="pill" data-step="7" data-val="My sales process is entirely manual">My sales process is entirely manual</button>
+          <button class="pill" data-step="7" data-val="All of the above">All of the above</button>
+        </div>
+      </div>
+
+      <!-- Step 8: CluxScale option -->
+      <div class="fstep" id="fs8">
+        <div class="fstep-q">Which CluxScale option are you most interested in?</div>
+        <div class="pills" id="pills-8">
+          <button class="pill" data-step="8" data-val="Full CluxScale — Both Authority + Revenue Engines">Full CluxScale — Both Authority + Revenue Engines</button>
+          <button class="pill" data-step="8" data-val="Revenue Engine Only — Sales systems and automation">Revenue Engine Only — Sales systems and automation</button>
+          <button class="pill" data-step="8" data-val="Authority Engine Only — Content and personal brand">Authority Engine Only — Content and personal brand</button>
+          <button class="pill" data-step="8" data-val="I need guidance on which fits me">I need guidance on which fits me</button>
+        </div>
+      </div>
+
+      <!-- Step 9: WhatsApp -->
+      <div class="fstep" id="fs9">
+        <div class="fstep-q">What is the best WhatsApp number to reach you?</div>
+        <div class="phone-row">
+          <select class="country-sel" id="f-code">
+            <option value="+234">🇳🇬 +234</option>
+            <option value="+1">🇺🇸 +1</option>
+            <option value="+44">🇬🇧 +44</option>
+            <option value="+27">🇿🇦 +27</option>
+            <option value="+233">🇬🇭 +233</option>
+            <option value="+254">🇰🇪 +254</option>
+            <option value="+225">🇨🇮 +225</option>
+            <option value="+213">🇩🇿 +213</option>
+            <option value="+20">🇪🇬 +20</option>
+          </select>
+          <input type="tel" class="finput" id="f-phone" placeholder="0810 5161 065" autocomplete="tel" style="flex:1;" />
+        </div>
+      </div>
+
+      <!-- Step 10: Email -->
+      <div class="fstep" id="fs10">
+        <div class="fstep-q">And your email address?</div>
+        <div class="finput-wrap">
+          <input type="email" class="finput" id="f-email" placeholder="you@example.com" autocomplete="email" />
+        </div>
+      </div>
+
+      <!-- Step 11: Consent -->
+      <div class="fstep" id="fs11">
+        <div class="fstep-q">One last thing — we take your privacy seriously.</div>
+        <div class="fstep-hint">Please confirm the following before submitting.</div>
+        <div class="consent-list">
+          <label class="consent-item">
+            <input type="checkbox" id="consent-1" />
+            <span>I confirm that the information I have provided is accurate.</span>
+          </label>
+          <label class="consent-item">
+            <input type="checkbox" id="consent-2" />
+            <span>I give CluxMedia permission to contact me via WhatsApp and email regarding my application and follow-up.</span>
+          </label>
+        </div>
       </div>
 
     </div>
-  </section>
+    <!-- /steps-host -->
 
-  <!-- =========================================
-       FRAMEWORK
-  ========================================= -->
-  <section class="framework-section" id="system">
-    <div class="container">
-
-      <div class="framework-header fade-up">
-        <div class="section-label">Our Framework</div>
-        <h2 class="section-heading">The CluxFlow System</h2>
-        <p class="section-subheading">A proven 3-part infrastructure we install into your business in under 3 weeks.</p>
-      </div>
-
-      <div class="pillars">
-        <div class="pillar fade-up d1">
-          <div class="pillar-num">01</div>
-          <div class="pillar-icon">🔽</div>
-          <h3>Capture</h3>
-          <p>Build the infrastructure that captures every lead from WhatsApp, Instagram, your website, or ads — and logs them automatically into a CRM. No lead falls through the cracks again.</p>
-        </div>
-        <div class="pillar fade-up d2">
-          <div class="pillar-num">02</div>
-          <div class="pillar-icon">⚡</div>
-          <h3>Convert</h3>
-          <p>Deploy a 30-day automated follow-up engine via WhatsApp and email. AI-personalized messages. AI video touchpoints. Your leads hear from you professionally — even while you sleep.</p>
-        </div>
-        <div class="pillar fade-up d3">
-          <div class="pillar-num">03</div>
-          <div class="pillar-icon">📊</div>
-          <h3>Clarity</h3>
-          <p>Get a live revenue dashboard and a weekly pipeline report delivered to your WhatsApp every Monday. Know exactly where your money is, where it's leaking, and what to do next.</p>
-        </div>
-      </div>
-
+    <!-- Disqualification state -->
+    <div class="form-disqualified" id="form-disq">
+      <div class="disq-title" id="disq-title"></div>
+      <p class="disq-body" id="disq-body"></p>
+      <button class="btn-outline" id="disq-close-btn" type="button">Close</button>
     </div>
-  </section>
 
-  <!-- =========================================
-       PHASES
-  ========================================= -->
-  <section class="phases-section">
-    <div class="container">
-
-      <div class="phases-header fade-up">
-        <h2 class="section-heading">Two Phases. Three Weeks. One Running System.</h2>
-        <p class="section-subheading" style="margin: 12px auto 0;">Here's exactly what gets built and when.</p>
+    <!-- Success state -->
+    <div class="form-success" id="form-success">
+      <div class="success-check">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6,18 14,26 30,10"/>
+        </svg>
       </div>
-
-      <div class="phases-grid">
-
-        <div class="phase-card fade-up d1">
-          <div class="phase-tag">Phase 1 — Week 1–2</div>
-          <h3>Infrastructure Installation</h3>
-          <div class="phase-item">
-            <div class="phase-check"><svg viewBox="0 0 11 11"><polyline points="1.5,5.5 4.5,8.5 9.5,2.5"/></svg></div>
-            <span>Lead capture system connected to your existing channels</span>
-          </div>
-          <div class="phase-item">
-            <div class="phase-check"><svg viewBox="0 0 11 11"><polyline points="1.5,5.5 4.5,8.5 9.5,2.5"/></svg></div>
-            <span>CRM pipeline configured and branded to your business</span>
-          </div>
-          <div class="phase-item">
-            <div class="phase-check"><svg viewBox="0 0 11 11"><polyline points="1.5,5.5 4.5,8.5 9.5,2.5"/></svg></div>
-            <span>WhatsApp Business API set up and integrated</span>
-          </div>
-          <div class="phase-item">
-            <div class="phase-check"><svg viewBox="0 0 11 11"><polyline points="1.5,5.5 4.5,8.5 9.5,2.5"/></svg></div>
-            <span>Instant AI response system activated</span>
-          </div>
-        </div>
-
-        <div class="phase-card fade-up d2">
-          <div class="phase-tag">Phase 2 — Week 3</div>
-          <h3>Automation &amp; Handover</h3>
-          <div class="phase-item">
-            <div class="phase-check"><svg viewBox="0 0 11 11"><polyline points="1.5,5.5 4.5,8.5 9.5,2.5"/></svg></div>
-            <span>30-day follow-up sequences written, configured, and live</span>
-          </div>
-          <div class="phase-item">
-            <div class="phase-check"><svg viewBox="0 0 11 11"><polyline points="1.5,5.5 4.5,8.5 9.5,2.5"/></svg></div>
-            <span>AI video touchpoints created and embedded in sequences</span>
-          </div>
-          <div class="phase-item">
-            <div class="phase-check"><svg viewBox="0 0 11 11"><polyline points="1.5,5.5 4.5,8.5 9.5,2.5"/></svg></div>
-            <span>Revenue dashboard built and connected</span>
-          </div>
-          <div class="phase-item">
-            <div class="phase-check"><svg viewBox="0 0 11 11"><polyline points="1.5,5.5 4.5,8.5 9.5,2.5"/></svg></div>
-            <span>Team walkthrough and live handover session</span>
-          </div>
-        </div>
-
+      <h3 class="success-h" id="success-h">Application Received.</h3>
+      <p class="success-p">Thank you for applying to work with CluxMedia. We review every application personally and will be in touch via WhatsApp and email within 24 hours. If this is a strong fit, we will schedule your free 45-minute CluxScale Audit — a diagnostic session to map exactly what your business needs.</p>
+      <div class="success-btns">
+        <a href="https://instagram.com/cluxmedia" target="_blank" rel="noopener noreferrer" class="btn-outline">Follow on Instagram</a>
+        <a href="https://linkedin.com/company/cluxmedia" target="_blank" rel="noopener noreferrer" class="btn-primary">Connect on LinkedIn</a>
       </div>
     </div>
-  </section>
 
-  <!-- =========================================
-       WHAT'S INCLUDED
-  ========================================= -->
-  <section class="included-section">
-    <div class="container">
-
-      <div class="included-header fade-up">
-        <h2 class="section-heading">Everything Installed. Nothing Left to Figure Out.</h2>
-        <p class="section-subheading" style="margin-top:12px;">Six components. One complete system.</p>
-      </div>
-
-      <div class="included-grid">
-        <div class="included-card fade-up d1">
-          <div class="included-icon">🔧</div>
-          <h3>Lead Capture System</h3>
-          <p>Connected to your website, WhatsApp, Instagram, or ad campaigns. Every lead lands in one place automatically.</p>
-        </div>
-        <div class="included-card fade-up d2">
-          <div class="included-icon">⚡</div>
-          <h3>AI Follow-Up Engine</h3>
-          <p>30-day multi-touch sequences via WhatsApp and email. Personalized. Automated. Running 24/7.</p>
-        </div>
-        <div class="included-card fade-up d3">
-          <div class="included-icon">🎥</div>
-          <h3>AI Video Touchpoints</h3>
-          <p>Short personalized video messages embedded in your follow-up flow — proven to dramatically increase response rates.</p>
-        </div>
-        <div class="included-card fade-up d4">
-          <div class="included-icon">📊</div>
-          <h3>CRM Pipeline Setup</h3>
-          <p>Full pipeline configured. Leads tagged, scored, and categorized so your team always knows who to call first.</p>
-        </div>
-        <div class="included-card fade-up d5">
-          <div class="included-icon">📈</div>
-          <h3>Revenue Dashboard</h3>
-          <p>Real-time view of leads, conversion rate, pipeline value, and weekly performance — all in one place.</p>
-        </div>
-        <div class="included-card fade-up d6">
-          <div class="included-icon">🔔</div>
-          <h3>Hot Lead Alerts</h3>
-          <p>Instant WhatsApp notification when a high-intent lead needs your attention. No deal goes cold undetected.</p>
-        </div>
-      </div>
-
+    <!-- Form navigation -->
+    <div class="fnav" id="fnav">
+      <button class="fbtn-back" id="fbtn-back" type="button">← Back</button>
+      <button class="fbtn-next" id="fbtn-next" type="button" disabled>
+        <span class="btn-text">Next →</span>
+        <span class="spinner"></span>
+      </button>
     </div>
-  </section>
 
-  <!-- =========================================
-       TESTIMONIALS
-  ========================================= -->
-  <section class="testimonials-section">
-    <div class="container">
+  </div>
+</div>
 
-      <div class="testimonials-header fade-up">
-        <div class="section-label">Results</div>
-        <h2 class="section-heading">Founders Who Stopped Losing Leads</h2>
-        <p class="section-subheading">Real outcomes from real installations.</p>
-      </div>
+<script>
+  /* ============================================
+     NAV SCROLL
+  ============================================ */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 80);
+  }, { passive: true });
 
-      <div class="testimonials-grid">
-        <div class="tcard fade-up d1">
-          <div class="tcard-quote">"</div>
-          <p class="tcard-text">Before CluxMedia, I was responding to leads manually at midnight. Now the system handles everything and I wake up to qualified prospects ready to talk.</p>
-          <div class="tcard-author">— Real Estate Founder, Lagos</div>
-        </div>
-        <div class="tcard fade-up d2">
-          <div class="tcard-quote">"</div>
-          <p class="tcard-text">We had great products but zero follow-up system. Within the first month of installation, we closed three deals we would have completely lost.</p>
-          <div class="tcard-author">— E-commerce Brand Owner, Abuja</div>
-        </div>
-        <div class="tcard fade-up d3">
-          <div class="tcard-quote">"</div>
-          <p class="tcard-text">The WhatsApp automation alone changed how my business operates. Clients think I have a full team. It's just the system.</p>
-          <div class="tcard-author">— Consulting Firm Founder, Port Harcourt</div>
-        </div>
-      </div>
+  /* ============================================
+     HAMBURGER
+  ============================================ */
+  const hamburger  = document.getElementById('hamburger');
+  const mobileNav  = document.getElementById('mobile-nav');
+  function closeMobileMenu() {
+    hamburger.classList.remove('open');
+    mobileNav.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.classList.toggle('open');
+    mobileNav.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+  document.getElementById('mm-framework').addEventListener('click', closeMobileMenu);
+  document.getElementById('mm-results').addEventListener('click', closeMobileMenu);
 
-    </div>
-  </section>
-
-  <!-- =========================================
-       WHO THIS IS FOR
-  ========================================= -->
-  <section class="fit-section">
-    <div class="container">
-
-      <div class="fit-header fade-up">
-        <h2 class="section-heading">This Is Built for You If…</h2>
-      </div>
-
-      <div class="fit-grid">
-        <div class="fit-card fade-up d1">
-          <div class="fit-card-title"><span>✅</span> You're a fit if:</div>
-          <div class="fit-item">
-            <span class="fit-emoji">✅</span>
-            <p>You've been in business 1–5 years and growth has plateaued</p>
-          </div>
-          <div class="fit-item">
-            <span class="fit-emoji">✅</span>
-            <p>You generate leads but convert inconsistently</p>
-          </div>
-          <div class="fit-item">
-            <span class="fit-emoji">✅</span>
-            <p>You're doing everything manually — WhatsApp, spreadsheets, memory</p>
-          </div>
-          <div class="fit-item">
-            <span class="fit-emoji">✅</span>
-            <p>You're ready to invest in infrastructure that pays for itself</p>
-          </div>
-          <div class="fit-item">
-            <span class="fit-emoji">✅</span>
-            <p>You operate in Nigeria or anywhere in Africa</p>
-          </div>
-        </div>
-        <div class="fit-card fade-up d2">
-          <div class="fit-card-title"><span>❌</span> This isn't for you if:</div>
-          <div class="fit-item">
-            <span class="fit-emoji">❌</span>
-            <p>You're a brand new founder with no product or service yet</p>
-          </div>
-          <div class="fit-item">
-            <span class="fit-emoji">❌</span>
-            <p>You're looking for ads management or social media content</p>
-          </div>
-          <div class="fit-item">
-            <span class="fit-emoji">❌</span>
-            <p>You want to DIY — we install and manage this for you</p>
-          </div>
-          <div class="fit-item">
-            <span class="fit-emoji">❌</span>
-            <p>You're not ready to commit to a 3-month retainer</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- =========================================
-       APPLICATION FORM
-  ========================================= -->
-  <section class="apply-section" id="apply">
-    <div class="container">
-
-      <div class="apply-header fade-up">
-        <div class="section-label">Apply</div>
-        <h2 class="section-heading">Ready to Install Your Sales Engine?</h2>
-        <p class="section-subheading">Answer a few quick questions and we'll be in touch within 24 hours to schedule your free strategy session.</p>
-      </div>
-
-      <div class="form-wrap fade-up d2">
-
-        <!-- Progress bar -->
-        <div class="prog-wrap" id="prog-wrap">
-          <div class="prog-meta">
-            <span id="prog-label">Step 1 of 8</span>
-            <span id="prog-pct">13%</span>
-          </div>
-          <div class="prog-track">
-            <div class="prog-fill" id="prog-fill" style="width:12.5%"></div>
-          </div>
-        </div>
-
-        <div class="form-card">
-
-          <!-- ---- STEPS ---- -->
-          <div class="steps-host" id="steps-host">
-
-            <!-- Step 1: Name -->
-            <div class="fstep active" id="fs1">
-              <div class="fstep-q">What's your name?</div>
-              <div class="finput-row">
-                <input type="text" class="finput" id="f-first" placeholder="First name" autocomplete="given-name" />
-                <input type="text" class="finput" id="f-last"  placeholder="Last name"  autocomplete="family-name" />
-              </div>
-            </div>
-
-            <!-- Step 2: Business type -->
-            <div class="fstep" id="fs2">
-              <div class="fstep-q">What kind of business do you run?</div>
-              <div class="pills" id="pills-2">
-                <button class="pill" data-step="2" data-val="Real Estate / Property">Real Estate / Property</button>
-                <button class="pill" data-step="2" data-val="E-commerce / Products">E-commerce / Products</button>
-                <button class="pill" data-step="2" data-val="Professional Services (Law, Finance, Consulting)">Professional Services (Law, Finance, Consulting)</button>
-                <button class="pill" data-step="2" data-val="Health / Wellness / Clinics">Health / Wellness / Clinics</button>
-                <button class="pill" data-step="2" data-val="Coaching / Training / Education">Coaching / Training / Education</button>
-                <button class="pill" data-step="2" data-val="Other">Other</button>
-              </div>
-            </div>
-
-            <!-- Step 3: Other (conditional) -->
-            <div class="fstep" id="fs3">
-              <div class="fstep-q">Tell us briefly what your business does.</div>
-              <div class="finput-row single">
-                <input type="text" class="finput" id="f-other" placeholder="Describe your business in a sentence…" />
-              </div>
-            </div>
-
-            <!-- Step 4: Time in business -->
-            <div class="fstep" id="fs4">
-              <div class="fstep-q">How long have you been in business?</div>
-              <div class="pills" id="pills-4">
-                <button class="pill" data-step="4" data-val="Less than 1 year">Less than 1 year</button>
-                <button class="pill" data-step="4" data-val="1–3 years">1–3 years</button>
-                <button class="pill" data-step="4" data-val="3–5 years">3–5 years</button>
-                <button class="pill" data-step="4" data-val="5+ years">5+ years</button>
-              </div>
-            </div>
-
-            <!-- Step 5: Sales challenge -->
-            <div class="fstep" id="fs5">
-              <div class="fstep-q">What's your biggest sales challenge right now?</div>
-              <div class="pills" id="pills-5">
-                <button class="pill" data-step="5" data-val="Leads go cold before I can follow up">Leads go cold before I can follow up</button>
-                <button class="pill" data-step="5" data-val="I have no CRM or pipeline visibility">I have no CRM or pipeline visibility</button>
-                <button class="pill" data-step="5" data-val="My follow-up is manual and inconsistent">My follow-up is manual and inconsistent</button>
-                <button class="pill" data-step="5" data-val="I don't know where my next client is coming from">I don't know where my next client is coming from</button>
-                <button class="pill" data-step="5" data-val="All of the above">All of the above</button>
-              </div>
-            </div>
-
-            <!-- Step 6: Revenue range -->
-            <div class="fstep" id="fs6">
-              <div class="fstep-q">What's your monthly revenue range?</div>
-              <div class="fstep-hint">This helps us understand which system fits best.</div>
-              <div class="pills" id="pills-6">
-                <button class="pill" data-step="6" data-val="Pre-revenue / Just starting">Pre-revenue / Just starting</button>
-                <button class="pill" data-step="6" data-val="₦500K – ₦2M/month">₦500K – ₦2M/month</button>
-                <button class="pill" data-step="6" data-val="₦2M – ₦10M/month">₦2M – ₦10M/month</button>
-                <button class="pill" data-step="6" data-val="₦10M+/month">₦10M+/month</button>
-                <button class="pill" data-step="6" data-val="Prefer not to say">Prefer not to say</button>
-              </div>
-            </div>
-
-            <!-- Step 7: WhatsApp -->
-            <div class="fstep" id="fs7">
-              <div class="fstep-q">What's the best WhatsApp number to reach you?</div>
-              <div class="phone-row">
-                <select class="country-sel" id="f-code">
-                  <option value="+234">🇳🇬 +234</option>
-                  <option value="+1">🇺🇸 +1</option>
-                  <option value="+44">🇬🇧 +44</option>
-                  <option value="+27">🇿🇦 +27</option>
-                  <option value="+233">🇬🇭 +233</option>
-                  <option value="+254">🇰🇪 +254</option>
-                  <option value="+225">🇨🇮 +225</option>
-                  <option value="+221">🇸🇳 +221</option>
-                  <option value="+213">🇩🇿 +213</option>
-                  <option value="+20">🇪🇬 +20</option>
-                </select>
-                <input type="tel" class="finput" id="f-phone" placeholder="0810 5161 065" autocomplete="tel" style="flex:1;" />
-              </div>
-            </div>
-
-            <!-- Step 8: Email -->
-            <div class="fstep" id="fs8">
-              <div class="fstep-q">And your email address?</div>
-              <div class="finput-row single">
-                <input type="email" class="finput" id="f-email" placeholder="you@example.com" autocomplete="email" />
-              </div>
-            </div>
-
-          </div>
-          <!-- /steps-host -->
-
-          <!-- Success state -->
-          <div class="form-success" id="form-success">
-            <div class="success-ring">
-              <svg viewBox="0 0 36 36"><polyline points="6,18 14,26 30,10"/></svg>
-            </div>
-            <h3 class="success-h">You're In. We'll Be in Touch Within 24 Hours.</h3>
-            <p class="success-p">Check your WhatsApp and email. One of our team will reach out to schedule your free strategy session.</p>
-            <a href="https://instagram.com/cluxmedia" target="_blank" rel="noopener noreferrer" class="success-link">
-              Follow us on Instagram @cluxmedia
-            </a>
-          </div>
-
-          <!-- Form nav -->
-          <div class="fnav" id="fnav">
-            <button class="fbtn-back" id="fbtn-back">
-              <svg viewBox="0 0 15 15"><polyline points="10,2 5,7.5 10,13"/></svg>
-              Back
-            </button>
-            <button class="fbtn-next" id="fbtn-next" disabled>Next →</button>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- =========================================
-       FOOTER
-  ========================================= -->
-  <footer>
-    <div class="container">
-
-      <div class="footer-grid">
-
-        <!-- Brand -->
-        <div class="footer-brand">
-          <img src="https://cluxmedia.com/wp-content/uploads/2025/06/new-logo4.png" alt="CluxMedia" />
-          <p class="footer-tagline">African by Identity. Global by Design.</p>
-          <div class="footer-socials">
-
-            <!-- Instagram -->
-            <a href="https://instagram.com/cluxmedia" target="_blank" rel="noopener noreferrer" class="fsocial" aria-label="Instagram">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-              </svg>
-            </a>
-
-            <!-- LinkedIn -->
-            <a href="https://linkedin.com/company/cluxmedia" target="_blank" rel="noopener noreferrer" class="fsocial" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-              </svg>
-            </a>
-
-            <!-- Twitter / X -->
-            <a href="https://twitter.com/cluxmedia" target="_blank" rel="noopener noreferrer" class="fsocial" aria-label="Twitter / X">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.259 5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-              </svg>
-            </a>
-
-          </div>
-        </div>
-
-        <!-- Locations -->
-        <div class="footer-col">
-          <h4>Locations</h4>
-          <p>Lagos, Nigeria</p>
-          <p>New York, USA</p>
-          <p>Charlotte, NC</p>
-        </div>
-
-        <!-- Contact -->
-        <div class="footer-col">
-          <h4>Contact</h4>
-          <a href="mailto:info@cluxmedia.com">info@cluxmedia.com</a>
-          <a href="https://wa.me/2348105161065" target="_blank" rel="noopener noreferrer">+234 (0)810 5161 065</a>
-        </div>
-
-        <!-- Quick Links -->
-        <div class="footer-col">
-          <h4>Quick Links</h4>
-          <a href="#system">How It Works</a>
-          <a href="#apply">Apply Now</a>
-          <a href="mailto:info@cluxmedia.com">Get in Touch</a>
-        </div>
-
-      </div>
-
-      <div class="footer-bottom">
-        <p>© 2025 CluxMedia Limited. All rights reserved.</p>
-        <p>Built for African Founders.</p>
-      </div>
-
-    </div>
-  </footer>
-
-  <script>
-    // ---- Nav scroll state ----
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 20);
-    }, { passive: true });
-
-    // ---- Hamburger toggle ----
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    hamburger.addEventListener('click', () => {
-      const isOpen = hamburger.classList.toggle('open');
-      mobileMenu.classList.toggle('open', isOpen);
-      hamburger.setAttribute('aria-expanded', isOpen);
+  /* ============================================
+     SCROLL REVEAL
+  ============================================ */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
     });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    // Close mobile menu on link click
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        mobileMenu.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-      });
+  /* ============================================
+     STATS COUNTER
+  ============================================ */
+  let countersFired = false;
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !countersFired) {
+        countersFired = true;
+        document.querySelectorAll('.counter').forEach(el => {
+          const target = parseInt(el.dataset.target, 10);
+          const suffix = el.dataset.suffix || '';
+          const dur    = 1500;
+          const steps  = 60;
+          const inc    = target / steps;
+          let cur = 0, frame = 0;
+          const tick = () => {
+            frame++;
+            cur = Math.min(Math.round(inc * frame), target);
+            el.textContent = cur + suffix;
+            if (cur < target) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        });
+        counterObserver.disconnect();
+      }
     });
+  }, { threshold: 0.5 });
+  const statsEl = document.querySelector('.hero-stats');
+  if (statsEl) counterObserver.observe(statsEl);
 
-    // ---- Scroll reveal (IntersectionObserver) ----
-    // Observer set up early — sections added later will be observed
-    // by calling observeFadeEls() after each section is appended.
-    function observeFadeEls() {
-      document.querySelectorAll('.fade-up:not([data-observed])').forEach(el => {
-        el.setAttribute('data-observed', '1');
-        revealObserver.observe(el);
-      });
+  /* ============================================
+     MODAL
+  ============================================ */
+  const overlay   = document.getElementById('modal-overlay');
+  const modalCard = document.getElementById('modal-card');
+  const modalClose = document.getElementById('modal-close');
+
+  function openModal() {
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.apply-btn').forEach(btn => btn.addEventListener('click', openModal));
+  modalClose.addEventListener('click', closeModal);
+  document.getElementById('disq-close-btn').addEventListener('click', closeModal);
+
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) closeModal();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+  });
+
+  /* ============================================
+     MULTI-STEP FORM
+  ============================================ */
+  (function () {
+    /* Step definitions: id, type, optional flags */
+    const BASE_STEPS = ['fs1','fs2','fs3','fs4','fs5','fs6','fs7','fs8','fs9','fs10','fs11'];
+    // fs3b inserted after fs3 when "Other" selected
+    let steps = [...BASE_STEPS];
+    let current = 0; // index into steps[]
+
+    const ans = {
+      name: '', biz: '', bizType: '', otherBiz: '',
+      tenure: '', revenue: '', invest: '',
+      challenge: '', option: '', phone: '', email: '',
+      c1: false, c2: false
+    };
+
+    const progFill     = document.getElementById('form-prog');
+    const stepInd      = document.getElementById('step-indicator');
+    const btnBack      = document.getElementById('fbtn-back');
+    const btnNext      = document.getElementById('fbtn-next');
+    const fnav         = document.getElementById('fnav');
+    const stepsHost    = document.getElementById('steps-host');
+    const disqEl       = document.getElementById('form-disq');
+    const successEl    = document.getElementById('form-success');
+    const successH     = document.getElementById('success-h');
+    const disqTitle    = document.getElementById('disq-title');
+    const disqBody     = document.getElementById('disq-body');
+
+    function getFirstName() {
+      const parts = (ans.name || '').trim().split(' ');
+      return parts[0] || 'there';
     }
 
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
+    function totalSteps() { return steps.length; }
 
-    observeFadeEls();
-
-    // ---- Stats counter animation ----
-    const counters = document.querySelectorAll('.counter[data-target]');
-    let countersFired = false;
-
-    const counterObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !countersFired) {
-          countersFired = true;
-          counters.forEach(el => {
-            const target  = parseInt(el.dataset.target, 10);
-            const suffix  = el.dataset.suffix || '';
-            const prefix  = el.previousElementSibling && el.previousElementSibling.classList.contains('prefix')
-                            ? el.previousElementSibling.textContent : '';
-            const duration = 1600;
-            const fps      = 60;
-            const steps    = duration / (1000 / fps);
-            const inc      = target / steps;
-            let current    = 0;
-            const tick = () => {
-              current += inc;
-              if (current >= target) {
-                el.textContent = target + suffix;
-              } else {
-                el.textContent = Math.floor(current) + suffix;
-                requestAnimationFrame(tick);
-              }
-            };
-            requestAnimationFrame(tick);
-          });
-          counterObserver.disconnect();
-        }
-      });
-    }, { threshold: 0.6 });
-
-    if (counters.length) {
-      counterObserver.observe(document.querySelector('.hero-stats'));
+    function updateProgress() {
+      const n   = current + 1;
+      const tot = totalSteps();
+      const pct = Math.round((n / tot) * 100);
+      progFill.style.width   = pct + '%';
+      stepInd.textContent    = `Step ${n} of ${tot}`;
+      btnBack.classList.toggle('show', current > 0);
+      syncNextBtn();
     }
 
-    // =========================================
-    // MULTI-STEP FORM
-    // =========================================
-    (function () {
-      const TOTAL = 8;
-      let step = 1;
-      let goingBack = false;
+    function isStepValid(stepId) {
+      switch (stepId) {
+        case 'fs1':  return ans.name.trim().length > 1;
+        case 'fs2':  return ans.biz.trim().length > 2;
+        case 'fs3':  return ans.bizType !== '';
+        case 'fs3b': return ans.otherBiz.trim().length > 2;
+        case 'fs4':  return ans.tenure !== '';
+        case 'fs5':  return ans.revenue !== '';
+        case 'fs6':  return ans.invest !== '';
+        case 'fs7':  return ans.challenge !== '';
+        case 'fs8':  return ans.option !== '';
+        case 'fs9':  return ans.phone.trim().length >= 6;
+        case 'fs10': return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(ans.email.trim());
+        case 'fs11': return ans.c1 && ans.c2;
+        default:     return false;
+      }
+    }
 
-      // Collected answers
-      const ans = {
-        firstName: '', lastName: '',
-        businessType: '', otherBusiness: '',
-        tenure: '', challenge: '', revenue: '',
-        countryCode: '+234', phone: '', email: ''
-      };
+    function syncNextBtn() {
+      const id   = steps[current];
+      const last = current === steps.length - 1;
+      const valid = isStepValid(id);
+      btnNext.disabled = !valid;
+      btnNext.querySelector('.btn-text').textContent = last ? 'Submit Application' : 'Next →';
+    }
 
-      const progFill  = document.getElementById('prog-fill');
-      const progLabel = document.getElementById('prog-label');
-      const progPct   = document.getElementById('prog-pct');
-      const btnBack   = document.getElementById('fbtn-back');
-      const btnNext   = document.getElementById('fbtn-next');
-      const fnav      = document.getElementById('fnav');
-      const progWrap  = document.getElementById('prog-wrap');
-      const stepsHost = document.getElementById('steps-host');
-      const success   = document.getElementById('form-success');
+    function showStep(idx, goingBack) {
+      const oldId = steps[current];
+      const newId = steps[idx];
+      const oldEl = document.getElementById(oldId);
+      const newEl = document.getElementById(newId);
+      if (oldEl) { oldEl.classList.remove('active', 'back'); }
+      if (newEl) {
+        newEl.classList.remove('active', 'back');
+        void newEl.offsetWidth;
+        newEl.classList.add('active');
+        if (goingBack) newEl.classList.add('back');
+      }
+      current = idx;
+      updateProgress();
+    }
 
-      // Determine whether step 3 is needed
-      function needsStep3() { return ans.businessType === 'Other'; }
+    /* Check disqualification for current step selection */
+    function checkDisqualify(stepId, val) {
+      if (stepId === 'fs5' && (val === 'pre-revenue' || val === 'under-500k')) {
+        showDisqualify(
+          `Thank you for applying, ${getFirstName()}.`,
+          `CluxMedia is built for founders with an established, revenue-generating business. At this stage, our systems may not be the right fit — and we would rather be honest with you than take your money before you are ready.<br><br>We recommend focusing on validating your offer and reaching consistent monthly revenue first. When you get there, we would love to work with you.`
+        );
+        return true;
+      }
+      if (stepId === 'fs6' && val === 'no-budget') {
+        showDisqualify(
+          `Understood, ${getFirstName()} — and we respect that.`,
+          `We want every engagement to be a confident decision, not a stretch. When the timing and budget are right, we will be here. Feel free to follow us on Instagram and LinkedIn in the meantime — we share useful content regularly.`
+        );
+        return true;
+      }
+      return false;
+    }
 
-      // Logical next step
-      function nextStep(from) {
-        if (from === 2 && !needsStep3()) return 4;
-        if (from >= TOTAL) return null;
-        return from + 1;
+    function showDisqualify(title, body) {
+      stepsHost.style.display = 'none';
+      fnav.style.display      = 'none';
+      progFill.closest('.form-prog-track').style.display = 'none';
+      stepInd.style.display   = 'none';
+      disqTitle.textContent   = title;
+      disqBody.innerHTML      = body;
+      disqEl.classList.add('show');
+    }
+
+    /* Next button */
+    btnNext.addEventListener('click', () => {
+      const id = steps[current];
+      if (!isStepValid(id)) return;
+
+      /* If last step — submit */
+      if (current === steps.length - 1) {
+        submitForm();
+        return;
       }
 
-      // Logical prev step
-      function prevStep(from) {
-        if (from === 4 && !needsStep3()) return 2;
-        if (from <= 1) return null;
-        return from - 1;
-      }
-
-      // Validate current step
-      function isValid(s) {
-        switch (s) {
-          case 1: return ans.firstName.length > 0 && ans.lastName.length > 0;
-          case 2: return ans.businessType !== '';
-          case 3: return ans.otherBusiness.trim().length > 0;
-          case 4: return ans.tenure !== '';
-          case 5: return ans.challenge !== '';
-          case 6: return ans.revenue !== '';
-          case 7: return ans.phone.trim().length >= 6;
-          case 8: return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(ans.email.trim());
-          default: return false;
+      /* Insert fs3b if Other selected */
+      if (id === 'fs3' && ans.bizType === 'Other') {
+        if (!steps.includes('fs3b')) {
+          steps.splice(current + 1, 0, 'fs3b');
         }
+      } else if (id === 'fs3' && steps.includes('fs3b')) {
+        steps = steps.filter(s => s !== 'fs3b');
       }
 
-      function updateProgress(s) {
-        const pct = Math.round((s / TOTAL) * 100);
-        progFill.style.width = pct + '%';
-        progLabel.textContent = 'Step ' + s + ' of ' + TOTAL;
-        progPct.textContent   = pct + '%';
-      }
+      showStep(current + 1, false);
+    });
 
-      function syncBtnNext(s) {
-        const last = nextStep(s) === null;
-        btnNext.disabled      = !isValid(s);
-        btnNext.textContent   = last ? 'Submit Application →' : 'Next →';
-      }
+    /* Back button */
+    btnBack.addEventListener('click', () => {
+      if (current > 0) showStep(current - 1, true);
+    });
 
-      function showStep(newStep, backward) {
-        const old = document.getElementById('fs' + step);
-        const next = document.getElementById('fs' + newStep);
-        if (old)  old.classList.remove('active', 'back-in');
-        if (next) {
-          next.classList.remove('active', 'back-in');
-          void next.offsetWidth; // reflow to restart animation
-          next.classList.add('active');
-          if (backward) next.classList.add('back-in');
+    /* Pill selection */
+    document.querySelectorAll('.pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const stepId  = 'fs' + btn.dataset.step;
+        const val     = btn.dataset.val;
+        const isDisq  = btn.dataset.disq === 'true';
+
+        /* Deselect others in group */
+        btn.closest('.pills').querySelectorAll('.pill').forEach(p => p.classList.remove('selected'));
+        btn.classList.add('selected');
+
+        /* Store answer */
+        switch (stepId) {
+          case 'fs3':  ans.bizType   = val; break;
+          case 'fs4':  ans.tenure    = val; break;
+          case 'fs5':  ans.revenue   = val; break;
+          case 'fs6':  ans.invest    = val; break;
+          case 'fs7':  ans.challenge = val; break;
+          case 'fs8':  ans.option    = val; break;
         }
-        step = newStep;
-        updateProgress(newStep);
-        btnBack.style.visibility = prevStep(newStep) ? 'visible' : 'hidden';
-        syncBtnNext(newStep);
-      }
 
-      function collectStep(s) {
-        switch (s) {
-          case 1:
-            ans.firstName = document.getElementById('f-first').value.trim();
-            ans.lastName  = document.getElementById('f-last').value.trim();
-            break;
-          case 3:
-            ans.otherBusiness = document.getElementById('f-other').value.trim();
-            break;
-          case 7:
-            ans.countryCode = document.getElementById('f-code').value;
-            ans.phone       = document.getElementById('f-phone').value.trim();
-            break;
-          case 8:
-            ans.email = document.getElementById('f-email').value.trim();
-            break;
+        syncNextBtn();
+
+        /* Auto-advance for non-disqualifying, non-gated choices */
+        const isGate = (stepId === 'fs5' || stepId === 'fs6');
+        if (!isDisq && !isGate) {
+          setTimeout(() => { if (!btnNext.disabled) btnNext.click(); }, 280);
+        } else if (isGate && isDisq) {
+          /* Don't auto-advance — let user read the button state */
+        } else if (isGate && !isDisq) {
+          /* Let user press Next so they read the label */
+          syncNextBtn();
         }
-      }
+      });
+    });
 
-      function submitForm() {
+    /* Text input live validation */
+    [['f-name','name'], ['f-biz','biz'], ['f-other-biz','otherBiz'], ['f-phone','phone'], ['f-email','email']].forEach(([id, key]) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('input', () => {
+        ans[key] = el.value;
+        syncNextBtn();
+      });
+    });
+
+    /* Consent checkboxes */
+    document.getElementById('consent-1').addEventListener('change', e => { ans.c1 = e.target.checked; syncNextBtn(); });
+    document.getElementById('consent-2').addEventListener('change', e => { ans.c2 = e.target.checked; syncNextBtn(); });
+
+    /* Next: handle disqualification AFTER answer is locked for gate steps */
+    btnNext.addEventListener('click', () => {}, { capture: true }); // placeholder
+    /* Override: intercept gate steps before advancing */
+    const origNextClick = btnNext.onclick;
+    document.getElementById('fbtn-next').addEventListener('click', function handler() {
+      const id  = steps[current];
+      const val = (id === 'fs5') ? ans.revenue : (id === 'fs6') ? ans.invest : null;
+      if (val && checkDisqualify(id, val)) {
+        /* Remove the handler from firing again */
+      }
+    }, { capture: true });
+
+    function submitForm() {
+      const btnText = btnNext.querySelector('.btn-text');
+      btnNext.classList.add('loading');
+      btnNext.disabled = true;
+
+      setTimeout(() => {
+        const firstName = getFirstName();
         stepsHost.style.display = 'none';
         fnav.style.display      = 'none';
-        progWrap.style.display  = 'none';
-        success.classList.add('show');
-      }
+        progFill.closest('.form-prog-track').style.display = 'none';
+        stepInd.style.display   = 'none';
+        successH.textContent    = `Application Received, ${firstName}.`;
+        successEl.classList.add('show');
+        btnNext.classList.remove('loading');
+      }, 1500);
+    }
 
-      // ---- Event: Next ----
-      btnNext.addEventListener('click', () => {
-        if (!isValid(step)) return;
-        collectStep(step);
-        const nxt = nextStep(step);
-        if (nxt === null) { submitForm(); return; }
-        showStep(nxt, false);
-      });
-
-      // ---- Event: Back ----
-      btnBack.addEventListener('click', () => {
-        const prv = prevStep(step);
-        if (prv) showStep(prv, true);
-      });
-
-      // ---- Pill clicks ----
-      document.querySelectorAll('.pill').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const s   = parseInt(btn.dataset.step, 10);
-          const val = btn.dataset.val;
-          btn.closest('.pills').querySelectorAll('.pill').forEach(p => p.classList.remove('selected'));
-          btn.classList.add('selected');
-          if (s === 2) ans.businessType = val;
-          if (s === 4) ans.tenure       = val;
-          if (s === 5) ans.challenge    = val;
-          if (s === 6) ans.revenue      = val;
-          syncBtnNext(step);
-        });
-      });
-
-      // ---- Live input validation ----
-      ['f-first','f-last','f-other','f-phone','f-email'].forEach(id => {
-        const el = document.getElementById(id);
-        if (!el) return;
-        el.addEventListener('input', () => {
-          if (id === 'f-first') ans.firstName = el.value.trim();
-          if (id === 'f-last')  ans.lastName  = el.value.trim();
-          if (id === 'f-other') ans.otherBusiness = el.value.trim();
-          if (id === 'f-phone') ans.phone     = el.value.trim();
-          if (id === 'f-email') ans.email     = el.value.trim();
-          syncBtnNext(step);
-        });
-      });
-
-      // ---- Init ----
-      updateProgress(1);
-      syncBtnNext(1);
-      btnBack.style.visibility = 'hidden';
-
-    })();
-  </script>
-
+    /* Init */
+    updateProgress();
+    syncNextBtn();
+  })();
+</script>
 </body>
 </html>
